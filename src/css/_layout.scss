@@ -1,11 +1,11 @@
 .app {
-	width: 1120px;
+	width: 112rem;
 	margin: 0 auto;
 }
 
 .header {
 	@extend .cf;
-	padding-top: 80px;
+	padding-top: 4rem;
 	// margin-left: -80px;
 }
 
@@ -17,13 +17,13 @@
 	}
 
 	.header__logo {
-		width: 80px;
+		width: 8rem;
 		float: left;
 		
 	}
 
 	.header__search {
-		width: 80px * 6;
+		width: 8rem * 6;
 		float: left;
 	}
 
@@ -41,18 +41,18 @@
 // TODO - take care of this by removing whitespace on build
 
 .row {
-	margin-left: -80px;
+	margin-left: -8rem;
 }
 
 .row__column {
 	@extend .stacked;
-	margin-left: 80px;
+	margin-left: 8rem;
 }
 
 
 .logo-nav {
-	height: 80px;
-	line-height: 80px;
+	height: 8rem;
+	line-height: 8rem;
 	text-indent: -9999px;
 	display: block;
 }
@@ -72,7 +72,7 @@
 	left: 0;
 	top: 0;
 	bottom: 0;
-	width: 4px;
+	width: 0.4rem;
 	background: #db4886; // TODO - move to colours
 }
 
@@ -85,21 +85,21 @@
 	}
 
 .build-state-btn {
-	height: 80px;
-	width: 80px;
+	height: 8rem;
+	width: 8rem;
 	text-align: center;
 }
 	.build-state-btn__char {
-		padding-top: 16px;
+		padding-top: 1.6rem;
 		display: block;
 	}
 	.build-state-btn__suffix {
-		padding-top: 4px;
+		padding-top: 0.4rem;
 		display: block;
 	}
 
 .build-state-label {
-	line-height: 80px;
+	line-height: 8rem;
 }
 
 .hit {
@@ -108,92 +108,92 @@
 }
 
 .main {
-	padding-top: 80px;
+	padding-top: 4rem;
 }
 	.main__sidebar {
-		width: 80px;
+		width: 8rem;
 	}
 	.main__results {
-		width: 80px * 6;
+		width: 8rem * 6;
 	}
 	.main__detail {
-		width: 80px * 5;
+		width: 8rem * 5;
 	}
 
 .results-state-label {
-	padding-top: 33px;
+	padding-top: 3.3rem;
 }
 
 .result {
-	padding: 0 20px;
+	padding: 0 2rem;
 	position: relative;
 	
 	color: rgba(255,255,255,0.6);
-	line-height: 50px;
+	line-height: 8rem;
 	// TODO - remove pseudo
 	&:first-child {
 		color: #fff; // TODO - move color
-		line-height: 80px;
-		margin-bottom: 15px;
+		// line-height: 8rem;
+		// margin-bottom: 1.5rem;
 	}
 	&:first-child:before {
 		content: '';
 		position: absolute;
-		top: -4px; right: -4px; bottom: -4px; left: -4px;
-		border: 4px solid #db4886; // TODO - Move color
+		top: 0; right: 0; bottom: 0; left: 0;
+		border: 0.4rem solid #db4886; // TODO - Move color
 	}
 }
 
 .results-actions {
-	padding-top: 40px;
+	padding-top: 4rem;
 	li+li {
-		padding-top: 10px;
+		padding-top: 1rem;
 	}
 }
 
 .detail {
-	padding: 40px;
+	padding: 4rem;
 	h1 {
-		font-size: 24px;
+		font-size: 2.4rem;
 		line-height: 1.2;
 		color: #fff;
 		font-weight: 300;
-		margin-bottom: 15px;
-		padding-top: 20px;
+		margin-bottom: 1.5rem;
+		padding-top: 2rem;
 	}
 	h1+p {
 		margin-top: 0;
 	}
 	.desc {
-		padding-top: 25px;
+		padding-top: 2.5rem;
 	}
 	h2 {
-		font-size: 18px;
+		font-size: 1.8rem;
 		line-height: 1.2;
 		font-weight: 300;
 		margin: 0;
-		padding-top: 25px;
+		padding-top: 2.5rem;
 	}
 	p {
-		line-height: 30px;
+		line-height: 3rem;
 	}
 	dt {
 		float: left;
 		clear: both;
-		padding-top: 10px;
+		padding-top: 1rem;
 	}
 	dd {
 		float: right;
-		padding-top: 10px;
+		padding-top: 1rem;
 	}
 }
 
 .tags {
-	margin-left: -5px;
+	margin-left: -1px;
 	li {
 		@extend .stacked;
-		line-height: 11px;
-		margin-left: 5px;
+		line-height: 1.1rem;
+		margin-left: 1px;
 		a {
 			display: inline-block;
 			padding: 0.7em;
