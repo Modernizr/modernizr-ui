@@ -62,7 +62,7 @@
 }
 
 	.search__label {
-		padding-left: 0.75em;
+		// padding-left: 1em;
 	}
 
 // TODO - don't use a pseudo :)
@@ -72,7 +72,10 @@
 	left: 0;
 	top: 0;
 	bottom: 0;
-	width: 0.4rem;
+	width: 1px;
+	height: 6rem;
+	margin-top: auto;
+	margin-bottom: auto;
 	background: #db4886; // TODO - move to colours
 }
 
@@ -122,25 +125,54 @@
 
 .results-state-label {
 	padding-top: 3.3rem;
+	line-height: 1.5;
 }
 
 .result {
 	padding: 0 2rem;
 	position: relative;
 	
-	color: rgba(255,255,255,0.6);
+	color: rgba(255,255,255,1);
 	line-height: 8rem;
-	// TODO - remove pseudo
-	&:first-child {
-		color: #fff; // TODO - move color
-		// line-height: 8rem;
-		// margin-bottom: 1.5rem;
+	&+.result {
+		border-top: 1px solid rgba(255,255,255,0.05);
 	}
-	&:first-child:before {
+}
+
+.result.is-focused {
+	position: relative; // For .add-action
+	&:before {
 		content: '';
 		position: absolute;
 		top: 0; right: 0; bottom: 0; left: 0;
-		border: 0.4rem solid #db4886; // TODO - Move color
+		border: 1px solid #db4886; // TODO - Move color
+	}
+}
+
+.result__add-action {
+	position: absolute;
+	top: 0;
+	bottom: 0; right: 0;
+	padding-right: 2rem;
+	padding-left: 2rem;
+	font-weight: 600;
+	&:before,
+	&:after {
+		content: '';
+		background: #db4886;
+		position: absolute;
+		top: 0; bottom: 0; left: 0;
+		margin-top: auto;
+		margin-bottom: auto;
+	}
+	&:before {
+		width: 4px;
+		height: 20px;
+	}
+	&:after {
+		height: 4px;
+		width: 20px;
+		left: -8px;
 	}
 }
 
@@ -158,14 +190,16 @@
 		line-height: 1.2;
 		color: #fff;
 		font-weight: 300;
-		margin-bottom: 1.5rem;
+		margin-bottom: 0.5rem;
 		padding-top: 2rem;
 	}
 	h1+p {
 		margin-top: 0;
 	}
 	.desc {
-		padding-top: 2.5rem;
+		padding-top: 1rem;
+		font-size: 1.2rem;
+		line-height: 2;
 	}
 	h2 {
 		font-size: 1.8rem;
@@ -198,5 +232,19 @@
 			display: inline-block;
 			padding: 0.7em;
 		}
+	}
+}
+
+.logo {
+	display: block;
+	height: 100%;
+	position: relative;
+	img {
+		position: absolute;
+		top: 0; right: 0; bottom: 0; left: 0;
+		margin: auto;
+		display: block;
+		width: 3rem;
+		height: 3rem * 0.44;
 	}
 }

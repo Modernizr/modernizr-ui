@@ -12,7 +12,9 @@
 		<div class="header cf row">
 			<div class="header__logo row__column">
 				<a href="#" class="logo-nav c_linkbox">
-					<span class="logo">Modernizr</span>
+					<span class="logo">
+						<img src="logo.svg" alt="Modernizr" />
+					</span>
 				</a>
 			</div><!--
 		--><div class="header__search row__column">
@@ -57,14 +59,17 @@
 			<div class="main__sidebar row__column">
 				<div class="results-state-label">Showing all detects</div>
 				<ul class="results-actions">
-					<li><a href="#" class="t_action t_label">Toggle all</a></li>
-					<li><a href="#" class="t_action t_label">Go back</a></li>
+					<li><a href="#" class="t_action t_label c_action">Toggle all</a></li>
+					<!--<li><a href="#" class="t_action t_label c_action" style="font-weight: 600">Go back</a></li> -->
 				</ul>
 			</div><!--
 		--><div class="main__results row__column">
 				<div class="results">
-					<div class="result">
+					<div class="result is-focused">
 						CSS transitions
+						<div class="result__add-action c_action add-action t_action">
+							Add
+						</div>
 					</div>
 					<div class="result">
 						Request Animation Frame

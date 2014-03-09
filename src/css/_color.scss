@@ -2,9 +2,9 @@
 
 .c_base {
 	background: #272727;
-	color: rgba(255,255,255,0.2);
+	color: rgba(255,255,255,0.5);
 	a {
-		color: rgba(255,255,255,0.7);
+		color: rgba(255,255,255,1);
 	}
 }
 
@@ -20,4 +20,9 @@ a.c_primary,
 
 .c_box {
 	background: #232323;
+}
+
+.c_action,
+a.c_action {
+	color: #db4886;
 }

@@ -7,6 +7,7 @@
 
 html {
 	font-size: 62.5%;
+	-webkit-font-smoothing: antialiased;
 }
 
 body {
@@ -25,11 +26,12 @@ p, ul, ol {
 }
 
 .t_search-label {
-	font-size: 2.4rem;
+	font-size: 1.8rem;
 	line-height: 8rem;
 	font-style: italic;
 	font-weight: 300;
 	letter-spacing: 0.075em;
+	color: rgba(255,255,255,0.2);
 }
 
 .t_subtitle {
@@ -47,3 +49,4 @@ p, ul, ol {
 .t_label {
 	font-size: 1.1rem;
 }
+
