@@ -1,0 +1,23 @@
+// TODO - browser support for non-RGBa, i.e. create stacks of pseudo-translucent colors
+
+.c_base {
+	background: #272727;
+	color: rgba(255,255,255,0.2);
+	a {
+		color: rgba(255,255,255,0.7);
+	}
+}
+
+.c_linkbox {
+	background: #2f2f2f;
+}
+
+a.c_primary,
+.c_primary {
+	background: #db4886;
+	color: #272727;
+}
+
+.c_box {
+	background: #232323;
+}
