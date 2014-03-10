@@ -7,6 +7,7 @@ var React = require('react');
 var Detail = React.createClass({
 
 	render: function() {
+		var authors = this.props.detect.get('authors') && this.props.detect.get('authors').join(', ');
 		return (
 		<div className="detail c_box">
 			<ul className="tags">
@@ -15,9 +16,11 @@ var Detail = React.createClass({
 				</li><li>
 					<a href="#" className="t_label c_linkbox">animation</a>
 				</li></ul>
-				<h1>CSS transitions</h1>
-				<p>by Joe Critchley</p>
-				<p className="desc">Detects support for the `window.registerProtocolHandler()` API to allow web sites to register themselves as possible handlers for particular protocols.</p>
+				<h1>{this.props.detect.get('name')}</h1>
+				{authors &&
+					<p>by {authors}</p>
+				}
+				<p className="desc">{this.props.detect.get('doc')}</p>
 				<h2>Usage</h2>
 				<dl className="cf">
 				<dt>CSS</dt>

@@ -16,7 +16,7 @@ Detects = _.extend(Detects, {
 		this.detectsCollection = new Detects.Collection();
 		this.resultsCollection = new Detects.ResultsCollection();
 		this.selectedCollection = new Detects.Collection();
-		this.detectsCollection.on('change:active', this.getSelection, this);
+		this.detectsCollection.on('change:added', this.getSelection, this);
 	},
 	fetch: function(cb) {
 		var _this = this;
@@ -45,7 +45,7 @@ Detects = _.extend(Detects, {
 		}
 	},
 	getSelection: function() {
-		var selectedModels = this.detectsCollection.where({active: true});
+		var selectedModels = this.detectsCollection.where({added: true});
 		this.selectedCollection.reset(selectedModels);
 		Events.publish('mod/data/selectionChanged', this.selectedCollection);
 	}

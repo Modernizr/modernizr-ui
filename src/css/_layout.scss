@@ -1,3 +1,9 @@
+html,
+body {
+	overflow: hidden;
+	height: 100%;
+}
+
 .app {
 	width: 112rem;
 	margin: 0 auto;
@@ -151,14 +157,25 @@
 	line-height: 1.5;
 }
 
+.results {
+	position: absolute;
+	top: 16rem;
+	bottom: 0;
+	width: 48rem;
+	overflow-y: auto;
+}
+
 .result {
 	padding: 0 2rem;
 	position: relative;
-	
+	cursor: pointer;
 	color: rgba(255,255,255,1);
 	line-height: 8rem;
 	&+.result {
 		border-top: 1px solid rgba(255,255,255,0.05);
+	}
+	&:not(.is-focused):hover {
+		opacity: 0.5;
 	}
 }
 

@@ -1,4 +1,5 @@
-var Detects = require('./Detects'); // TODO - better JS pattern ?!
-var App = require('./components/App.jsx');
-// var React = require('react');
 
+// TODO - better JS pattern, rather than relying on require for instantiation?
+var Detects = require('./Detects');
+
+var App = require('./components/App.jsx');

@@ -32,9 +32,15 @@ var App = React.createClass({
 			isSearching: !!value
 		});
 	},
+	handleCurrentDetectChange: function(detect) {
+		this.setState({
+			currentDetect: detect
+		});
+	},
 	render: function() {
 		var results = this.state.isSearching ? this.state.results : this.state.detects;
 		var selectionCount = this.state.selection ? this.state.selection.length : 0;
+		var currentDetect = this.state.currentDetect || (results && results.models[0]);
 		return (
 			<div className="app">
 				<Header count={selectionCount} />
@@ -46,10 +52,12 @@ var App = React.createClass({
 						</ul>
 					</div>
 					<div className="main__results row__column">
-						<Results detects={results && results.models || []} />
+						<Results detects={results && results.models || []} onCurrentDetectChange={this.handleCurrentDetectChange} currentDetect={currentDetect} />
 					</div>
 					<div className="main__detail row__column">
-						<Detail />
+						{currentDetect &&
+						<Detail detect={currentDetect} />
+						}
 					</div>
 				</div>
 			</div>

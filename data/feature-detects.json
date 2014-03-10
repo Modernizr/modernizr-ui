@@ -3,6 +3,7 @@
         "name": "Canvas",
         "property": "canvas",
         "caniuse": "canvas",
+        "doc": "Detects support for HTML5 canvas element and API",
         "tags": [
             "canvas",
             "graphics"
