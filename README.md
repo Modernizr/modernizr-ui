@@ -1,5 +1,9 @@
 # Modernizr UI
 
+## To do
+
+See the [Trello board](https://trello.com/b/JNSnhIuf/modernizr-com)
+
 ## Getting started
 
 1. Ensure you have all the prerequisites installed
