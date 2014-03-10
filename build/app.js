@@ -77,7 +77,7 @@
 		},
 		fetch: function(cb) {
 			var _this = this;
-			$.getJSON('/data/feature-detects.json').then(function(detects) {
+			$.getJSON('feature-detects.json').then(function(detects) {
 				_this.prepareSearch(detects);
 				_this.detectsCollection.reset(detects);
 				Events.publish('mod/data/detectsFetched', _this.detectsCollection);
