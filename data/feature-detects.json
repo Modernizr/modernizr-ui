@@ -1,0 +1,1198 @@
+[
+    {
+        "name": "Canvas",
+        "property": "canvas",
+        "caniuse": "canvas",
+        "tags": [
+            "canvas",
+            "graphics"
+        ],
+        "polyfills": [
+            "flashcanvas",
+            "excanvas",
+            "slcanvas",
+            "fxcanvas"
+        ]
+    },
+    {
+        "name": "Content Editable",
+        "property": "contenteditable",
+        "caniuse": "contenteditable",
+        "doc": "Detects support for the `contenteditable` attribute of elements, allowing their DOM text contents to be edited directly by the user.",
+        "notes": [
+            {
+                "name": "WHATWG spec",
+                "href": "http://www.whatwg.org/specs/web-apps/current-work/multipage/editing.html#contenteditable"
+            }
+        ]
+    },
+    {
+        "name": "Battery API",
+        "property": "batteryapi",
+        "aliases": [
+            "battery-api"
+        ],
+        "tags": [
+            "device",
+            "media"
+        ],
+        "authors": [
+            "Paul Sayre"
+        ],
+        "doc": "Detect support for the Battery API, for accessing information about the system's battery charge level.",
+        "notes": [
+            {
+                "name": "MDN documentation",
+                "href": "https://developer.mozilla.org/en/DOM/window.navigator.mozBattery"
+            }
+        ]
+    },
+    {
+        "name": "ES6 Promises",
+        "property": "promises",
+        "caniuse": "promises",
+        "polyfills": [
+            "es6promises"
+        ],
+        "authors": [
+            "Krister Kari",
+            "Jake Archibald"
+        ],
+        "tags": [
+            "es6"
+        ],
+        "doc": "Check if browser implements ECMAScript 6 Promises per specification.",
+        "notes": [
+            {
+                "name": "The ES6 promises spec",
+                "href": "https://github.com/domenic/promises-unwrapping"
+            },
+            {
+                "name": "Chromium dashboard - ES6 Promises",
+                "href": "http://www.chromestatus.com/features/5681726336532480"
+            },
+            {
+                "name": "JavaScript Promises: There and back again - HTML5 Rocks",
+                "href": "http://www.html5rocks.com/en/tutorials/es6/promises/"
+            }
+        ]
+    },
+    {
+        "name": "DataView",
+        "property": "dataview",
+        "authors": [
+            "Addy Osmani"
+        ],
+        "doc": "Detects support for the DataView interface for reading data from an ArrayBuffer as part of the Typed Array spec.",
+        "notes": [
+            {
+                "name": "MDN documentation",
+                "href": "https://developer.mozilla.org/en/JavaScript_typed_arrays/DataView"
+            }
+        ],
+        "polyfills": [
+            "jdataview"
+        ]
+    },
+    {
+        "name": "Drag & Drop",
+        "property": "draganddrop",
+        "caniuse": "dragndrop",
+        "doc": "Detects support for native drag & drop of elements.",
+        "knownBugs": [
+            "Mobile browsers like Android, iOS < 6, and Firefox OS technically support the APIs, but don't expose it to the end user, resulting in a false positive."
+        ],
+        "notes": [
+            {
+                "name": "W3C spec",
+                "href": "http://www.w3.org/TR/2010/WD-html5-20101019/dnd.html"
+            }
+        ],
+        "polyfills": [
+            "dropfile",
+            "moxie",
+            "fileapi"
+        ]
+    },
+    {
+        "name": "Internation-alization API",
+        "property": "Intl",
+        "doc": "Detects support for the Internationalization API which allow easy formatting of number and dates and sorting string based on a locale",
+        "notes": [
+            {
+                "name": "MDN documentation",
+                "href": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl"
+            },
+            {
+                "name": "ECMAScript spec",
+                "href": "http://www.ecma-international.org/ecma-402/1.0/"
+            }
+        ]
+    },
+    {
+        "name": "ES6 Promises",
+        "property": "promises",
+        "caniuse": "promises",
+        "polyfills": [
+            "es6promises"
+        ],
+        "authors": [
+            "Krister Kari",
+            "Jake Archibald"
+        ],
+        "tags": [
+            "es6"
+        ],
+        "doc": "Check if browser implements ECMAScript 6 Promises per specification.",
+        "notes": [
+            {
+                "name": "The ES6 promises spec",
+                "href": "https://github.com/domenic/promises-unwrapping"
+            },
+            {
+                "name": "Chromium dashboard - ES6 Promises",
+                "href": "http://www.chromestatus.com/features/5681726336532480"
+            },
+            {
+                "name": "JavaScript Promises: There and back again - HTML5 Rocks",
+                "href": "http://www.html5rocks.com/en/tutorials/es6/promises/"
+            }
+        ]
+    },
+    {
+        "name": "DataView",
+        "property": "dataview",
+        "authors": [
+            "Addy Osmani"
+        ],
+        "doc": "Detects support for the DataView interface for reading data from an ArrayBuffer as part of the Typed Array spec.",
+        "notes": [
+            {
+                "name": "MDN documentation",
+                "href": "https://developer.mozilla.org/en/JavaScript_typed_arrays/DataView"
+            }
+        ],
+        "polyfills": [
+            "jdataview"
+        ]
+    },
+    {
+        "name": "Drag & Drop",
+        "property": "draganddrop",
+        "caniuse": "dragndrop",
+        "doc": "Detects support for native drag & drop of elements.",
+        "knownBugs": [
+            "Mobile browsers like Android, iOS < 6, and Firefox OS technically support the APIs, but don't expose it to the end user, resulting in a false positive."
+        ],
+        "notes": [
+            {
+                "name": "W3C spec",
+                "href": "http://www.w3.org/TR/2010/WD-html5-20101019/dnd.html"
+            }
+        ],
+        "polyfills": [
+            "dropfile",
+            "moxie",
+            "fileapi"
+        ]
+    },
+    {
+        "name": "Internation-alization API",
+        "property": "Intl",
+        "doc": "Detects support for the Internationalization API which allow easy formatting of number and dates and sorting string based on a locale",
+        "notes": [
+            {
+                "name": "MDN documentation",
+                "href": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl"
+            },
+            {
+                "name": "ECMAScript spec",
+                "href": "http://www.ecma-international.org/ecma-402/1.0/"
+            }
+        ]
+    },
+    {
+        "name": "ES6 Promises",
+        "property": "promises",
+        "caniuse": "promises",
+        "polyfills": [
+            "es6promises"
+        ],
+        "authors": [
+            "Krister Kari",
+            "Jake Archibald"
+        ],
+        "tags": [
+            "es6"
+        ],
+        "doc": "Check if browser implements ECMAScript 6 Promises per specification.",
+        "notes": [
+            {
+                "name": "The ES6 promises spec",
+                "href": "https://github.com/domenic/promises-unwrapping"
+            },
+            {
+                "name": "Chromium dashboard - ES6 Promises",
+                "href": "http://www.chromestatus.com/features/5681726336532480"
+            },
+            {
+                "name": "JavaScript Promises: There and back again - HTML5 Rocks",
+                "href": "http://www.html5rocks.com/en/tutorials/es6/promises/"
+            }
+        ]
+    },
+    {
+        "name": "DataView",
+        "property": "dataview",
+        "authors": [
+            "Addy Osmani"
+        ],
+        "doc": "Detects support for the DataView interface for reading data from an ArrayBuffer as part of the Typed Array spec.",
+        "notes": [
+            {
+                "name": "MDN documentation",
+                "href": "https://developer.mozilla.org/en/JavaScript_typed_arrays/DataView"
+            }
+        ],
+        "polyfills": [
+            "jdataview"
+        ]
+    },
+    {
+        "name": "Drag & Drop",
+        "property": "draganddrop",
+        "caniuse": "dragndrop",
+        "doc": "Detects support for native drag & drop of elements.",
+        "knownBugs": [
+            "Mobile browsers like Android, iOS < 6, and Firefox OS technically support the APIs, but don't expose it to the end user, resulting in a false positive."
+        ],
+        "notes": [
+            {
+                "name": "W3C spec",
+                "href": "http://www.w3.org/TR/2010/WD-html5-20101019/dnd.html"
+            }
+        ],
+        "polyfills": [
+            "dropfile",
+            "moxie",
+            "fileapi"
+        ]
+    },
+    {
+        "name": "Internation-alization API",
+        "property": "Intl",
+        "doc": "Detects support for the Internationalization API which allow easy formatting of number and dates and sorting string based on a locale",
+        "notes": [
+            {
+                "name": "MDN documentation",
+                "href": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl"
+            },
+            {
+                "name": "ECMAScript spec",
+                "href": "http://www.ecma-international.org/ecma-402/1.0/"
+            }
+        ]
+    },
+    {
+        "name": "ES6 Promises",
+        "property": "promises",
+        "caniuse": "promises",
+        "polyfills": [
+            "es6promises"
+        ],
+        "authors": [
+            "Krister Kari",
+            "Jake Archibald"
+        ],
+        "tags": [
+            "es6"
+        ],
+        "doc": "Check if browser implements ECMAScript 6 Promises per specification.",
+        "notes": [
+            {
+                "name": "The ES6 promises spec",
+                "href": "https://github.com/domenic/promises-unwrapping"
+            },
+            {
+                "name": "Chromium dashboard - ES6 Promises",
+                "href": "http://www.chromestatus.com/features/5681726336532480"
+            },
+            {
+                "name": "JavaScript Promises: There and back again - HTML5 Rocks",
+                "href": "http://www.html5rocks.com/en/tutorials/es6/promises/"
+            }
+        ]
+    },
+    {
+        "name": "DataView",
+        "property": "dataview",
+        "authors": [
+            "Addy Osmani"
+        ],
+        "doc": "Detects support for the DataView interface for reading data from an ArrayBuffer as part of the Typed Array spec.",
+        "notes": [
+            {
+                "name": "MDN documentation",
+                "href": "https://developer.mozilla.org/en/JavaScript_typed_arrays/DataView"
+            }
+        ],
+        "polyfills": [
+            "jdataview"
+        ]
+    },
+    {
+        "name": "Drag & Drop",
+        "property": "draganddrop",
+        "caniuse": "dragndrop",
+        "doc": "Detects support for native drag & drop of elements.",
+        "knownBugs": [
+            "Mobile browsers like Android, iOS < 6, and Firefox OS technically support the APIs, but don't expose it to the end user, resulting in a false positive."
+        ],
+        "notes": [
+            {
+                "name": "W3C spec",
+                "href": "http://www.w3.org/TR/2010/WD-html5-20101019/dnd.html"
+            }
+        ],
+        "polyfills": [
+            "dropfile",
+            "moxie",
+            "fileapi"
+        ]
+    },
+    {
+        "name": "Internation-alization API",
+        "property": "Intl",
+        "doc": "Detects support for the Internationalization API which allow easy formatting of number and dates and sorting string based on a locale",
+        "notes": [
+            {
+                "name": "MDN documentation",
+                "href": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl"
+            },
+            {
+                "name": "ECMAScript spec",
+                "href": "http://www.ecma-international.org/ecma-402/1.0/"
+            }
+        ]
+    },
+    {
+        "name": "ES6 Promises",
+        "property": "promises",
+        "caniuse": "promises",
+        "polyfills": [
+            "es6promises"
+        ],
+        "authors": [
+            "Krister Kari",
+            "Jake Archibald"
+        ],
+        "tags": [
+            "es6"
+        ],
+        "doc": "Check if browser implements ECMAScript 6 Promises per specification.",
+        "notes": [
+            {
+                "name": "The ES6 promises spec",
+                "href": "https://github.com/domenic/promises-unwrapping"
+            },
+            {
+                "name": "Chromium dashboard - ES6 Promises",
+                "href": "http://www.chromestatus.com/features/5681726336532480"
+            },
+            {
+                "name": "JavaScript Promises: There and back again - HTML5 Rocks",
+                "href": "http://www.html5rocks.com/en/tutorials/es6/promises/"
+            }
+        ]
+    },
+    {
+        "name": "DataView",
+        "property": "dataview",
+        "authors": [
+            "Addy Osmani"
+        ],
+        "doc": "Detects support for the DataView interface for reading data from an ArrayBuffer as part of the Typed Array spec.",
+        "notes": [
+            {
+                "name": "MDN documentation",
+                "href": "https://developer.mozilla.org/en/JavaScript_typed_arrays/DataView"
+            }
+        ],
+        "polyfills": [
+            "jdataview"
+        ]
+    },
+    {
+        "name": "Drag & Drop",
+        "property": "draganddrop",
+        "caniuse": "dragndrop",
+        "doc": "Detects support for native drag & drop of elements.",
+        "knownBugs": [
+            "Mobile browsers like Android, iOS < 6, and Firefox OS technically support the APIs, but don't expose it to the end user, resulting in a false positive."
+        ],
+        "notes": [
+            {
+                "name": "W3C spec",
+                "href": "http://www.w3.org/TR/2010/WD-html5-20101019/dnd.html"
+            }
+        ],
+        "polyfills": [
+            "dropfile",
+            "moxie",
+            "fileapi"
+        ]
+    },
+    {
+        "name": "Internation-alization API",
+        "property": "Intl",
+        "doc": "Detects support for the Internationalization API which allow easy formatting of number and dates and sorting string based on a locale",
+        "notes": [
+            {
+                "name": "MDN documentation",
+                "href": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl"
+            },
+            {
+                "name": "ECMAScript spec",
+                "href": "http://www.ecma-international.org/ecma-402/1.0/"
+            }
+        ]
+    },
+    {
+        "name": "ES6 Promises",
+        "property": "promises",
+        "caniuse": "promises",
+        "polyfills": [
+            "es6promises"
+        ],
+        "authors": [
+            "Krister Kari",
+            "Jake Archibald"
+        ],
+        "tags": [
+            "es6"
+        ],
+        "doc": "Check if browser implements ECMAScript 6 Promises per specification.",
+        "notes": [
+            {
+                "name": "The ES6 promises spec",
+                "href": "https://github.com/domenic/promises-unwrapping"
+            },
+            {
+                "name": "Chromium dashboard - ES6 Promises",
+                "href": "http://www.chromestatus.com/features/5681726336532480"
+            },
+            {
+                "name": "JavaScript Promises: There and back again - HTML5 Rocks",
+                "href": "http://www.html5rocks.com/en/tutorials/es6/promises/"
+            }
+        ]
+    },
+    {
+        "name": "DataView",
+        "property": "dataview",
+        "authors": [
+            "Addy Osmani"
+        ],
+        "doc": "Detects support for the DataView interface for reading data from an ArrayBuffer as part of the Typed Array spec.",
+        "notes": [
+            {
+                "name": "MDN documentation",
+                "href": "https://developer.mozilla.org/en/JavaScript_typed_arrays/DataView"
+            }
+        ],
+        "polyfills": [
+            "jdataview"
+        ]
+    },
+    {
+        "name": "Drag & Drop",
+        "property": "draganddrop",
+        "caniuse": "dragndrop",
+        "doc": "Detects support for native drag & drop of elements.",
+        "knownBugs": [
+            "Mobile browsers like Android, iOS < 6, and Firefox OS technically support the APIs, but don't expose it to the end user, resulting in a false positive."
+        ],
+        "notes": [
+            {
+                "name": "W3C spec",
+                "href": "http://www.w3.org/TR/2010/WD-html5-20101019/dnd.html"
+            }
+        ],
+        "polyfills": [
+            "dropfile",
+            "moxie",
+            "fileapi"
+        ]
+    },
+    {
+        "name": "Internation-alization API",
+        "property": "Intl",
+        "doc": "Detects support for the Internationalization API which allow easy formatting of number and dates and sorting string based on a locale",
+        "notes": [
+            {
+                "name": "MDN documentation",
+                "href": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl"
+            },
+            {
+                "name": "ECMAScript spec",
+                "href": "http://www.ecma-international.org/ecma-402/1.0/"
+            }
+        ]
+    },
+    {
+        "name": "ES6 Promises",
+        "property": "promises",
+        "caniuse": "promises",
+        "polyfills": [
+            "es6promises"
+        ],
+        "authors": [
+            "Krister Kari",
+            "Jake Archibald"
+        ],
+        "tags": [
+            "es6"
+        ],
+        "doc": "Check if browser implements ECMAScript 6 Promises per specification.",
+        "notes": [
+            {
+                "name": "The ES6 promises spec",
+                "href": "https://github.com/domenic/promises-unwrapping"
+            },
+            {
+                "name": "Chromium dashboard - ES6 Promises",
+                "href": "http://www.chromestatus.com/features/5681726336532480"
+            },
+            {
+                "name": "JavaScript Promises: There and back again - HTML5 Rocks",
+                "href": "http://www.html5rocks.com/en/tutorials/es6/promises/"
+            }
+        ]
+    },
+    {
+        "name": "DataView",
+        "property": "dataview",
+        "authors": [
+            "Addy Osmani"
+        ],
+        "doc": "Detects support for the DataView interface for reading data from an ArrayBuffer as part of the Typed Array spec.",
+        "notes": [
+            {
+                "name": "MDN documentation",
+                "href": "https://developer.mozilla.org/en/JavaScript_typed_arrays/DataView"
+            }
+        ],
+        "polyfills": [
+            "jdataview"
+        ]
+    },
+    {
+        "name": "Drag & Drop",
+        "property": "draganddrop",
+        "caniuse": "dragndrop",
+        "doc": "Detects support for native drag & drop of elements.",
+        "knownBugs": [
+            "Mobile browsers like Android, iOS < 6, and Firefox OS technically support the APIs, but don't expose it to the end user, resulting in a false positive."
+        ],
+        "notes": [
+            {
+                "name": "W3C spec",
+                "href": "http://www.w3.org/TR/2010/WD-html5-20101019/dnd.html"
+            }
+        ],
+        "polyfills": [
+            "dropfile",
+            "moxie",
+            "fileapi"
+        ]
+    },
+    {
+        "name": "Internation-alization API",
+        "property": "Intl",
+        "doc": "Detects support for the Internationalization API which allow easy formatting of number and dates and sorting string based on a locale",
+        "notes": [
+            {
+                "name": "MDN documentation",
+                "href": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl"
+            },
+            {
+                "name": "ECMAScript spec",
+                "href": "http://www.ecma-international.org/ecma-402/1.0/"
+            }
+        ]
+    },
+    {
+        "name": "ES6 Promises",
+        "property": "promises",
+        "caniuse": "promises",
+        "polyfills": [
+            "es6promises"
+        ],
+        "authors": [
+            "Krister Kari",
+            "Jake Archibald"
+        ],
+        "tags": [
+            "es6"
+        ],
+        "doc": "Check if browser implements ECMAScript 6 Promises per specification.",
+        "notes": [
+            {
+                "name": "The ES6 promises spec",
+                "href": "https://github.com/domenic/promises-unwrapping"
+            },
+            {
+                "name": "Chromium dashboard - ES6 Promises",
+                "href": "http://www.chromestatus.com/features/5681726336532480"
+            },
+            {
+                "name": "JavaScript Promises: There and back again - HTML5 Rocks",
+                "href": "http://www.html5rocks.com/en/tutorials/es6/promises/"
+            }
+        ]
+    },
+    {
+        "name": "DataView",
+        "property": "dataview",
+        "authors": [
+            "Addy Osmani"
+        ],
+        "doc": "Detects support for the DataView interface for reading data from an ArrayBuffer as part of the Typed Array spec.",
+        "notes": [
+            {
+                "name": "MDN documentation",
+                "href": "https://developer.mozilla.org/en/JavaScript_typed_arrays/DataView"
+            }
+        ],
+        "polyfills": [
+            "jdataview"
+        ]
+    },
+    {
+        "name": "Drag & Drop",
+        "property": "draganddrop",
+        "caniuse": "dragndrop",
+        "doc": "Detects support for native drag & drop of elements.",
+        "knownBugs": [
+            "Mobile browsers like Android, iOS < 6, and Firefox OS technically support the APIs, but don't expose it to the end user, resulting in a false positive."
+        ],
+        "notes": [
+            {
+                "name": "W3C spec",
+                "href": "http://www.w3.org/TR/2010/WD-html5-20101019/dnd.html"
+            }
+        ],
+        "polyfills": [
+            "dropfile",
+            "moxie",
+            "fileapi"
+        ]
+    },
+    {
+        "name": "Internation-alization API",
+        "property": "Intl",
+        "doc": "Detects support for the Internationalization API which allow easy formatting of number and dates and sorting string based on a locale",
+        "notes": [
+            {
+                "name": "MDN documentation",
+                "href": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl"
+            },
+            {
+                "name": "ECMAScript spec",
+                "href": "http://www.ecma-international.org/ecma-402/1.0/"
+            }
+        ]
+    },
+    {
+        "name": "ES6 Promises",
+        "property": "promises",
+        "caniuse": "promises",
+        "polyfills": [
+            "es6promises"
+        ],
+        "authors": [
+            "Krister Kari",
+            "Jake Archibald"
+        ],
+        "tags": [
+            "es6"
+        ],
+        "doc": "Check if browser implements ECMAScript 6 Promises per specification.",
+        "notes": [
+            {
+                "name": "The ES6 promises spec",
+                "href": "https://github.com/domenic/promises-unwrapping"
+            },
+            {
+                "name": "Chromium dashboard - ES6 Promises",
+                "href": "http://www.chromestatus.com/features/5681726336532480"
+            },
+            {
+                "name": "JavaScript Promises: There and back again - HTML5 Rocks",
+                "href": "http://www.html5rocks.com/en/tutorials/es6/promises/"
+            }
+        ]
+    },
+    {
+        "name": "DataView",
+        "property": "dataview",
+        "authors": [
+            "Addy Osmani"
+        ],
+        "doc": "Detects support for the DataView interface for reading data from an ArrayBuffer as part of the Typed Array spec.",
+        "notes": [
+            {
+                "name": "MDN documentation",
+                "href": "https://developer.mozilla.org/en/JavaScript_typed_arrays/DataView"
+            }
+        ],
+        "polyfills": [
+            "jdataview"
+        ]
+    },
+    {
+        "name": "Drag & Drop",
+        "property": "draganddrop",
+        "caniuse": "dragndrop",
+        "doc": "Detects support for native drag & drop of elements.",
+        "knownBugs": [
+            "Mobile browsers like Android, iOS < 6, and Firefox OS technically support the APIs, but don't expose it to the end user, resulting in a false positive."
+        ],
+        "notes": [
+            {
+                "name": "W3C spec",
+                "href": "http://www.w3.org/TR/2010/WD-html5-20101019/dnd.html"
+            }
+        ],
+        "polyfills": [
+            "dropfile",
+            "moxie",
+            "fileapi"
+        ]
+    },
+    {
+        "name": "Internation-alization API",
+        "property": "Intl",
+        "doc": "Detects support for the Internationalization API which allow easy formatting of number and dates and sorting string based on a locale",
+        "notes": [
+            {
+                "name": "MDN documentation",
+                "href": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl"
+            },
+            {
+                "name": "ECMAScript spec",
+                "href": "http://www.ecma-international.org/ecma-402/1.0/"
+            }
+        ]
+    },
+    {
+        "name": "ES6 Promises",
+        "property": "promises",
+        "caniuse": "promises",
+        "polyfills": [
+            "es6promises"
+        ],
+        "authors": [
+            "Krister Kari",
+            "Jake Archibald"
+        ],
+        "tags": [
+            "es6"
+        ],
+        "doc": "Check if browser implements ECMAScript 6 Promises per specification.",
+        "notes": [
+            {
+                "name": "The ES6 promises spec",
+                "href": "https://github.com/domenic/promises-unwrapping"
+            },
+            {
+                "name": "Chromium dashboard - ES6 Promises",
+                "href": "http://www.chromestatus.com/features/5681726336532480"
+            },
+            {
+                "name": "JavaScript Promises: There and back again - HTML5 Rocks",
+                "href": "http://www.html5rocks.com/en/tutorials/es6/promises/"
+            }
+        ]
+    },
+    {
+        "name": "DataView",
+        "property": "dataview",
+        "authors": [
+            "Addy Osmani"
+        ],
+        "doc": "Detects support for the DataView interface for reading data from an ArrayBuffer as part of the Typed Array spec.",
+        "notes": [
+            {
+                "name": "MDN documentation",
+                "href": "https://developer.mozilla.org/en/JavaScript_typed_arrays/DataView"
+            }
+        ],
+        "polyfills": [
+            "jdataview"
+        ]
+    },
+    {
+        "name": "Drag & Drop",
+        "property": "draganddrop",
+        "caniuse": "dragndrop",
+        "doc": "Detects support for native drag & drop of elements.",
+        "knownBugs": [
+            "Mobile browsers like Android, iOS < 6, and Firefox OS technically support the APIs, but don't expose it to the end user, resulting in a false positive."
+        ],
+        "notes": [
+            {
+                "name": "W3C spec",
+                "href": "http://www.w3.org/TR/2010/WD-html5-20101019/dnd.html"
+            }
+        ],
+        "polyfills": [
+            "dropfile",
+            "moxie",
+            "fileapi"
+        ]
+    },
+    {
+        "name": "Internation-alization API",
+        "property": "Intl",
+        "doc": "Detects support for the Internationalization API which allow easy formatting of number and dates and sorting string based on a locale",
+        "notes": [
+            {
+                "name": "MDN documentation",
+                "href": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl"
+            },
+            {
+                "name": "ECMAScript spec",
+                "href": "http://www.ecma-international.org/ecma-402/1.0/"
+            }
+        ]
+    },
+    {
+        "name": "ES6 Promises",
+        "property": "promises",
+        "caniuse": "promises",
+        "polyfills": [
+            "es6promises"
+        ],
+        "authors": [
+            "Krister Kari",
+            "Jake Archibald"
+        ],
+        "tags": [
+            "es6"
+        ],
+        "doc": "Check if browser implements ECMAScript 6 Promises per specification.",
+        "notes": [
+            {
+                "name": "The ES6 promises spec",
+                "href": "https://github.com/domenic/promises-unwrapping"
+            },
+            {
+                "name": "Chromium dashboard - ES6 Promises",
+                "href": "http://www.chromestatus.com/features/5681726336532480"
+            },
+            {
+                "name": "JavaScript Promises: There and back again - HTML5 Rocks",
+                "href": "http://www.html5rocks.com/en/tutorials/es6/promises/"
+            }
+        ]
+    },
+    {
+        "name": "DataView",
+        "property": "dataview",
+        "authors": [
+            "Addy Osmani"
+        ],
+        "doc": "Detects support for the DataView interface for reading data from an ArrayBuffer as part of the Typed Array spec.",
+        "notes": [
+            {
+                "name": "MDN documentation",
+                "href": "https://developer.mozilla.org/en/JavaScript_typed_arrays/DataView"
+            }
+        ],
+        "polyfills": [
+            "jdataview"
+        ]
+    },
+    {
+        "name": "Drag & Drop",
+        "property": "draganddrop",
+        "caniuse": "dragndrop",
+        "doc": "Detects support for native drag & drop of elements.",
+        "knownBugs": [
+            "Mobile browsers like Android, iOS < 6, and Firefox OS technically support the APIs, but don't expose it to the end user, resulting in a false positive."
+        ],
+        "notes": [
+            {
+                "name": "W3C spec",
+                "href": "http://www.w3.org/TR/2010/WD-html5-20101019/dnd.html"
+            }
+        ],
+        "polyfills": [
+            "dropfile",
+            "moxie",
+            "fileapi"
+        ]
+    },
+    {
+        "name": "Internation-alization API",
+        "property": "Intl",
+        "doc": "Detects support for the Internationalization API which allow easy formatting of number and dates and sorting string based on a locale",
+        "notes": [
+            {
+                "name": "MDN documentation",
+                "href": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl"
+            },
+            {
+                "name": "ECMAScript spec",
+                "href": "http://www.ecma-international.org/ecma-402/1.0/"
+            }
+        ]
+    },
+    {
+        "name": "ES6 Promises",
+        "property": "promises",
+        "caniuse": "promises",
+        "polyfills": [
+            "es6promises"
+        ],
+        "authors": [
+            "Krister Kari",
+            "Jake Archibald"
+        ],
+        "tags": [
+            "es6"
+        ],
+        "doc": "Check if browser implements ECMAScript 6 Promises per specification.",
+        "notes": [
+            {
+                "name": "The ES6 promises spec",
+                "href": "https://github.com/domenic/promises-unwrapping"
+            },
+            {
+                "name": "Chromium dashboard - ES6 Promises",
+                "href": "http://www.chromestatus.com/features/5681726336532480"
+            },
+            {
+                "name": "JavaScript Promises: There and back again - HTML5 Rocks",
+                "href": "http://www.html5rocks.com/en/tutorials/es6/promises/"
+            }
+        ]
+    },
+    {
+        "name": "DataView",
+        "property": "dataview",
+        "authors": [
+            "Addy Osmani"
+        ],
+        "doc": "Detects support for the DataView interface for reading data from an ArrayBuffer as part of the Typed Array spec.",
+        "notes": [
+            {
+                "name": "MDN documentation",
+                "href": "https://developer.mozilla.org/en/JavaScript_typed_arrays/DataView"
+            }
+        ],
+        "polyfills": [
+            "jdataview"
+        ]
+    },
+    {
+        "name": "Drag & Drop",
+        "property": "draganddrop",
+        "caniuse": "dragndrop",
+        "doc": "Detects support for native drag & drop of elements.",
+        "knownBugs": [
+            "Mobile browsers like Android, iOS < 6, and Firefox OS technically support the APIs, but don't expose it to the end user, resulting in a false positive."
+        ],
+        "notes": [
+            {
+                "name": "W3C spec",
+                "href": "http://www.w3.org/TR/2010/WD-html5-20101019/dnd.html"
+            }
+        ],
+        "polyfills": [
+            "dropfile",
+            "moxie",
+            "fileapi"
+        ]
+    },
+    {
+        "name": "Internation-alization API",
+        "property": "Intl",
+        "doc": "Detects support for the Internationalization API which allow easy formatting of number and dates and sorting string based on a locale",
+        "notes": [
+            {
+                "name": "MDN documentation",
+                "href": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl"
+            },
+            {
+                "name": "ECMAScript spec",
+                "href": "http://www.ecma-international.org/ecma-402/1.0/"
+            }
+        ]
+    },
+    {
+        "name": "ES6 Promises",
+        "property": "promises",
+        "caniuse": "promises",
+        "polyfills": [
+            "es6promises"
+        ],
+        "authors": [
+            "Krister Kari",
+            "Jake Archibald"
+        ],
+        "tags": [
+            "es6"
+        ],
+        "doc": "Check if browser implements ECMAScript 6 Promises per specification.",
+        "notes": [
+            {
+                "name": "The ES6 promises spec",
+                "href": "https://github.com/domenic/promises-unwrapping"
+            },
+            {
+                "name": "Chromium dashboard - ES6 Promises",
+                "href": "http://www.chromestatus.com/features/5681726336532480"
+            },
+            {
+                "name": "JavaScript Promises: There and back again - HTML5 Rocks",
+                "href": "http://www.html5rocks.com/en/tutorials/es6/promises/"
+            }
+        ]
+    },
+    {
+        "name": "DataView",
+        "property": "dataview",
+        "authors": [
+            "Addy Osmani"
+        ],
+        "doc": "Detects support for the DataView interface for reading data from an ArrayBuffer as part of the Typed Array spec.",
+        "notes": [
+            {
+                "name": "MDN documentation",
+                "href": "https://developer.mozilla.org/en/JavaScript_typed_arrays/DataView"
+            }
+        ],
+        "polyfills": [
+            "jdataview"
+        ]
+    },
+    {
+        "name": "Drag & Drop",
+        "property": "draganddrop",
+        "caniuse": "dragndrop",
+        "doc": "Detects support for native drag & drop of elements.",
+        "knownBugs": [
+            "Mobile browsers like Android, iOS < 6, and Firefox OS technically support the APIs, but don't expose it to the end user, resulting in a false positive."
+        ],
+        "notes": [
+            {
+                "name": "W3C spec",
+                "href": "http://www.w3.org/TR/2010/WD-html5-20101019/dnd.html"
+            }
+        ],
+        "polyfills": [
+            "dropfile",
+            "moxie",
+            "fileapi"
+        ]
+    },
+    {
+        "name": "Internation-alization API",
+        "property": "Intl",
+        "doc": "Detects support for the Internationalization API which allow easy formatting of number and dates and sorting string based on a locale",
+        "notes": [
+            {
+                "name": "MDN documentation",
+                "href": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl"
+            },
+            {
+                "name": "ECMAScript spec",
+                "href": "http://www.ecma-international.org/ecma-402/1.0/"
+            }
+        ]
+    },
+    {
+        "name": "ES6 Promises",
+        "property": "promises",
+        "caniuse": "promises",
+        "polyfills": [
+            "es6promises"
+        ],
+        "authors": [
+            "Krister Kari",
+            "Jake Archibald"
+        ],
+        "tags": [
+            "es6"
+        ],
+        "doc": "Check if browser implements ECMAScript 6 Promises per specification.",
+        "notes": [
+            {
+                "name": "The ES6 promises spec",
+                "href": "https://github.com/domenic/promises-unwrapping"
+            },
+            {
+                "name": "Chromium dashboard - ES6 Promises",
+                "href": "http://www.chromestatus.com/features/5681726336532480"
+            },
+            {
+                "name": "JavaScript Promises: There and back again - HTML5 Rocks",
+                "href": "http://www.html5rocks.com/en/tutorials/es6/promises/"
+            }
+        ]
+    },
+    {
+        "name": "DataView",
+        "property": "dataview",
+        "authors": [
+            "Addy Osmani"
+        ],
+        "doc": "Detects support for the DataView interface for reading data from an ArrayBuffer as part of the Typed Array spec.",
+        "notes": [
+            {
+                "name": "MDN documentation",
+                "href": "https://developer.mozilla.org/en/JavaScript_typed_arrays/DataView"
+            }
+        ],
+        "polyfills": [
+            "jdataview"
+        ]
+    },
+    {
+        "name": "Drag & Drop",
+        "property": "draganddrop",
+        "caniuse": "dragndrop",
+        "doc": "Detects support for native drag & drop of elements.",
+        "knownBugs": [
+            "Mobile browsers like Android, iOS < 6, and Firefox OS technically support the APIs, but don't expose it to the end user, resulting in a false positive."
+        ],
+        "notes": [
+            {
+                "name": "W3C spec",
+                "href": "http://www.w3.org/TR/2010/WD-html5-20101019/dnd.html"
+            }
+        ],
+        "polyfills": [
+            "dropfile",
+            "moxie",
+            "fileapi"
+        ]
+    },
+    {
+        "name": "Internation-alization API",
+        "property": "Intl",
+        "doc": "Detects support for the Internationalization API which allow easy formatting of number and dates and sorting string based on a locale",
+        "notes": [
+            {
+                "name": "MDN documentation",
+                "href": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl"
+            },
+            {
+                "name": "ECMAScript spec",
+                "href": "http://www.ecma-international.org/ecma-402/1.0/"
+            }
+        ]
+    }
+]

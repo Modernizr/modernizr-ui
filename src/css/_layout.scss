@@ -65,6 +65,18 @@
 		// padding-left: 1em;
 	}
 
+@-webkit-keyframes blink {
+	0% {
+		opacity: 0;
+	}
+	75% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
 // TODO - don't use a pseudo :)
 .search:before {
 	content: '';
@@ -77,6 +89,7 @@
 	margin-top: auto;
 	margin-bottom: auto;
 	background: #db4886; // TODO - move to colours
+	-webkit-animation: blink 0.5s infinite alternate;
 }
 
 .util {
@@ -118,10 +131,20 @@
 	}
 	.main__results {
 		width: 8rem * 6;
+		// min-height: 1px;
+		// position: relative;
 	}
 	.main__detail {
 		width: 8rem * 5;
+		// min-height: 1px;
+		// position: relative;
 	}
+
+.main__detail .detail {
+	// position: absolute;
+	// top: -10rem;
+	// bottom: -4rem;
+}
 
 .results-state-label {
 	padding-top: 3.3rem;
@@ -156,6 +179,7 @@
 	padding-right: 2rem;
 	padding-left: 2rem;
 	font-weight: 600;
+	pointer-events: none;
 	&:before,
 	&:after {
 		content: '';
@@ -174,6 +198,14 @@
 		width: 20px;
 		left: -8px;
 	}
+}
+
+.result.is-added .result__add-action:before {
+	display: none;
+}
+
+.result.is-added {
+	color: #db4886;
 }
 
 .results-actions {

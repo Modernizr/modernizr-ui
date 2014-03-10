@@ -1,5 +1,11 @@
 module.exports = function(grunt) {
 
+	require("matchdep").filterAll("grunt-*").forEach(grunt.loadNpmTasks);
+
+	var webpack = require("webpack");
+	var webpackConfig = require("./webpack.config.js");
+
+
 	grunt.initConfig({
 		sass: {
 			app: {
@@ -24,21 +30,33 @@ module.exports = function(grunt) {
 				dest: './build/app.js'
 			}
 		},
+		'webpack-dev-server': {
+			options: {
+				webpage: webpackConfig,
+				publicPath: '/' + webpackConfig.output.publicPath
+			},
+			start: {
+				keepAlive: true,
+				webpack: {
+					devtool: "eval",
+					debug: true
+				}
+			}
+		},
 		watch: {
 			sass: {
 				files: ['./src/css/**/*.scss'],
 				tasks: ['sass:app']
-			},
-			app: {
-				files: ['./src/js/**/*.js'],
-				tasks: ['browserify:app']
-			}
+			}//,
+			// app: {
+				// files: ['./src/js/**/*.js', './src/js/**/*.jsx'],
+				// tasks: ['webpack-watch']
+			// }
 		}
 	});
 
-	grunt.loadNpmTasks('grunt-sass');
-	grunt.loadNpmTasks('grunt-contrib-watch');
-	grunt.loadNpmTasks('grunt-browserify');
-	grunt.registerTask('default', ['browserify:app', 'sass:app']);
+	grunt.registerTask('webpack', ['webpack-watch']);
+	grunt.registerTask('default', ['sass:app']);
+	grunt.registerTask('start', 'webpack-dev-server:start');
 };
 
