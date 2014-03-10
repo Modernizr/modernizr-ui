@@ -43,14 +43,14 @@ module.exports = function(grunt) {
 		// 		}
 		// 	}
 		// },
-		copy: {
-		  main: {
-		    files: [
-		      // includes files within path
-		      {expand: true, src: ['./index.html'], dest: './build', filter: 'isFile'},
-		    ]
-		  }
-		},
+		// copy: {
+		//   main: {
+		//     files: [
+		//       // includes files within path
+		//       {expand: true, src: ['./index.html'], dest: './build', filter: 'isFile'},
+		//     ]
+		//   }
+		// },
 		watch: {
 			sass: {
 				files: ['./src/css/**/*.scss'],
@@ -64,7 +64,7 @@ module.exports = function(grunt) {
 	});
 
 	// grunt.registerTask('webpack', ['webpack-watch']);
-	grunt.registerTask('default', ['sass:app', 'copy:main']);
+	grunt.registerTask('default', ['sass:app']);
 	// grunt.registerTask('start', 'webpack-dev-server:start');
 };
 
