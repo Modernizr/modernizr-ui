@@ -169,6 +169,7 @@ body {
 .results-state-label {
 	padding-top: 3.3rem;
 	line-height: 1.5;
+	font-size: 1.1rem;
 }
 
 .results {
@@ -185,11 +186,12 @@ body {
 	cursor: pointer;
 	color: rgba(255,255,255,1);
 	line-height: 8rem;
+	-webkit-user-select: none;
 	&+.result {
 		border-top: 1px solid rgba(255,255,255,0.05);
 	}
-	&:not(.is-focused):hover {
-		opacity: 0.5;
+	&.is-over {
+		// opacity: 1;
 	}
 }
 
@@ -203,14 +205,28 @@ body {
 	}
 }
 
+.result__name {
+	display: inline-block;
+	line-height: 8rem;
+	width: 80%;
+	opacity: 0.5;
+	&:hover {
+		// text-decoration: underline;
+		opacity: 1;
+	}
+}
+
 .result__add-action {
+	width: 20%;
 	position: absolute;
 	top: 0;
 	bottom: 0; right: 0;
 	padding-right: 2rem;
 	padding-left: 2rem;
 	font-weight: 600;
-	pointer-events: none;
+	display: none;
+	opacity: 0.2;
+	// text-align: right;
 	&:before,
 	&:after {
 		content: '';
@@ -229,10 +245,24 @@ body {
 		width: 20px;
 		left: -8px;
 	}
+	&:hover {
+		// text-decoration: underline;
+	}
 }
 
 .result.is-added .result__add-action:before {
 	display: none;
+}
+
+.result:hover .result__add-action,
+.result.is-focused .result__add-action {
+	display: block;
+}
+
+.result.is-focused .result__name,
+.result.is-focused .result__add-action,
+.result .result__add-action:hover {
+	opacity: 1;
 }
 
 .result.is-added {
@@ -248,6 +278,7 @@ body {
 
 .detail {
 	padding: 4rem;
+	position: relative;
 	h1 {
 		font-size: 2.4rem;
 		line-height: 1.2;
@@ -284,6 +315,17 @@ body {
 		padding-top: 1rem;
 	}
 }
+	.detail__close {
+		position: absolute;
+		right: 4rem;
+		top: 4rem;
+		font-size: 1.1rem;
+		line-height: 3.4rem;
+		opacity: 0.5;
+		&:hover {
+			opacity: 1;
+		}
+	}
 
 .tags {
 	margin-left: -1px;
@@ -296,6 +338,11 @@ body {
 			padding: 0.7em;
 		}
 	}
+}
+
+.detail--intro p {
+	line-height: 1.6;
+	padding-top: 2em;
 }
 
 .logo {

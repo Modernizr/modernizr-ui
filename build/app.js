@@ -231,7 +231,8 @@
 		modelState: ['detects', 'results', 'selection'],
 		getInitialState: function() {
 			return {
-				isSearching: false
+				isSearching: false,
+				currentDetect: null
 			};
 		},
 		fetchData: function() {
@@ -253,26 +254,54 @@
 				currentDetect: detect
 			});
 		},
+		addAllDetects: function() {
+			var results = this.getResults();
+			results.invoke('set', {'added': true});
+		},
+		removeAllDetects: function() {
+			var results = this.getResults();
+			results.invoke('set', {'added': false});
+		},
+		getResults: function() {
+			return this.state.isSearching ? this.state.results : this.state.detects;
+		},
+		handleDetailClose: function(event) {
+			this.setState({
+				currentDetect: null
+			});
+		},
 		render: function() {
-			var results = this.state.isSearching ? this.state.results : this.state.detects;
+			var results = this.getResults();
 			var selectionCount = this.state.selection ? this.state.selection.length : 0;
-			var currentDetect = this.state.currentDetect || (results && results.models[0]);
+			var currentDetect = this.state.currentDetect;
 			return (
 				React.DOM.div( {className:"app"}, 
 					Header( {count:selectionCount} ),
 					React.DOM.div( {className:"main row"}, 
+						results &&
 						React.DOM.div( {className:"main__sidebar row__column"}, 
-							React.DOM.div( {className:"results-state-label"}, "Showing all detects"),
+							React.DOM.div( {className:"results-state-label"}, "Showing all ", results.length, " detects"),
 							React.DOM.ul( {className:"results-actions"}, 
-								React.DOM.li(null, React.DOM.a( {href:"#", className:"t_action t_label c_action"}, "Toggle all"))
+								(selectionCount === results.length &&
+									React.DOM.li(null, React.DOM.a( {href:"#", onClick:this.removeAllDetects, className:"t_action t_label c_action"}, "REMOVE ALL (",results.length,")"))
+								) ||
+									React.DOM.li(null, React.DOM.a( {href:"#", onClick:this.addAllDetects, className:"t_action t_label c_action"}, "ADD ALL (",results.length,")"))
+								
 							)
 						),
+						
 						React.DOM.div( {className:"main__results row__column"}, 
 							Results( {detects:results && results.models || [], onCurrentDetectChange:this.handleCurrentDetectChange, currentDetect:currentDetect} )
 						),
 						React.DOM.div( {className:"main__detail row__column"}, 
-							currentDetect &&
-							Detail( {detect:currentDetect} )
+							(currentDetect &&
+							Detail( {detect:currentDetect, onClose:this.handleDetailClose} )
+							) || 
+							React.DOM.div( {className:"detail detail--intro"}, 
+								React.DOM.h1(null, "Welcome to the",React.DOM.br(null ),"detect library."),
+								React.DOM.p(null, "You can browser detects to find out about browser features, and also add detects to a build, ready to use on your project."),
+								React.DOM.p(null, React.DOM.i(null, "[Add more instructions here]"))
+							)
 							
 						)
 					)
@@ -3796,11 +3825,14 @@
 	var React = __webpack_require__(11);
 	
 	var Detail = React.createClass({displayName: 'Detail',
-	
+		closePanel: function(event) {
+			if(this.props.onClose) this.props.onClose(event);
+		},
 		render: function() {
 			var authors = this.props.detect.get('authors') && this.props.detect.get('authors').join(', ');
 			return (
 			React.DOM.div( {className:"detail c_box"}, 
+				React.DOM.a( {href:"#", className:"detail__close", onClick:this.closePanel}, "CLOSE"),
 				React.DOM.ul( {className:"tags"}, 
 					React.DOM.li(null, 
 						React.DOM.a( {href:"#", className:"t_label c_linkbox"}, "css")
@@ -3889,33 +3921,47 @@
 		handleClick: function(event) {
 			// Already current, so add it
 			if(this.props.detect && this.props.currentDetect && this.props.detect.cid === this.props.currentDetect.cid) {
-				this.props.detect.set('added', !this.props.detect.get('added'));
-				// Force a render of this component...
-				// TODO — we need to find a better way of doing this, in case the model appears elsewhere
-				this.setState({
-					detect: this.props.detect
-				});
+				this.addDetect();
 			}
 			// Make it current
 			else {
 				this.props.onClick(this.props.detect);
 			}
 		},
+		handleAddClick: function(event) {
+			event.stopPropagation();
+			this.addDetect();
+		},
+		addDetect: function() {
+			this.props.detect.set('added', !this.props.detect.get('added'));
+			// Force a render of this component...
+			// TODO — we need to find a better way of doing this, in case the model appears elsewhere
+			this.setState({
+				detect: this.props.detect
+			});
+		},
 		render: function() {
 			var classes = 'result';
 			var isCurrent = this.props.detect && this.props.currentDetect && this.props.detect.cid === this.props.currentDetect.cid;
 			if(isCurrent) classes += ' is-focused';
+			if(this.state.isOver) classes += ' is-over';
 			if(this.props.detect && this.props.detect.get('added')) classes += ' is-added';
-			console.log('added?',this.props.detect && this.props.detect.get('added'));
-			console.log('detect', this.props.detect);
+	
+			// Name
+			// console.log(this.state.isNameOver, isCurrent);
+			var resultNameClasses = 'result__name';
+			if(this.state.isNameOver && !isCurrent) resultNameClasses += ' is-over';
+	
+			// Add action
+			var resultAddClasses = 'result__add-action c_action add-action t_action';
+			if(this.state.isAddOver) resultAddClasses += ' is-over';
+	
 			return (
 			React.DOM.div( {className:classes, onClick:this.handleClick}, 
-				this.props.detect && this.props.detect.get('name'),
-				isCurrent &&
-				React.DOM.div( {className:"result__add-action c_action add-action t_action"}, 
+				React.DOM.span( {className:resultNameClasses}, this.props.detect && this.props.detect.get('name')),
+				React.DOM.div( {className:resultAddClasses, onClick:this.handleAddClick}, 
 					this.props.detect.get('added') ? 'Remove' : 'Add'
 				)
-				
 			)
 			);
 		}

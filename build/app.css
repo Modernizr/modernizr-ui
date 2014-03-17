@@ -143,7 +143,8 @@ html, body {
 
 .results-state-label {
   padding-top: 3.3rem;
-  line-height: 1.5; }
+  line-height: 1.5;
+  font-size: 1.1rem; }
 
 .results {
   position: absolute;
@@ -157,11 +158,10 @@ html, body {
   position: relative;
   cursor: pointer;
   color: white;
-  line-height: 8rem; }
+  line-height: 8rem;
+  -webkit-user-select: none; }
   .result + .result {
     border-top: 1px solid rgba(255, 255, 255, 0.05); }
-  .result:not(.is-focused):hover {
-    opacity: 0.5; }
 
 .result.is-focused {
   position: relative; }
@@ -174,7 +174,16 @@ html, body {
     left: 0;
     border: 1px solid #db4886; }
 
+.result__name {
+  display: inline-block;
+  line-height: 8rem;
+  width: 80%;
+  opacity: 0.5; }
+  .result__name:hover {
+    opacity: 1; }
+
 .result__add-action {
+  width: 20%;
   position: absolute;
   top: 0;
   bottom: 0;
@@ -182,7 +191,8 @@ html, body {
   padding-right: 2rem;
   padding-left: 2rem;
   font-weight: 600;
-  pointer-events: none; }
+  display: none;
+  opacity: 0.2; }
   .result__add-action:before, .result__add-action:after {
     content: '';
     background: #db4886;
@@ -203,6 +213,12 @@ html, body {
 .result.is-added .result__add-action:before {
   display: none; }
 
+.result:hover .result__add-action, .result.is-focused .result__add-action {
+  display: block; }
+
+.result.is-focused .result__name, .result.is-focused .result__add-action, .result .result__add-action:hover {
+  opacity: 1; }
+
 .result.is-added {
   color: #db4886; }
 
@@ -212,7 +228,8 @@ html, body {
     padding-top: 1rem; }
 
 .detail {
-  padding: 4rem; }
+  padding: 4rem;
+  position: relative; }
   .detail h1 {
     font-size: 2.4rem;
     line-height: 1.2;
@@ -242,6 +259,16 @@ html, body {
     float: right;
     padding-top: 1rem; }
 
+.detail__close {
+  position: absolute;
+  right: 4rem;
+  top: 4rem;
+  font-size: 1.1rem;
+  line-height: 3.4rem;
+  opacity: 0.5; }
+  .detail__close:hover {
+    opacity: 1; }
+
 .tags {
   margin-left: -1px; }
   .tags li {
@@ -250,6 +277,10 @@ html, body {
     .tags li a {
       display: inline-block;
       padding: 0.7em; }
+
+.detail--intro p {
+  line-height: 1.6;
+  padding-top: 2em; }
 
 .logo {
   display: block;

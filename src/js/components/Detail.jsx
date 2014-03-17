@@ -5,11 +5,14 @@
 var React = require('react');
 
 var Detail = React.createClass({
-
+	closePanel: function(event) {
+		if(this.props.onClose) this.props.onClose(event);
+	},
 	render: function() {
 		var authors = this.props.detect.get('authors') && this.props.detect.get('authors').join(', ');
 		return (
 		<div className="detail c_box">
+			<a href="#" className="detail__close" onClick={this.closePanel}>CLOSE</a>
 			<ul className="tags">
 				<li>
 					<a href="#" className="t_label c_linkbox">css</a>
