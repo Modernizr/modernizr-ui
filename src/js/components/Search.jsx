@@ -3,12 +3,16 @@
  */
 
 var React = require('react');
+var Events = require('../events');
 
 var Search = React.createClass({
+	handleChange: function(event) {
+		Events.publish('mod/ui/searchValueChanged',  event.target.value);
+	},
 	render: function() {
 		return (
 			<div className="search">
-				<div className="search__label t_search-label">Type a browser feature</div>
+				<input type="text" onChange={this.handleChange} className="search__input t_search-label" placeholder="Type a browser feature" />
 			</div>
 		);
 	}
