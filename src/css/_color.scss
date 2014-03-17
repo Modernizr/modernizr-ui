@@ -1,5 +1,15 @@
 // TODO - browser support for non-RGBa, i.e. create stacks of pseudo-translucent colors
 
+.c_light {
+	background: #f7f7f7;
+	color: #272727;
+	a { color: inherit; }
+}
+
+.c_stark {
+	background: #FFF;
+}
+
 .c_base {
 	background: #272727;
 	color: rgba(255,255,255,0.5);
