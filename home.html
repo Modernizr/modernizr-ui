@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Modernizr</title>
+	<link href="http://fonts.googleapis.com/css?family=Open+Sans:300,300italic,600" rel="stylesheet">
+	<link href="/build/app.css" rel="stylesheet">
+</head>
+<body class="c_light">
+
+<div class="container">
+	<div class="block">
+
+		<div class="app">
+
+			<div class="header row">
+				<div class="header__logo row__column">
+					<a href="#" class="logo-nav c_stark">
+						<span class="logo"><img src="logo.svg" alt="Modernizr"></span>
+					</a>
+				</div>
+				<div class="bar__aux">
+					<ul class="util">
+						<li class="util__item">
+							<a href="#" class="build-state-btn hit c_stark">
+								<span class="t_label">Download</span>
+							</a>
+						</li><!--
+					--><li class="util__item">
+							<a href="#" class="build-state-btn hit c_stark">
+								<span class="t_label">Guide</span>
+							</a>
+						</li><!--
+					--><li class="util__item">
+							<a href="#" class="build-state-btn hit c_stark">
+								<span class="t_label">News</span>
+							</a>
+						</li><!--
+					--><li class="util__item">
+							<a href="#" class="build-state-btn hit c_stark">
+								<span class="logo"><img src="github.svg" alt="Github"></span>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="intro callout">
+				<h1 class="c_action">Respond to browser features<br>with <a href="#">CSS</a> and <a href="#">JavaScript</a>.</h1>
+
+				<p>Modernizr is a collection of super-fast <a href="#">'detects'</a>, which run as your web page is loaded, telling you which features exist on that user's browser. You can then respond to these features in your code, with CSS and JavaScript.</p>
+
+			</div>
+
+
+		</div>
+
+	</div>
+
+	<div class="block push"></div>
+
+	<div class="block c_base">
+		<div class="app">
+		<div class="cf row" data-reactid=".0.0"><div class="header__search row__column" data-reactid=".0.0.1"><div class="search" data-reactid=".0.0.1.0"><div class="search__label t_search-label" data-reactid=".0.0.1.0.0">Type a browser feature</div></div></div><div class="header__util" data-reactid=".0.0.2"></div></div>
+		</div>
+	</div>
+
+</div>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script>
+	jQuery(function($) {
+		$('html').css({
+			fontSize: $(window).width() / 20 + '%'
+		});
+		$(window).on('resize', function() {
+			$('html').css({
+			fontSize: $(window).width() / 20 + '%'
+		});
+		});
+	});
+</script>
+
+</body>
+</html>

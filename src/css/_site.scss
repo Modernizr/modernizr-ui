@@ -1,0 +1,40 @@
+html, body {
+	height: 100%;
+	overflow: visible;
+}
+.container {
+	display: table;
+	height: 100%;
+	width: 100%;
+}
+.block {
+	display: table-row;
+	height: 1px;
+}
+.push {
+	height: auto;
+}
+
+.build-state-btn {
+	position: relative;
+}
+.build-state-btn span {
+	position: absolute;
+	left: 0; right: 0;
+	top: 50%; 
+	-webkit-transform: translateY(-50%);
+}
+
+.intro {
+	padding: 6rem 0;
+	h1 {
+		font-size: 5rem;
+		font-weight: 100;
+		letter-spacing: -0.06em;
+	}
+	p { max-width: 600px; }
+}
+
+h1 a {
+	border-bottom: 1px solid;
+}

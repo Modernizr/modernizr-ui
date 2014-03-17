@@ -22,13 +22,13 @@ dd {
  * 2. The use of `table` rather than `block` is only necessary if using
  *    `:before` to contain the top-margins of child elements.
  */
-.cf:before, .cf:after {
+.cf:before, .header:before, .cf:after, .header:after {
   content: " ";
   /* 1 */
   display: table;
   /* 2 */ }
 
-.cf:after {
+.cf:after, .header:after {
   clear: both; }
 
 /**
@@ -268,6 +268,15 @@ html, body {
     width: 3rem;
     height: 1.32rem; }
 
+.c_light {
+  background: #f7f7f7;
+  color: #272727; }
+  .c_light a {
+    color: inherit; }
+
+.c_stark {
+  background: #FFF; }
+
 .c_base {
   background: #272727;
   color: rgba(255, 255, 255, 0.5); }
@@ -328,6 +337,44 @@ strong {
 .t_label {
   font-size: 1.1rem; }
 
+
+html, body {
+  height: 100%;
+  overflow: visible; }
+
+.container {
+  display: table;
+  height: 100%;
+  width: 100%; }
+
+.block {
+  display: table-row;
+  height: 1px; }
+
+.push {
+  height: auto; }
+
+.build-state-btn {
+  position: relative; }
+
+.build-state-btn span {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  -webkit-transform: translateY(-50%); }
+
+.intro {
+  padding: 6rem 0; }
+  .intro h1 {
+    font-size: 5rem;
+    font-weight: 100;
+    letter-spacing: -0.06em; }
+  .intro p {
+    max-width: 600px; }
+
+h1 a {
+  border-bottom: 1px solid; }
 
 html {
   font-size: 85%; }
