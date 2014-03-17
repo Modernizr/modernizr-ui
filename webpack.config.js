@@ -5,7 +5,7 @@ module.exports = {
 	cache: true,
 	entry: './src/js/main.js',
 	debug: true,
-	devtoo: 'sourcemap',
+	devtool: 'sourcemap',
 	resolve: {
 		modulesDirectories: ['node_modules', 'bower_components'],
 	},

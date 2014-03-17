@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<title>Modernizr</title>
 	<link href="http://fonts.googleapis.com/css?family=Open+Sans:300,300italic,600" rel="stylesheet">
-	<link href="/build/app.css" rel="stylesheet">
+	<link href="app.css" rel="stylesheet">
 </head>
 <body class="c_base">
 
@@ -13,7 +13,7 @@
 	</div>
 
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-	<script src="/build/app.js"></script>
+	<script src="app.js"></script>
 	
 	<script>
 	jQuery(function($) {
@@ -22,8 +22,8 @@
 		});
 		$(window).on('resize', function() {
 			$('html').css({
-			fontSize: $(window).width() / 20 + '%'
-		});
+				fontSize: $(window).width() / 20 + '%'
+			});
 		});
 	});
 	</script>

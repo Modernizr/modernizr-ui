@@ -18,4 +18,5 @@ See the [Trello board](https://trello.com/b/JNSnhIuf/modernizr-com)
 	+ `npm start`
 
 4. Load an HTTP server of your choice
+	+ Change the working directory to `build`
 	+ e.g. `npm install -g http-server && http-server'
