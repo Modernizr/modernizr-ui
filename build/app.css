@@ -22,13 +22,13 @@ dd {
  * 2. The use of `table` rather than `block` is only necessary if using
  *    `:before` to contain the top-margins of child elements.
  */
-.cf:before, .header:before, .cf:after, .header:after {
+.cf:before, .cf:after {
   content: " ";
   /* 1 */
   display: table;
   /* 2 */ }
 
-.cf:after, .header:after {
+.cf:after {
   clear: both; }
 
 /**
@@ -79,7 +79,7 @@ html, body {
 
 .search {
   position: relative;
-  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   color: #fff;
   line-height: 8rem;
   padding: 0 1.5em; }
@@ -278,6 +278,9 @@ html, body {
       display: inline-block;
       padding: 0.7em; }
 
+.detail--intro {
+  padding: 0; }
+
 .detail--intro p {
   line-height: 1.6;
   padding-top: 2em; }
@@ -365,44 +368,6 @@ strong {
 .t_label {
   font-size: 1.1rem; }
 
-
-html, body {
-  height: 100%;
-  overflow: visible; }
-
-.container {
-  display: table;
-  height: 100%;
-  width: 100%; }
-
-.block {
-  display: table-row;
-  height: 1px; }
-
-.push {
-  height: auto; }
-
-.build-state-btn {
-  position: relative; }
-
-.build-state-btn span {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  -webkit-transform: translateY(-50%); }
-
-.intro {
-  padding: 6rem 0; }
-  .intro h1 {
-    font-size: 5rem;
-    font-weight: 100;
-    letter-spacing: -0.06em; }
-  .intro p {
-    max-width: 600px; }
-
-h1 a {
-  border-bottom: 1px solid; }
 
 html {
   font-size: 85%; }

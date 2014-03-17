@@ -65,7 +65,8 @@ body {
 
 .search {
 	position: relative;
-	background: rgba(#000, 0.3);
+	// background: rgba(#000, 0.3);
+	border: 1px solid rgba(#fff, 0.2);
 	color: #fff;
 	line-height: 8rem;
 	padding: 0 1.5em;
@@ -164,6 +165,7 @@ body {
 	// position: absolute;
 	// top: -10rem;
 	// bottom: -4rem;
+	
 }
 
 .results-state-label {
@@ -338,6 +340,10 @@ body {
 			padding: 0.7em;
 		}
 	}
+}
+
+.detail--intro {
+	padding: 0;
 }
 
 .detail--intro p {

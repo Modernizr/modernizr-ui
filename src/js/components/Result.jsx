@@ -4,6 +4,7 @@
 
 var React = require('react');
 var FetchingMixin = require('../mixins/fetching');
+var Events = require('../events');
 
 var Result = React.createClass({
 	// mixins: [FetchingMixin],
@@ -18,21 +19,29 @@ var Result = React.createClass({
 		// noop — data is set from parent component
 		// but fetchData function is required by FetchingMixin
 	},
-	handleClick: function(event) {
-		// Already current, so add it
+	componentDidMount: function() {
+		Events.subscribe('mod/ui/currentDetectToggled', this.toggleIfCurrent);
+	},
+	toggleIfCurrent: function() {
 		if(this.props.detect && this.props.currentDetect && this.props.detect.cid === this.props.currentDetect.cid) {
-			this.addDetect();
+			this.toggleDetect();
+			return true;
 		}
-		// Make it current
 		else {
+			return false;
+		}
+	},
+	handleClick: function(event) {
+		var toggled = this.toggleIfCurrent();
+		if(!toggled) {
 			this.props.onClick(this.props.detect);
 		}
 	},
 	handleAddClick: function(event) {
 		event.stopPropagation();
-		this.addDetect();
+		this.toggleDetect();
 	},
-	addDetect: function() {
+	toggleDetect: function() {
 		this.props.detect.set('added', !this.props.detect.get('added'));
 		// Force a render of this component...
 		// TODO — we need to find a better way of doing this, in case the model appears elsewhere
@@ -48,7 +57,6 @@ var Result = React.createClass({
 		if(this.props.detect && this.props.detect.get('added')) classes += ' is-added';
 
 		// Name
-		// console.log(this.state.isNameOver, isCurrent);
 		var resultNameClasses = 'result__name';
 		if(this.state.isNameOver && !isCurrent) resultNameClasses += ' is-over';
 

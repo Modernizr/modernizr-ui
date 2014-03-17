@@ -3,7 +3,6 @@
  */
 
 var React = require('react');
-var Search = require('./Search.jsx');
 
 var Header = React.createClass({
 
@@ -18,7 +17,7 @@ var Header = React.createClass({
 						</a>
 					</div>
 					<div className="header__search row__column">
-						<Search />
+						{this.props.searchComponent}
 					</div>
 					<div className="header__util">
 						<ul className="util">

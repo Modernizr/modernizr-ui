@@ -29,13 +29,16 @@ Detects = _.extend(Detects, {
 	},
 	prepareSearch: function(data) {
 		this.attr.fuse = new Fuse(data, {
-			keys: ['name', 'property']
+			keys: ['name', 'property'],
+			threshold: 0.8
 		});
 	},
 	search: function(value) {
 		var _this = this;
-		value = value.trim(' ').split('').join(' ');
 
+		value = value.replace(/\s+/g, '');
+		value = value.split('').join(' ');
+		
 		if(value) {
 			var results = this.attr.fuse.search(value);
 			var models = results.map(function(result) {
