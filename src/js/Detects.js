@@ -34,6 +34,8 @@ Detects = _.extend(Detects, {
 	},
 	search: function(value) {
 		var _this = this;
+		value = value.trim(' ').split('').join(' ');
+
 		if(value) {
 			var results = this.attr.fuse.search(value);
 			var models = results.map(function(result) {
