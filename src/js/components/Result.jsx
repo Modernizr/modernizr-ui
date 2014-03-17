@@ -53,21 +53,12 @@ var Result = React.createClass({
 		var classes = 'result';
 		var isCurrent = this.props.detect && this.props.currentDetect && this.props.detect.cid === this.props.currentDetect.cid;
 		if(isCurrent) classes += ' is-focused';
-		if(this.state.isOver) classes += ' is-over';
 		if(this.props.detect && this.props.detect.get('added')) classes += ' is-added';
-
-		// Name
-		var resultNameClasses = 'result__name';
-		if(this.state.isNameOver && !isCurrent) resultNameClasses += ' is-over';
-
-		// Add action
-		var resultAddClasses = 'result__add-action c_action add-action t_action';
-		if(this.state.isAddOver) resultAddClasses += ' is-over';
 
 		return (
 		<div className={classes} onClick={this.handleClick}>
-			<span className={resultNameClasses}>{this.props.detect && this.props.detect.get('name')}</span>
-			<div className={resultAddClasses} onClick={this.handleAddClick}>
+			<span className="result__name">{this.props.detect && this.props.detect.get('name')} {this.props.detect.get('added') && '✔'}</span>
+			<div className="result__add-action c_action add-action t_action" onClick={this.handleAddClick}>
 				{this.props.detect.get('added') ? 'Remove' : 'Add'}
 			</div>
 		</div>

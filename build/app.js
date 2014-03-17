@@ -238,7 +238,6 @@
 		getInitialState: function() {
 			return {
 				searchValue: '',
-				isSearching: false,
 				currentDetect: null
 			};
 		},
@@ -251,14 +250,12 @@
 			Events.subscribe('mod/data/selectionChanged', this.stateSetter('selection'));
 			$(window).on('keydown', this.handleKeyDown);
 		},
-		componentWillUpdate: function(next) {
-	
-		},
 		handleSearchChange: function(event) {
 			var value = event.target.value;
+			var newCurrentDetect = value ? this.state.results.models[0] : null;
+	
 			this.setState({
-				isSearching: !!value,
-				currentDetect: null,
+				currentDetect: newCurrentDetect,
 				searchValue: value
 			});
 		},
@@ -286,7 +283,7 @@
 			results.invoke('set', {'added': false});
 		},
 		getResults: function() {
-			return this.state.isSearching ? this.state.results : this.state.detects;
+			return this.state.searchValue ? this.state.results : this.state.detects;
 		},
 		handleDetailClose: function(event) {
 			this.setState({
@@ -308,7 +305,7 @@
 			}
 	
 			// Resolve the key pressed
-			if(this.state.isSearchFocused) {
+			// if(this.state.isSearchFocused) {
 				if(event.which === 38) { // Up
 					this.setState({
 						currentDetect: (currentIndex > 0) ? results.models[currentIndex - 1] : null
@@ -327,6 +324,12 @@
 				}
 				else if(event.which === 13 && this.state.currentDetect) {
 					Events.publish('mod/ui/currentDetectToggled');
+					if(this.state.searchValue) {
+						this.setState({
+							searchValue: '',
+							currentDetect: null
+						});
+					}
 				}
 				else if(event.which === 27) { // Esc
 					this.setState({
@@ -334,7 +337,7 @@
 						searchValue: ''
 					});
 				}
-			}
+			// }
 		},
 		render: function() {
 			var results = this.getResults();
@@ -348,7 +351,7 @@
 						results &&
 						React.DOM.div( {className:"main__sidebar row__column"}, 
 	
-							(this.state.isSearching && 
+							(this.state.searchValue && 
 								React.DOM.div( {className:"results-state-label"}, 
 									results.length, " results"
 								)
@@ -4041,21 +4044,12 @@
 			var classes = 'result';
 			var isCurrent = this.props.detect && this.props.currentDetect && this.props.detect.cid === this.props.currentDetect.cid;
 			if(isCurrent) classes += ' is-focused';
-			if(this.state.isOver) classes += ' is-over';
 			if(this.props.detect && this.props.detect.get('added')) classes += ' is-added';
-	
-			// Name
-			var resultNameClasses = 'result__name';
-			if(this.state.isNameOver && !isCurrent) resultNameClasses += ' is-over';
-	
-			// Add action
-			var resultAddClasses = 'result__add-action c_action add-action t_action';
-			if(this.state.isAddOver) resultAddClasses += ' is-over';
 	
 			return (
 			React.DOM.div( {className:classes, onClick:this.handleClick}, 
-				React.DOM.span( {className:resultNameClasses}, this.props.detect && this.props.detect.get('name')),
-				React.DOM.div( {className:resultAddClasses, onClick:this.handleAddClick}, 
+				React.DOM.span( {className:"result__name"}, this.props.detect && this.props.detect.get('name'), " ", this.props.detect.get('added') && '✔'),
+				React.DOM.div( {className:"result__add-action c_action add-action t_action", onClick:this.handleAddClick}, 
 					this.props.detect.get('added') ? 'Remove' : 'Add'
 				)
 			)

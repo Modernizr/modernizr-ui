@@ -17,7 +17,6 @@ var App = React.createClass({
 	getInitialState: function() {
 		return {
 			searchValue: '',
-			isSearching: false,
 			currentDetect: null
 		};
 	},
@@ -30,14 +29,12 @@ var App = React.createClass({
 		Events.subscribe('mod/data/selectionChanged', this.stateSetter('selection'));
 		$(window).on('keydown', this.handleKeyDown);
 	},
-	componentWillUpdate: function(next) {
-
-	},
 	handleSearchChange: function(event) {
 		var value = event.target.value;
+		var newCurrentDetect = value ? this.state.results.models[0] : null;
+
 		this.setState({
-			isSearching: !!value,
-			currentDetect: null,
+			currentDetect: newCurrentDetect,
 			searchValue: value
 		});
 	},
@@ -65,7 +62,7 @@ var App = React.createClass({
 		results.invoke('set', {'added': false});
 	},
 	getResults: function() {
-		return this.state.isSearching ? this.state.results : this.state.detects;
+		return this.state.searchValue ? this.state.results : this.state.detects;
 	},
 	handleDetailClose: function(event) {
 		this.setState({
@@ -87,7 +84,7 @@ var App = React.createClass({
 		}
 
 		// Resolve the key pressed
-		if(this.state.isSearchFocused) {
+		// if(this.state.isSearchFocused) {
 			if(event.which === 38) { // Up
 				this.setState({
 					currentDetect: (currentIndex > 0) ? results.models[currentIndex - 1] : null
@@ -106,6 +103,12 @@ var App = React.createClass({
 			}
 			else if(event.which === 13 && this.state.currentDetect) {
 				Events.publish('mod/ui/currentDetectToggled');
+				if(this.state.searchValue) {
+					this.setState({
+						searchValue: '',
+						currentDetect: null
+					});
+				}
 			}
 			else if(event.which === 27) { // Esc
 				this.setState({
@@ -113,7 +116,7 @@ var App = React.createClass({
 					searchValue: ''
 				});
 			}
-		}
+		// }
 	},
 	render: function() {
 		var results = this.getResults();
@@ -127,7 +130,7 @@ var App = React.createClass({
 					{results &&
 					<div className="main__sidebar row__column">
 
-						{(this.state.isSearching && 
+						{(this.state.searchValue && 
 							<div className="results-state-label">
 								{results.length} results
 							</div>
