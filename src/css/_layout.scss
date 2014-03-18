@@ -96,23 +96,6 @@ body {
 	}
 }
 
-// TODO - don't use a pseudo :)
-// .search:before {
-// 	content: '';
-// 	position: absolute;
-// 	left: 0;
-// 	top: 0;
-// 	bottom: 0;
-// 	width: 1px;
-// 	height: 6rem;
-// 	margin-top: auto;
-// 	margin-bottom: auto;
-// 	background: #db4886; // TODO - move to colours
-// 	-webkit-animation: blink 0.5s infinite alternate;
-// }
-
-
-
 .util {
 	margin-left: -1px;
 }
