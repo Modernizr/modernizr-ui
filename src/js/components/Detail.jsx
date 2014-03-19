@@ -23,7 +23,9 @@ var Detail = React.createClass({
 				{authors &&
 					<p>by {authors}</p>
 				}
-				<p className="desc">{this.props.detect.get('doc')}</p>
+				{this.props.detect.get('doc') &&
+				<div className="desc" dangerouslySetInnerHTML={{__html: this.props.detect.get('doc')}} />
+				}
 				<h2>Usage</h2>
 				<dl className="cf">
 				<dt>CSS</dt>

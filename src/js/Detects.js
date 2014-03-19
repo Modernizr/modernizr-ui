@@ -20,7 +20,7 @@ Detects = _.extend(Detects, {
 	},
 	fetch: function(cb) {
 		var _this = this;
-		$.getJSON('feature-detects.json').then(function(detects) {
+		$.getJSON('metadata.json').then(function(detects) {
 			_this.prepareSearch(detects);
 			_this.detectsCollection.reset(detects);
 			Events.publish('mod/data/detectsFetched', _this.detectsCollection);

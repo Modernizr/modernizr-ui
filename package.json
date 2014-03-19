@@ -9,13 +9,15 @@
     "grunt-sass": "^0.11.0",
     "grunt-contrib-watch": "^0.5.3",
     "jsx-loader": "^0.9.0",
-    "matchdep": "^0.3.0"
+    "matchdep": "^0.3.0",
+    "grunt-execute": "^0.1.5"
   },
   "dependencies": {
     "envify": "^1.2.1",
     "react": "^0.9.0",
     "backbone": "^1.1.2",
     "jquery": "^2.1.0",
-    "underscore": "^1.6.0"
+    "underscore": "^1.6.0",
+    "modernizr": "git://github.com/joecritch/Modernizr.git"
   }
 }

@@ -16,14 +16,25 @@ module.exports = function(grunt) {
 				}
 			}
 		},
+		execute: {
+			// TODO :: pass as a parameter into generate-meta.js 
+			// TODO :: decide about the fork of the code
+			// options: {
+					// outputDir: '../../dist'
+				// },
+			modernizr: {
+				src: ['./node_modules/modernizr/lib/generate-meta.js'],
+			}
+		},
 		watch: {
 			sass: {
 				files: ['./src/css/*.scss'],
 				tasks: ['sass:app']
 			}
-		}
+		},
 	});
 
 	grunt.registerTask('default', ['sass:app']);
+
 };
 

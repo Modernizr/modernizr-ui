@@ -77,7 +77,7 @@
 		},
 		fetch: function(cb) {
 			var _this = this;
-			$.getJSON('feature-detects.json').then(function(detects) {
+			$.getJSON('metadata.json').then(function(detects) {
 				_this.prepareSearch(detects);
 				_this.detectsCollection.reset(detects);
 				Events.publish('mod/data/detectsFetched', _this.detectsCollection);
@@ -3922,7 +3922,9 @@
 					authors &&
 						React.DOM.p(null, "by ", authors),
 					
-					React.DOM.p( {className:"desc"}, this.props.detect.get('doc')),
+					this.props.detect.get('doc') &&
+					React.DOM.div( {className:"desc", dangerouslySetInnerHTML:{__html: this.props.detect.get('doc')}} ),
+					
 					React.DOM.h2(null, "Usage"),
 					React.DOM.dl( {className:"cf"}, 
 					React.DOM.dt(null, "CSS"),
