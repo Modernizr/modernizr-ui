@@ -7,13 +7,18 @@ var Fuse = require('fuse/fuse');
 var _fuse,
 	_value,
 	_results = [],
-	_current = null;
+	_currentIndex = null;
 
-MetadataStore.on('change', prepare);
+MetadataStore.on('change', function() {
+	prepare();
+	if(!_results.length) {
+		search(null);
+		ResultsStore.emit('change');
+	}
+});
 
-function prepare(data) {
+function prepare() {
 	var data = MetadataStore.getAll();
-	_results = data;
 	_fuse = new Fuse(data, {
 		keys: ['name', 'property'],
 		threshold: 0.8
@@ -31,26 +36,44 @@ function search(value) {
 	else {
 		_results = MetadataStore.getAll();
 	}
+	_currentIndex = 0;
 }
 
 function focus(cid) {
 	var data = _results || MetadataStore.getAll();
-	_current = _.find(data, function(obj) {
-		return obj.cid === cid;
-	});
+	for(var i in data) {
+		if(data[i].cid === cid) {
+			_currentIndex = i;
+			break;
+		}
+	}
+}
+
+function move(delta) {
+	if(isNaN(_currentIndex)) {
+		_currentIndex = _results[0];
+	}
+	else {
+		var maxIndex = _results.length - 1;
+		_currentIndex = _currentIndex + delta;
+		if(_currentIndex < 0) _currentIndex = 0;
+		else if(_currentIndex > maxIndex) _currentIndex = maxIndex;
+	}
 }
 
 var ResultsStore = merge(EventEmitter.prototype, {
 	getResults: function() {
 		return _results;
 	},
-	getCurrent: function() {
-		return _current;
-	},
 	isFiltered: function() {
 		return !!_value;
+	},
+	getCurrentIndex: function() {
+		return _currentIndex;
 	}
 });
+
+ResultsStore.name = 'ResultsStore';
 
 AppDispatcher.register(function(payload) {
 	var action = payload.action;
@@ -60,6 +83,12 @@ AppDispatcher.register(function(payload) {
 		break;
 		case 'RESULT_FOCUS':
 			focus(action.cid);
+		break;
+		case 'RESULT_UP':
+			move(-1);
+		break;
+		case 'RESULT_DOWN':
+			move(1);
 		break;
 		default:
 			return true;

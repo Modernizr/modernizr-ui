@@ -32,6 +32,8 @@ var SelectionStore = merge(EventEmitter.prototype, {
 	}
 });
 
+SelectionStore.name = 'SelectionStore';
+
 AppDispatcher.register(function(payload) {
 	var action = payload.action;
 	switch(action.actionType) {

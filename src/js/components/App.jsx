@@ -12,79 +12,31 @@ var WithFlux = require('../mixins/WithFlux');
 var _ = require('lodash');
 
 var Header = require('./Header.jsx');
-var Results = require('./Results.jsx');
+var ResultList = require('./ResultList.jsx');
 var Detail = require('./Detail.jsx');
 var Search = require('./Search.jsx');
 
 var App = React.createClass({
 	mixins: [WithFlux],
 	stores: [MetadataStore, ResultsStore, SelectionStore],
-	getState: function() {
-		return {
-			allDetects: MetadataStore.getDetects(),
-			results: ResultsStore.getResults(),
-			selection: SelectionStore.getSelection(),
-			currentResult: ResultsStore.getCurrent(),
-			isFiltered: ResultsStore.isFiltered()
-		};
+	storeStates: {
+		'ResultsStore': {
+			results: ResultsStore.getResults,
+			currentIndex: ResultsStore.getCurrentIndex,
+			isFiltered: ResultsStore.isFiltered
+		},
+		'SelectionStore': {
+			selection: SelectionStore.getSelection
+		}
 	},
+
 	componentWillMount: function() {
 		MetadataActions.fetch();
 	},
-	componentDidMount: function() {
-		// $(window).on('keydown', this.handleKeyDown);
-	},
-	/*
-	handleKeyDown: function(event) {
-		var results = this.getResults();
 
-		// Get the current index
-		var currentIndex;
-		if(this.state.currentDetect) {
-			results.models.forEach(function(result, index) {
-				if(result === this.state.currentDetect) {
-					currentIndex = index;
-					return false;
-				}
-			}.bind(this));
-		}
-
-		// Resolve the key pressed
-		if(event.which === 38) { // Up
-			this.setState({
-				currentDetect: (currentIndex > 0) ? results.models[currentIndex - 1] : null
-			});
-		} else if(event.which === 40 || (event.which === 13 && !this.state.currentDetect)) { // Down
-			if(this.state.currentDetect) {
-				this.setState({
-					currentDetect: (currentIndex + 1 < results.models.length) ? results.models[currentIndex + 1] : null
-				});
-			}
-			else {
-				this.setState({
-					currentDetect: results.models[0]
-				});
-			}
-		}
-		else if(event.which === 13 && this.state.currentDetect) {
-			Events.publish('mod/ui/currentDetectToggled');
-			if(this.state.searchValue) {
-				this.setState({
-					searchValue: '',
-					currentDetect: null
-				});
-			}
-		}
-		else if(event.which === 27) { // Esc
-			this.setState({
-				currentDetect: null,
-				searchValue: ''
-			});
-		}
-	},
-	*/
 	render: function() {
 		var selectionCount = _.size(this.state.selection) || 0;
+		var currentResult = this.state.results && !isNaN(this.state.currentIndex) && this.state.results[this.state.currentIndex];
 		return (
 			<div className="app">
 				<Header count={selectionCount} searchComponent={
@@ -114,11 +66,11 @@ var App = React.createClass({
 					</div>
 					}
 					<div className="main__results row__column">
-						<Results results={this.state.results} currentResult={this.state.currentResult} selection={this.state.selection} />
+						<ResultList results={this.state.results} currentResult={currentResult} selection={this.state.selection} />
 					</div>
 					<div className="main__detail row__column">
-						{(this.state.currentResult &&
-						<Detail detect={this.state.currentResult} onClose={this.handleDetailClose} />
+						{(currentResult &&
+						<Detail detect={currentResult} onClose={this.handleDetailClose} />
 						) || 
 						<div className="detail detail--intro">
 							<h1>Welcome to the <br />Modernizr detect library.</h1>

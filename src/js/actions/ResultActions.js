@@ -12,6 +12,16 @@ var ResultActions = {
 			actionType: 'RESULT_FOCUS',
 			cid: cid
 		});
+	},
+	up: function() {
+		AppDispatcher.handleViewAction({
+			actionType: 'RESULT_UP'
+		});
+	},
+	down: function() {
+		AppDispatcher.handleViewAction({
+			actionType: 'RESULT_DOWN'
+		});
 	}
 };
 

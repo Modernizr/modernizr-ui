@@ -264,79 +264,31 @@
 	var _ = __webpack_require__(28);
 	
 	var Header = __webpack_require__(11);
-	var Results = __webpack_require__(12);
+	var ResultList = __webpack_require__(188);
 	var Detail = __webpack_require__(13);
 	var Search = __webpack_require__(14);
 	
 	var App = React.createClass({displayName: 'App',
 		mixins: [WithFlux],
 		stores: [MetadataStore, ResultsStore, SelectionStore],
-		getState: function() {
-			return {
-				allDetects: MetadataStore.getDetects(),
-				results: ResultsStore.getResults(),
-				selection: SelectionStore.getSelection(),
-				currentResult: ResultsStore.getCurrent(),
-				isFiltered: ResultsStore.isFiltered()
-			};
+		storeStates: {
+			'ResultsStore': {
+				results: ResultsStore.getResults,
+				currentIndex: ResultsStore.getCurrentIndex,
+				isFiltered: ResultsStore.isFiltered
+			},
+			'SelectionStore': {
+				selection: SelectionStore.getSelection
+			}
 		},
+	
 		componentWillMount: function() {
 			MetadataActions.fetch();
 		},
-		componentDidMount: function() {
-			// $(window).on('keydown', this.handleKeyDown);
-		},
-		/*
-		handleKeyDown: function(event) {
-			var results = this.getResults();
 	
-			// Get the current index
-			var currentIndex;
-			if(this.state.currentDetect) {
-				results.models.forEach(function(result, index) {
-					if(result === this.state.currentDetect) {
-						currentIndex = index;
-						return false;
-					}
-				}.bind(this));
-			}
-	
-			// Resolve the key pressed
-			if(event.which === 38) { // Up
-				this.setState({
-					currentDetect: (currentIndex > 0) ? results.models[currentIndex - 1] : null
-				});
-			} else if(event.which === 40 || (event.which === 13 && !this.state.currentDetect)) { // Down
-				if(this.state.currentDetect) {
-					this.setState({
-						currentDetect: (currentIndex + 1 < results.models.length) ? results.models[currentIndex + 1] : null
-					});
-				}
-				else {
-					this.setState({
-						currentDetect: results.models[0]
-					});
-				}
-			}
-			else if(event.which === 13 && this.state.currentDetect) {
-				Events.publish('mod/ui/currentDetectToggled');
-				if(this.state.searchValue) {
-					this.setState({
-						searchValue: '',
-						currentDetect: null
-					});
-				}
-			}
-			else if(event.which === 27) { // Esc
-				this.setState({
-					currentDetect: null,
-					searchValue: ''
-				});
-			}
-		},
-		*/
 		render: function() {
 			var selectionCount = _.size(this.state.selection) || 0;
+			var currentResult = this.state.results && !isNaN(this.state.currentIndex) && this.state.results[this.state.currentIndex];
 			return (
 				React.DOM.div( {className:"app"}, 
 					Header( {count:selectionCount, searchComponent:
@@ -366,11 +318,11 @@
 						),
 						
 						React.DOM.div( {className:"main__results row__column"}, 
-							Results( {results:this.state.results, currentResult:this.state.currentResult, selection:this.state.selection} )
+							ResultList( {results:this.state.results, currentResult:currentResult, selection:this.state.selection} )
 						),
 						React.DOM.div( {className:"main__detail row__column"}, 
-							(this.state.currentResult &&
-							Detail( {detect:this.state.currentResult, onClose:this.handleDetailClose} )
+							(currentResult &&
+							Detail( {detect:currentResult, onClose:this.handleDetailClose} )
 							) || 
 							React.DOM.div( {className:"detail detail--intro"}, 
 								React.DOM.h1(null, "Welcome to the ", React.DOM.br(null ),"Modernizr detect library."),
@@ -3771,6 +3723,8 @@
 		}
 	});
 	
+	MetadataStore.name = 'MetadataStore';
+	
 	AppDispatcher.register(function(payload) {
 		var action = payload.action;
 		switch(action.actionType) {
@@ -3800,13 +3754,18 @@
 	var _fuse,
 		_value,
 		_results = [],
-		_current = null;
+		_currentIndex = null;
 	
-	MetadataStore.on('change', prepare);
+	MetadataStore.on('change', function() {
+		prepare();
+		if(!_results.length) {
+			search(null);
+			ResultsStore.emit('change');
+		}
+	});
 	
-	function prepare(data) {
+	function prepare() {
 		var data = MetadataStore.getAll();
-		_results = data;
 		_fuse = new Fuse(data, {
 			keys: ['name', 'property'],
 			threshold: 0.8
@@ -3824,26 +3783,44 @@
 		else {
 			_results = MetadataStore.getAll();
 		}
+		_currentIndex = 0;
 	}
 	
 	function focus(cid) {
 		var data = _results || MetadataStore.getAll();
-		_current = _.find(data, function(obj) {
-			return obj.cid === cid;
-		});
+		for(var i in data) {
+			if(data[i].cid === cid) {
+				_currentIndex = i;
+				break;
+			}
+		}
+	}
+	
+	function move(delta) {
+		if(isNaN(_currentIndex)) {
+			_currentIndex = _results[0];
+		}
+		else {
+			var maxIndex = _results.length - 1;
+			_currentIndex = _currentIndex + delta;
+			if(_currentIndex < 0) _currentIndex = 0;
+			else if(_currentIndex > maxIndex) _currentIndex = maxIndex;
+		}
 	}
 	
 	var ResultsStore = merge(EventEmitter.prototype, {
 		getResults: function() {
 			return _results;
 		},
-		getCurrent: function() {
-			return _current;
-		},
 		isFiltered: function() {
 			return !!_value;
+		},
+		getCurrentIndex: function() {
+			return _currentIndex;
 		}
 	});
+	
+	ResultsStore.name = 'ResultsStore';
 	
 	AppDispatcher.register(function(payload) {
 		var action = payload.action;
@@ -3853,6 +3830,12 @@
 			break;
 			case 'RESULT_FOCUS':
 				focus(action.cid);
+			break;
+			case 'RESULT_UP':
+				move(-1);
+			break;
+			case 'RESULT_DOWN':
+				move(1);
 			break;
 			default:
 				return true;
@@ -3901,6 +3884,8 @@
 			return _selection;
 		}
 	});
+	
+	SelectionStore.name = 'SelectionStore';
 	
 	AppDispatcher.register(function(payload) {
 		var action = payload.action;
@@ -3990,41 +3975,7 @@
 
 
 /***/ },
-/* 12 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
-	 * @jsx React.DOM
-	 */
-	
-	var React = __webpack_require__(15);
-	var Result = __webpack_require__(16);
-	var TagResult = __webpack_require__(17);
-	var Detects = __webpack_require__(1);
-	
-	var Results = React.createClass({displayName: 'Results',
-		render: function() {
-			return (
-				React.DOM.div( {className:"results"}, 
-					this.props.results.map(function(result) {
-						var isDetect = result.property; // TODO :: Have a better point of call for this
-						var current = this.props.currentResult && this.props.currentResult.cid === result.cid;
-						if(isDetect) {
-							var added = this.props.selection && this.props.selection[result.cid];
-							return Result( {detect:result, current:current, added:added} )
-						}
-						else {
-							// return <TagResult tag={result} currentDetect={null} />
-						}
-					}.bind(this))
-				)
-			);
-		}
-	});
-	
-	module.exports = Results;
-
-/***/ },
+/* 12 */,
 /* 13 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -4182,62 +4133,19 @@
 	 */
 	
 	var React = __webpack_require__(15);
-	var FetchingMixin = __webpack_require__(29);
+	var FetchingMixin = __webpack_require__(!(function webpackMissingModule() { throw new Error("Cannot find module \"../mixins/fetching\""); }()));
 	var Events = __webpack_require__(2);
 	
 	var Result = React.createClass({displayName: 'Result',
-		getInitialState: function() {
-			return {
-				// tag: null
-			};
-		},
-		fetchData: function() {
-			// noop — data is set from parent component
-			// but fetchData function is required by FetchingMixin
-		},
-		componentDidMount: function() {
-			// Events.subscribe('mod/ui/currentDetectToggled', this.toggleIfCurrent);
-		},
-		toggleIfCurrent: function() {
-			// if(this.props.detect && this.props.currentDetect && this.props.detect.cid === this.props.currentDetect.cid) {
-			// 	this.toggleDetect();
-			// 	return true;
-			// }
-			// else {
-			// 	return false;
-			// }
-		},
-		handleClick: function(event) {
-			debugger;
-			// var toggled = this.toggleIfCurrent();
-			// if(!toggled) {
-			// 	this.props.onClick(this.props.detect);
-			// }
-		},
-		handleAddClick: function(event) {
-			// event.stopPropagation();
-			// this.toggleDetect();
-		},
-		toggleDetect: function() {
-			// this.props.detect.set('added', !this.props.detect.get('added'));
-			// Force a render of this component...
-			// TODO — we need to find a better way of doing this, in case the model appears elsewhere
-			// this.setState({
-			// 	detect: this.props.detect
-			// });
-		},
 		render: function() {
 			var classes = 'result';
-			var isCurrent = this.props.tag && this.props.currentDetect && this.props.tag.cid === this.props.currentDetect.cid;
-			if(isCurrent) classes += ' is-focused';
-			// if(this.props.detect && this.props.detect.get('added')) classes += ' is-added';
-	
+			if(this.props.current) classes += ' is-focused';
 			return (
-			React.DOM.div( {className:classes, onClick:this.handleClick}, 
-				React.DOM.span( {className:"result__name"}, 
-					this.props.tag && this.props.tag.get('name')
+				React.DOM.div( {className:classes}, 
+					React.DOM.span( {className:"result__name"}, 
+						this.props.tag && this.props.tag.name
+					)
 				)
-			)
 			);
 		}
 	
@@ -4279,6 +4187,16 @@
 			AppDispatcher.handleViewAction({
 				actionType: 'RESULT_FOCUS',
 				cid: cid
+			});
+		},
+		up: function() {
+			AppDispatcher.handleViewAction({
+				actionType: 'RESULT_UP'
+			});
+		},
+		down: function() {
+			AppDispatcher.handleViewAction({
+				actionType: 'RESULT_DOWN'
 			});
 		}
 	};
@@ -22425,102 +22343,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(18)(module), (function() { return this; }())))
 
 /***/ },
-/* 29 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var Backbone = __webpack_require__(5);
-	
-	var FetchingMixin = {
-	  /**
-	   * Helper that's useful with -Parse- Backbone
-	   */
-	  stateSetter: function(key) {
-	    return function(value) {
-	      var newState = {};
-	      newState[key] = value;
-	      this.setState(newState);
-	    }.bind(this);
-	  },
-	
-	  _isModel: function(model) {
-	    return (model && model instanceof Backbone.Model || model instanceof Backbone.Collection);
-	  },
-	
-	  _subscribe: function(model) {
-	    if (!this._isModel(model)) {
-	      return;
-	    }
-	    // Detect if it's a collection
-	    if (model instanceof Backbone.Collection) {
-	      model.on('add remove reset sort', function () { this.forceUpdate(); }, this);
-	    } else if (model) {
-	      var changeOptions = this.changeOptions || 'change';
-	      model.on(changeOptions, (this.onModelChange || function () { this.forceUpdate(); }), this);
-	    }
-	  },
-	
-	  _unsubscribe: function(model) {
-	    if (!this._isModel(model)) {
-	      return;
-	    }
-	    model.off(null, null, this);
-	  },
-	
-	  _subscribeAll: function(state) {
-	    this.modelState.forEach(function(key) {
-	      this._subscribe(state[key]);
-	    }.bind(this));
-	  },
-	
-	  _unsubscribeAll: function(state) {
-	    this.modelState.forEach(function(key) {
-	      this._unsubscribe(state[key]);
-	    }.bind(this));
-	  },
-	
-	  componentWillMount: function() {
-	    if (!Array.isArray(this.modelState)) {
-	      throw new Error('FetchingMixin requires a modelState array attribute');
-	    }
-	
-	    if (typeof this.fetchData !== 'function') {
-	      throw new Error('FetchingMixin requires a fetchData() method');
-	    }
-	  },
-	
-	  componentDidMount: function() {
-	    // Whenever there may be a change in the Backbone data, trigger a reconcile.
-	    this._subscribeAll(this.state);
-	
-	    this.fetchData();
-	
-	    this._interval = null;
-	    if (this.fetchPollInterval) {
-	      this._interval = setInterval(this.fetchData, this.fetchPollInterval);
-	    }
-	  },
-	
-	  componentDidUpdate: function(prevProps, prevState) {
-	    this._unsubscribeAll(prevState);
-	    this._subscribeAll(this.state);
-	
-	    if (this.shouldRefreshData && this.shouldRefreshData(prevProps)) {
-	      this.fetchData();
-	    }
-	  },
-	
-	  componentWillUnmount: function() {
-	    // Ensure that we clean up any dangling references when the component is destroyed.
-	    this._unsubscribeAll(this.state);
-	    if (this._interval) {
-	      clearInterval(this._interval);
-	    }
-	  }
-	};
-	
-	module.exports = FetchingMixin;
-
-/***/ },
+/* 29 */,
 /* 30 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -41958,22 +41781,123 @@
 		getInitialState: function() {
 			return this.getState();
 		},
+		getStoreByName: function(name) {
+			for(var i = 0; i < this.stores.length; i++) {
+				if(this.stores[i].name === name) {
+					return this.stores[i];
+				}
+			}
+		},
+		getState: function(name) {
+			var states = {}
+			for(var storeName in this.storeStates) {
+				if(!name || storeName === name) {
+					for(var varName in this.storeStates[storeName]) {
+						states[varName] = this.storeStates[storeName][varName].call(this);
+					}
+				}
+			}
+			return states;
+		},
 		componentWillMount: function() {
-			this.stores.forEach(function(store) {
-				store.on('change', this._onStoreChange);
-			}.bind(this));
+			this.storeListeners = {};
+			var _this = this;
+			for(var storeName in this.storeStates) {
+				(function(name) {
+					var store = _this.getStoreByName(name);
+					var onStoreChange = function() {
+						_this.setState(_this.getState(name));
+					};
+					store.on('change', onStoreChange);
+					_this.storeListeners[name] = onStoreChange;
+				})(storeName);
+			}
 		},
 		componentWillUnmount: function() {
-			this.stores.forEach(function(store) {
-				store.removeListener('change', this._onStoreChange);
-			}.bind(this));
-		},
-		_onStoreChange: function() {
-			this.setState(this.getState());
+			var _this = this;
+			for(var storeName in this.stores) {
+				(function(name) {
+					var store = _this.getStoreByName(name);
+					store.removeListener('change', _this.storeListeners[name]);
+				})(storeName);
+			}
 		}
 	};
 	
 	module.exports = WithFlux;
+
+/***/ },
+/* 188 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * @jsx React.DOM
+	 */
+	
+	var React = __webpack_require__(15);
+	var Result = __webpack_require__(16);
+	var TagResult = __webpack_require__(17);
+	var Detects = __webpack_require__(1);
+	var ResultActions = __webpack_require__(19);
+	var SelectionActions = __webpack_require__(26);
+	
+	var Results = React.createClass({displayName: 'Results',
+		componentDidMount: function() {
+			$(window).on('keydown', this._onKeyDown);
+		},
+	
+		componentDidUpdate: function(prevProps, prevState) {
+			var resultHeight = $(this.refs.firstResult.getDOMNode()).outerHeight();
+		},
+	
+		render: function() {
+			return (
+				React.DOM.div( {className:"results"}, 
+					this.props.results.map(function(result, i) {
+						var current = this.props.currentResult && this.props.currentResult.cid === result.cid;
+						var ref = i === 0 ? 'firstResult' : null
+						if(result.type === 'detect') {
+							var added = this.props.selection && this.props.selection[result.cid];
+							return Result( {ref:ref, detect:result, current:current, added:added} )
+						}
+						else {
+							return TagResult( {ref:ref, tag:result, current:current} )
+						}
+					}.bind(this))
+				)
+			);
+		},
+	
+		_onKeyDown: function(e) {
+			switch(e.which) {
+				case 38: // Up
+					ResultActions.up();
+				break;
+				case 40: // Down
+					ResultActions.down();
+				break;
+				case 13: // Enter
+					if(this.props.currentResult && this.props.currentResult.type === 'detect') {
+						var added = this.props.selection && this.props.selection[this.props.currentResult.cid];
+						if(added) {
+							SelectionActions.remove(this.props.currentResult.cid);
+						}
+						else {
+							SelectionActions.add(this.props.currentResult);
+						}
+					}
+					else {
+						ResultActions.down();
+					}
+				break;
+				case 27: // Esc
+					ResultActions.blur();
+				break;
+			}
+		}
+	});
+	
+	module.exports = Results;
 
 /***/ }
 /******/ ])

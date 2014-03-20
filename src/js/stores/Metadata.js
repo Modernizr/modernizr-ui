@@ -39,6 +39,8 @@ var MetadataStore = merge(EventEmitter.prototype, {
 	}
 });
 
+MetadataStore.name = 'MetadataStore';
+
 AppDispatcher.register(function(payload) {
 	var action = payload.action;
 	switch(action.actionType) {
