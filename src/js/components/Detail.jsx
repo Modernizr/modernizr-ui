@@ -9,7 +9,7 @@ var Detail = React.createClass({
 		if(this.props.onClose) this.props.onClose(event);
 	},
 	render: function() {
-		var authors = this.props.detect.get('authors') && this.props.detect.get('authors').join(', ');
+		var authors = this.props.detect.authors && this.props.detect.authors.join(', ');
 		return (
 		<div className="detail c_box">
 			<a href="#" className="detail__close" onClick={this.closePanel}>CLOSE</a>
@@ -19,12 +19,12 @@ var Detail = React.createClass({
 				</li><li>
 					<a href="#" className="t_label c_linkbox">animation</a>
 				</li></ul>
-				<h1>{this.props.detect.get('name')}</h1>
+				<h1>{this.props.detect.name}</h1>
 				{authors &&
 					<p>by {authors}</p>
 				}
-				{this.props.detect.get('doc') &&
-				<div className="desc" dangerouslySetInnerHTML={{__html: this.props.detect.get('doc')}} />
+				{this.props.detect.doc &&
+				<div className="desc" dangerouslySetInnerHTML={{__html: this.props.detect.doc}} />
 				}
 				<h2>Usage</h2>
 				<dl className="cf">

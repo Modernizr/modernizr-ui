@@ -2,9 +2,14 @@
  * @jsx React.DOM
  */
 
-var FetchingMixin = require('../mixins/fetching');
-var Events = require('../events');
 var React = require('react/react');
+var MetadataActions = require('../actions/MetadataActions');
+var SelectionActions = require('../actions/SelectionActions');
+var MetadataStore = require('../stores/Metadata');
+var ResultsStore = require('../stores/Results');
+var SelectionStore = require('../stores/Selection');
+var WithFlux = require('../mixins/WithFlux');
+var _ = require('lodash');
 
 var Header = require('./Header.jsx');
 var Results = require('./Results.jsx');
@@ -12,63 +17,24 @@ var Detail = require('./Detail.jsx');
 var Search = require('./Search.jsx');
 
 var App = React.createClass({
-	mixins: [FetchingMixin],
-	modelState: ['detects', 'results', 'selection'],
-	getInitialState: function() {
+	mixins: [WithFlux],
+	stores: [MetadataStore, ResultsStore, SelectionStore],
+	getState: function() {
 		return {
-			searchValue: '',
-			currentDetect: null
+			allDetects: MetadataStore.getDetects(),
+			results: ResultsStore.getResults(),
+			selection: SelectionStore.getSelection(),
+			currentResult: ResultsStore.getCurrent(),
+			isFiltered: ResultsStore.isFiltered()
 		};
 	},
-	fetchData: function() {
-		Events.publish('mod/ui/appLoaded');
+	componentWillMount: function() {
+		MetadataActions.fetch();
 	},
 	componentDidMount: function() {
-		Events.subscribe('mod/data/detectsFetched', this.stateSetter('detects'));
-		Events.subscribe('mod/data/resultsFound', this.stateSetter('results'));
-		Events.subscribe('mod/data/selectionChanged', this.stateSetter('selection'));
-		$(window).on('keydown', this.handleKeyDown);
+		// $(window).on('keydown', this.handleKeyDown);
 	},
-	handleSearchChange: function(event) {
-		var value = event.target.value;
-		var newCurrentDetect = value ? this.state.results.models[0] : null;
-
-		this.setState({
-			currentDetect: newCurrentDetect,
-			searchValue: value
-		});
-	},
-	handleSearchFocus: function(event) {
-		this.setState({
-			isSearchFocused: true
-		});
-	},
-	handleSearchBlur: function(event) {
-		this.setState({
-			isSearchFocused: false
-		});
-	},
-	handleCurrentDetectChange: function(detect) {
-		this.setState({
-			currentDetect: detect
-		});
-	},
-	addAllDetects: function() {
-		var results = this.getResults();
-		results.invoke('set', {'added': true});
-	},
-	removeAllDetects: function() {
-		var results = this.getResults();
-		results.invoke('set', {'added': false});
-	},
-	getResults: function() {
-		return this.state.searchValue ? this.state.results : this.state.detects;
-	},
-	handleDetailClose: function(event) {
-		this.setState({
-			currentDetect: null
-		});
-	},
+	/*
 	handleKeyDown: function(event) {
 		var results = this.getResults();
 
@@ -84,77 +50,75 @@ var App = React.createClass({
 		}
 
 		// Resolve the key pressed
-		// if(this.state.isSearchFocused) {
-			if(event.which === 38) { // Up
+		if(event.which === 38) { // Up
+			this.setState({
+				currentDetect: (currentIndex > 0) ? results.models[currentIndex - 1] : null
+			});
+		} else if(event.which === 40 || (event.which === 13 && !this.state.currentDetect)) { // Down
+			if(this.state.currentDetect) {
 				this.setState({
-					currentDetect: (currentIndex > 0) ? results.models[currentIndex - 1] : null
-				});
-			} else if(event.which === 40 || (event.which === 13 && !this.state.currentDetect)) { // Down
-				if(this.state.currentDetect) {
-					this.setState({
-						currentDetect: (currentIndex + 1 < results.models.length) ? results.models[currentIndex + 1] : null
-					});
-				}
-				else {
-					this.setState({
-						currentDetect: results.models[0]
-					});
-				}
-			}
-			else if(event.which === 13 && this.state.currentDetect) {
-				Events.publish('mod/ui/currentDetectToggled');
-				if(this.state.searchValue) {
-					this.setState({
-						searchValue: '',
-						currentDetect: null
-					});
-				}
-			}
-			else if(event.which === 27) { // Esc
-				this.setState({
-					currentDetect: null,
-					searchValue: ''
+					currentDetect: (currentIndex + 1 < results.models.length) ? results.models[currentIndex + 1] : null
 				});
 			}
-		// }
+			else {
+				this.setState({
+					currentDetect: results.models[0]
+				});
+			}
+		}
+		else if(event.which === 13 && this.state.currentDetect) {
+			Events.publish('mod/ui/currentDetectToggled');
+			if(this.state.searchValue) {
+				this.setState({
+					searchValue: '',
+					currentDetect: null
+				});
+			}
+		}
+		else if(event.which === 27) { // Esc
+			this.setState({
+				currentDetect: null,
+				searchValue: ''
+			});
+		}
 	},
+	*/
 	render: function() {
-		var results = this.getResults();
-		var selectionCount = this.state.selection ? this.state.selection.length : 0;
-		var currentDetect = this.state.currentDetect;
-		var search = <Search onSearchFocus={this.handleSearchFocus} onSearchBlur={this.handleSearchBlur} onSearchChange={this.handleSearchChange} searchValue={this.state.searchValue} />;
+		var selectionCount = _.size(this.state.selection) || 0;
 		return (
 			<div className="app">
-				<Header count={selectionCount} searchComponent={search} />
+				<Header count={selectionCount} searchComponent={
+					<Search onSearchChange={this.handleSearchChange} searchValue={this.state.searchValue} />
+				} />
 				<div className="main row">
-					{results &&
+					{this.state.results &&
 					<div className="main__sidebar row__column">
 
-						{(this.state.searchValue && 
+						{(this.state.isFiltered && 
 							<div className="results-state-label">
-								{results.length} results
+								{this.state.results.length} results
 							</div>
 						) || 
 						<div className="results-state-label">
-							Showing all {results.length} detects
+							Showing all {this.state.results.length} detects
 						</div>
 						}
 
 						<ul className="results-actions">
-							{(selectionCount === results.length &&
-								<li><a href="#" onClick={this.removeAllDetects} className="t_action t_label c_action">REMOVE THESE ({results.length})</a></li>
+							{(selectionCount === this.state.results.length &&
+								<li><a href="#" onClick={this._onRemoveAllClick} className="t_action t_label c_action">REMOVE THESE ({this.state.results.length})</a></li>
 							) ||
-								<li><a href="#" onClick={this.addAllDetects} className="t_action t_label c_action">ADD THESE ({results.length})</a></li>
+								<li><a href="#" onClick={this._onAddAllClick} className="t_action t_label c_action">ADD THESE ({this.state.results.length})</a></li>
 							}
 						</ul>
 					</div>
 					}
 					<div className="main__results row__column">
-						<Results detects={results && results.models || []} onCurrentDetectChange={this.handleCurrentDetectChange} currentDetect={currentDetect} />
+						<Results results={this.state.results} currentResult={this.state.currentResult} selection={this.state.selection} />
 					</div>
 					<div className="main__detail row__column">
-						{(currentDetect &&
-						<Detail detect={currentDetect} onClose={this.handleDetailClose} />
+						{(this.state.currentResult &&
+						<Detail detect={this.state.currentResult} onClose={this.handleDetailClose} />
 						) || 
 						<div className="detail detail--intro">
 							<h1>Welcome to the <br />Modernizr detect library.</h1>
@@ -166,6 +130,15 @@ var App = React.createClass({
 				</div>
 			</div>
 		);
+	},
+
+	_onRemoveAllClick: function() {
+		SelectionActions.remove(this.state.results);
+	},
+
+
+	_onAddAllClick: function() {
+		SelectionActions.add(this.state.results);
 	}
 });
 

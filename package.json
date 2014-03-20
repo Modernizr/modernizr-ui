@@ -18,6 +18,8 @@
     "backbone": "^1.1.2",
     "jquery": "^2.1.0",
     "underscore": "^1.6.0",
-    "modernizr": "git://github.com/joecritch/Modernizr.git"
+    "modernizr": "git://github.com/joecritch/Modernizr.git",
+    "rsvp": "~3.0.6",
+    "lodash": "^2.4.1"
   }
 }
