@@ -6,7 +6,7 @@ var _ = require('lodash');
 var _detects = [], _tags = [], _data = [];
 
 function fetch() {
-	$.getJSON('/metadata.json').then(function(response) {
+	$.getJSON('metadata.json').then(function(response) {
 		_detects = response;
 		_tags = _.unique(_.flatten(_.pluck(response, 'tags')));
 		_detects = _detects.map(function(detect) {
