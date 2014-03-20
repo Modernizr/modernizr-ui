@@ -66,7 +66,7 @@ var App = React.createClass({
 					</div>
 					}
 					<div className="main__results row__column">
-						<ResultList results={this.state.results} currentResult={currentResult} selection={this.state.selection} />
+						<ResultList results={this.state.results} currentResult={currentResult} selection={this.state.selection} currentIndex={this.state.currentIndex} />
 					</div>
 					<div className="main__detail row__column">
 						{(currentResult &&

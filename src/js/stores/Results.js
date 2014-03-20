@@ -43,10 +43,14 @@ function focus(cid) {
 	var data = _results || MetadataStore.getAll();
 	for(var i in data) {
 		if(data[i].cid === cid) {
-			_currentIndex = i;
+			_currentIndex = parseInt(i, null);
 			break;
 		}
 	}
+}
+
+function blur() {
+	_currentIndex = null;
 }
 
 function move(delta) {
@@ -83,6 +87,9 @@ AppDispatcher.register(function(payload) {
 		break;
 		case 'RESULT_FOCUS':
 			focus(action.cid);
+		break;
+		case 'RESULT_BLUR':
+			blur();
 		break;
 		case 'RESULT_UP':
 			move(-1);

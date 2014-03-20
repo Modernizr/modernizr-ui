@@ -13,6 +13,11 @@ var ResultActions = {
 			cid: cid
 		});
 	},
+	blur: function() {
+		AppDispatcher.handleViewAction({
+			actionType: 'RESULT_BLUR'
+		});
+	},
 	up: function() {
 		AppDispatcher.handleViewAction({
 			actionType: 'RESULT_UP'

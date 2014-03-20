@@ -3,8 +3,6 @@
  */
 
 var React = require('react');
-var FetchingMixin = require('../mixins/fetching');
-var Events = require('../events');
 
 var Result = React.createClass({
 	render: function() {
