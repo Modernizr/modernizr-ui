@@ -2,15 +2,18 @@
   "name": "modernizr-ui",
   "main": "src/js/main.js",
   "scripts": {
-    "start": "webpack --progress --colors --watch"
+    "start": "webpack-dev-server --progress --colors"
   },
   "devDependencies": {
     "grunt": "^0.4.3",
-    "grunt-sass": "^0.11.0",
-    "grunt-contrib-watch": "^0.5.3",
     "jsx-loader": "^0.9.0",
+    "sass-loader": "0.0.2",
+    "url-loader": "~0.5.4",
+    "json-loader": "~0.5.0",
     "matchdep": "^0.3.0",
-    "grunt-execute": "^0.1.5"
+    "grunt-execute": "^0.1.5",
+    "grunt-webpack": "~1.0.5",
+    "compression-webpack-plugin": "~0.1.1"
   },
   "dependencies": {
     "envify": "^1.2.1",
