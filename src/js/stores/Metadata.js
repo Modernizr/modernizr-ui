@@ -2,29 +2,28 @@ var AppDispatcher = require('../dispatcher/AppDispatcher');
 var EventEmitter = require('events').EventEmitter;
 var merge = require('react/lib/merge');
 var _ = require('lodash');
+var JSONdata = require("../../metadata.json");
 
 var _detects = [], _tags = [], _data = [];
 
 function fetch() {
-	$.getJSON('/metadata.json').then(function(response) {
-		_detects = response;
-		_tags = _.unique(_.flatten(_.pluck(response, 'tags')));
-		_detects = _detects.map(function(detect) {
-			return _.extend(detect, {
-				cid: _.uniqueId('detect_'),
-				type: 'detect'
-			});
+	_detects = JSONdata;
+	_tags = _.unique(_.flatten(_.pluck(JSONdata, 'tags')));
+	_detects = _detects.map(function(detect) {
+		return _.extend(detect, {
+			cid: _.uniqueId('detect_'),
+			type: 'detect'
 		});
-		_tags = _tags.map(function(tag) {
-			return {
-				cid: _.uniqueId('tag_'),
-				type: 'tag',
-				name: tag
-			}
-		});
-		_data = _.union(_detects, _tags);
-		MetadataStore.emit('change');
 	});
+	_tags = _tags.map(function(tag) {
+		return {
+			cid: _.uniqueId('tag_'),
+			type: 'tag',
+			name: tag
+		}
+	});
+	_data = _.union(_detects, _tags);
+	MetadataStore.emit('change');
 }
 
 var MetadataStore = merge(EventEmitter.prototype, {

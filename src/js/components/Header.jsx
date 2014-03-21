@@ -3,6 +3,7 @@
  */
 
 var React = require('react');
+var logo = require("../../img/logo.svg");
 
 var Header = React.createClass({
 
@@ -12,7 +13,7 @@ var Header = React.createClass({
 					<div className="header__logo row__column">
 						<a href="#" className="logo-nav c_linkbox">
 							<span className="logo">
-								<img src="logo.svg" alt="Modernizr" />
+								<img src={logo} alt="Modernizr" />
 							</span>
 						</a>
 					</div>
