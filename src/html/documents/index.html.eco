@@ -1,0 +1,9 @@
+---
+title: "Home"
+layout: "default"
+isPage: true
+---
+
+<div id="app-container">
+	<%- @react('./js/components/App.jsx') %>
+</div>

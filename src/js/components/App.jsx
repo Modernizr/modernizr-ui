@@ -94,6 +94,4 @@ var App = React.createClass({
 	}
 });
 
-React.renderComponent(<App />, document.getElementById('app-container'));
-
 module.exports = App;

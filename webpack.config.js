@@ -9,9 +9,9 @@ module.exports = {
 		modulesDirectories: ['node_modules', 'bower_components']
 	},
 	output: {
-		path: 'build/',
+		path: './content',
 		filename: 'app.js',
-		publicPath: 'build'
+		publicPath: ''
 	},
 	module: {
 		loaders: [

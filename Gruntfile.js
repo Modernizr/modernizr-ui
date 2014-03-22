@@ -5,23 +5,11 @@ module.exports = function(grunt) {
 	var webpackConfig = require("./webpack.config.js");
 
 	grunt.initConfig({
-		webpack: {
-			options: webpackConfig,
-			build: {
-				plugins: webpackConfig.plugins.concat(
-					new webpack.DefinePlugin({
-						"process.env": {
-							"NODE_ENV": JSON.stringify("production")
-						}
-					}),
-					new webpack.optimize.UglifyJsPlugin()
-				)
-			}
-		},
 		"webpack-dev-server": {
 			options: {
 				webpack: webpackConfig,
-				publicPath: "/" + webpackConfig.output.publicPath
+				publicPath: "/" + webpackConfig.output.publicPath,
+				contentBase: './dist'
 			},
 			start: {
 				keepAlive: true,
@@ -44,6 +32,5 @@ module.exports = function(grunt) {
 	});
 
 	grunt.registerTask("default", ["webpack-dev-server:start"]);
-	grunt.registerTask("production", ["webpack:build"]);
 
 };
