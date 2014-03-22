@@ -39,10 +39,6 @@ var Header = React.createClass({
 									<span className="build-state-btn__suffix t_label">Standard</span>
 								</a>
 							</li><li className="util__item">
-								<div className="build-state-btn build-state-label t_label">
-									10KB
-								</div>
-							</li><li className="util__item">
 								<a href="#" className="t_action t_action--primary hit build-state-btn c_primary build-state-label">
 									Build
 								</a>

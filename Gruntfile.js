@@ -28,6 +28,12 @@ module.exports = function(grunt) {
 			modernizr: {
 				src: ['./node_modules/modernizr/lib/generate-meta.js'],
 			}
+		},
+		'gh-pages': {
+			options: {
+				base: 'dist'
+			},
+			src: ['**']
 		}
 	});
 

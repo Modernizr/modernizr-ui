@@ -76,7 +76,7 @@ var App = React.createClass({
 						<Detail detect={currentResult} onClose={this.handleDetailClose} />
 						) || 
 						<div className="detail detail--intro">
-							<h1>Welcome to the <br />Modernizr detect library.</h1>
+							<h1>Welcome to<br />Modernizr's detect library.</h1>
 							<p>You can browser detects to find out about browser features, and also add detects to a build, ready to use on your project.</p>
 							<p><i>[Add more instructions here]</i></p>
 						</div>
