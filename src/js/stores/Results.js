@@ -2,7 +2,7 @@ var AppDispatcher = require('../dispatcher/AppDispatcher');
 var EventEmitter = require('events').EventEmitter;
 var merge = require('react/lib/merge');
 var MetadataStore = require('./Metadata');
-var Fuse = require('fuse/fuse');
+var Fuse = require('../../../bower_components/fuse/fuse');
 
 var _fuse,
 	_value,

@@ -13,7 +13,9 @@
     "matchdep": "^0.3.0",
     "grunt-execute": "^0.1.5",
     "grunt-webpack": "~1.0.5",
-    "compression-webpack-plugin": "~0.1.1"
+    "compression-webpack-plugin": "~0.1.1",
+    "react-tools": "~0.10.0-rc1",
+    "node-jsx": "~0.9.0"
   },
   "dependencies": {
     "envify": "^1.2.1",
@@ -21,6 +23,10 @@
     "jquery": "^2.1.0",
     "modernizr": "git://github.com/joecritch/Modernizr.git",
     "rsvp": "~3.0.6",
-    "lodash": "^2.4.1"
+    "lodash": "^2.4.1",
+    "docpad": "~6.64.0",
+    "docpad-plugin-eco": "~2.0.3",
+    "docpad-plugin-assets": "~2.1.1",
+    "docpad-plugin-webpack": "~2.1.0"
   }
 }
