@@ -37,6 +37,9 @@ var App = React.createClass({
 	render: function() {
 		var selectionCount = _.size(this.state.selection) || 0;
 		var currentResult = this.state.results && !isNaN(this.state.currentIndex) && this.state.results[this.state.currentIndex];
+
+		console.log('currentIndex', this.state.currentIndex);
+
 		return (
 			<div className="app">
 				<Header count={selectionCount} searchComponent={
@@ -93,7 +96,5 @@ var App = React.createClass({
 		SelectionActions.add(this.state.results);
 	}
 });
-
-React.renderComponent(<App />, document.getElementById('app-container'));
 
 module.exports = App;

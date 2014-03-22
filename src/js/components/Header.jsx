@@ -4,6 +4,7 @@
 
 var React = require('react');
 var logo = require("../../img/logo.svg");
+// var logo = "";
 
 var Header = React.createClass({
 

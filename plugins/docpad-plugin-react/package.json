@@ -1,0 +1,32 @@
+{
+    "name": "docpad-plugin-react",
+    "version": "2.0.1",
+    "description": "DocPad plugin that adds the ability to render React Components",
+    "homepage": "https://github.com/chrishale/docpad-plugin-react",
+    "keywords": [
+        "docpad",
+        "docpad-plugin",
+        "react"
+    ],
+    "author": "Chris Hale <chris@strobedigital.com> (http://strobedigital.com)",
+    "maintainers": [
+        "Chris Hale <chris@strobedigital.com> (https://github.com/chrishale/)"
+    ],
+    "contributors": [
+        "Chris Hale <chris@strobedigital.com> (https://github.com/chrishale/)"
+    ],
+    "bugs": {
+        "url": "https://github.com/chrishale/docpad-plugin-react/issues"
+    },
+    "repository" : {
+        "type": "git",
+        "url": "https://github.com/chrishale/docpad-plugin-react.git"
+    },
+    "engines" : {
+        "node": ">=0.8"
+    },
+    "peerDependencies": {
+        "docpad": "6"
+    },
+    "main": "./src/react.plugin.js"
+}
