@@ -12,7 +12,7 @@ var _fuse,
 MetadataStore.on('change', function() {
 	prepare();
 	if(!_results.length) {
-		search(null);
+		_results = MetadataStore.getAll();
 		ResultsStore.emit('change');
 	}
 });
@@ -32,11 +32,12 @@ function search(value) {
 		value = value.split('').join(' ');
 		_results = _fuse.search(value);
 		_value = value;
+		_currentIndex = 0;
 	}
 	else {
 		_results = MetadataStore.getAll();
+		_currentIndex = null;
 	}
-	_currentIndex = 0;
 }
 
 function focus(cid) {
