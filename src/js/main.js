@@ -1,4 +1,4 @@
-require("../../bower_components/normalize.css/normalize.css");
+require("normalize.css/normalize.css");
 require("../css/main.scss");
 
 var React = require('react');
