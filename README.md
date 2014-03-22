@@ -15,4 +15,3 @@ See the [Trello board](https://trello.com/b/JNSnhIuf/modernizr-com)
 
 3. Start the task runner
 	+ `grunt`
-
