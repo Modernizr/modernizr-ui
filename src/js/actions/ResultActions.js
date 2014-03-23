@@ -33,6 +33,12 @@ var ResultActions = {
 			actionType: 'RESULT_FILTER_BY_TAG',
 			cid: cid
 		});
+	},
+	filterByType: function(type, typeName) {
+		AppDispatcher.handleViewAction({
+			actionType: 'RESULT_FILTER_BY_TYPE',
+			type: type
+		});
 	}
 };
 

@@ -24,7 +24,9 @@ var App = React.createClass({
 			results: ResultsStore.getResults,
 			currentIndex: ResultsStore.getCurrentIndex,
 			isFiltered: ResultsStore.isFiltered,
-			searchValue: ResultsStore.getSearchValue
+			searchValue: ResultsStore.getSearchValue,
+			currentTag: ResultsStore.getCurrentTag,
+			currentType: ResultsStore.getCurrentType
 		},
 		'SelectionStore': {
 			selection: SelectionStore.getSelection
@@ -35,11 +37,26 @@ var App = React.createClass({
 		MetadataActions.fetch();
 	},
 
+	_getResultNameByType: function(type) {
+		switch(type) {
+			case 'detect':
+				return 'detects';
+			break;
+			case 'extra':
+				return 'extras';
+			break;
+			case 'api':
+				return 'API methods'
+			break;
+			default:
+				return 'results';
+			break;
+		}
+	},
+
 	render: function() {
 		var selectionCount = _.size(this.state.selection) || 0;
 		var currentResult = this.state.results && !isNaN(this.state.currentIndex) && this.state.results[this.state.currentIndex];
-
-		console.log('searchValue', this.state.searchValue);
 
 		return (
 			<div className="app">
@@ -50,13 +67,25 @@ var App = React.createClass({
 					{this.state.results &&
 					<div className="main__sidebar row__column">
 
+						{this.state.currentTag &&
+							<div className="current-filter" onClick={this._onCurrentFilterClick}>
+								{this.state.currentTag.name}
+							</div>
+						}
+
+						{this.state.currentType &&
+							<div className="current-filter" onClick={this._onCurrentFilterClick}>
+								{this._getResultNameByType(this.state.currentType)}
+							</div>
+						}
+
 						{(this.state.isFiltered && 
 							<div className="results-state-label">
-								{this.state.results.length} results
+								{this.state.results.length} {this._getResultNameByType(this.state.currentType)}
 							</div>
 						) || 
 						<div className="results-state-label">
-							Showing all {this.state.results.length} detects
+							Showing all {this.state.results.length} {this._getResultNameByType(this.state.currentType)}
 						</div>
 						}
 
@@ -86,6 +115,10 @@ var App = React.createClass({
 				</div>
 			</div>
 		);
+	},
+
+	_onCurrentFilterClick: function() {
+		ResultActions.blur();
 	},
 
 	_onRemoveAllClick: function() {

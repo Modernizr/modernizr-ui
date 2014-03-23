@@ -19,18 +19,8 @@ var Results = React.createClass({
 	},
 
 	componentDidUpdate: function(prevProps, prevState) {
-		var scrollTop = $(this.getDOMNode()).scrollTop();
-		var resultHeight = $(this.refs.firstResult.getDOMNode()).height();
-		var index = this.props.currentIndex || 0;
-		var offset = index * (resultHeight + 1) - 1;
-		var resultListHeight = $(this.getDOMNode()).height();
-		var bottomOffset = resultHeight / 2;
-		if((offset + resultHeight) > (scrollTop + resultListHeight)) {
-			scrollTop = (offset + resultHeight) - resultListHeight;
-			$(this.getDOMNode()).scrollTop(scrollTop + bottomOffset);
-		}
-		else if(offset < scrollTop) {
-			$(this.getDOMNode()).scrollTop(offset);
+		if(this.refs.firstResult) {
+			this._updateScrollPosition();
 		}
 	},
 
@@ -80,6 +70,22 @@ var Results = React.createClass({
 			case 27: // Esc
 				ResultActions.blur();
 			break;
+		}
+	},
+
+	_updateScrollPosition: function() {
+		var scrollTop = $(this.getDOMNode()).scrollTop();
+		var resultHeight = $(this.refs.firstResult.getDOMNode()).height();
+		var index = this.props.currentIndex || 0;
+		var offset = index * (resultHeight + 1) - 1;
+		var resultListHeight = $(this.getDOMNode()).height();
+		var bottomOffset = resultHeight / 2;
+		if((offset + resultHeight) > (scrollTop + resultListHeight)) {
+			scrollTop = (offset + resultHeight) - resultListHeight;
+			$(this.getDOMNode()).scrollTop(scrollTop + bottomOffset);
+		}
+		else if(offset < scrollTop) {
+			$(this.getDOMNode()).scrollTop(offset);
 		}
 	}
 });

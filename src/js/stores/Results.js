@@ -8,7 +8,8 @@ var _fuse,
 	_value = null,
 	_results = [],
 	_currentIndex = null,
-	_currentTag = null;
+	_currentTag = null,
+	_currentType = null;
 
 MetadataStore.on('change', function() {
 	prepare();
@@ -27,6 +28,9 @@ function prepare() {
 }
 
 function search(value) {
+
+	// TODO :: filter by any currentType or currentTag
+
 	_value = value;
 	if(_value) {
 		_results = _fuse.search(_getFuseValue(_value));
@@ -67,6 +71,7 @@ function blur() {
 	_currentIndex = null;
 	_value = null;
 	_currentTag = null;
+	_currentType = null;
 	_results = MetadataStore.getAll();
 }
 
@@ -85,6 +90,7 @@ function move(delta) {
 function filterByTag(cid) {
 	var data = MetadataStore.getAll();
 	var tags = MetadataStore.getTags();
+	_currentType = null;
 
 	_currentTag = _.find(tags, function(tag) {
 		return tag.cid === cid;
@@ -105,6 +111,16 @@ function filterByTag(cid) {
 	_value = null;
 }
 
+function filterByType(type) {
+	var data = MetadataStore.getAll();
+	_currentTag = null;
+	_currentType = type;
+
+	_results = data.filter(function(obj) {
+		return obj.type === type;
+	});
+}
+
 function _getFuseValue(value) {
 	// Modification for better results through Fuse
 	var valueForFuse = value.replace(/\s+/g, '');
@@ -123,8 +139,13 @@ var ResultsStore = merge(EventEmitter.prototype, {
 		return _currentIndex;
 	},
 	getSearchValue: function() {
-		console.log('getting search value..');
 		return _value || '';
+	},
+	getCurrentTag: function() {
+		return _currentTag;
+	},
+	getCurrentType: function() {
+		return _currentType;
 	}
 });
 
@@ -134,9 +155,7 @@ AppDispatcher.register(function(payload) {
 	var action = payload.action;
 	switch(action.actionType) {
 		case 'RESULT_SEARCH':
-			console.log('searching...');
 			search(action.text);
-			console.log('searched...');
 		break;
 		case 'RESULT_FOCUS':
 			focus(action.cid);
@@ -153,12 +172,14 @@ AppDispatcher.register(function(payload) {
 		case 'RESULT_FILTER_BY_TAG':
 			filterByTag(action.cid);
 		break;
+		case 'RESULT_FILTER_BY_TYPE':
+			filterByType(action.type);
+		break;
 		default:
 			return true;
 		break;
 	}
 
-	console.log('emit change...');
 	ResultsStore.emit('change');
 });
 

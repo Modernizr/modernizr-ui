@@ -6,6 +6,8 @@ var React = require('react');
 // var logo = require("../../img/logo.svg");
 var logo = "";
 
+var TypeFilter = require('./TypeFilter.jsx');
+
 var Header = React.createClass({
 
 	render: function() {
@@ -24,20 +26,11 @@ var Header = React.createClass({
 					<div className="header__util">
 						<ul className="util">
 							<li className="util__item">
-								<a href="#" className="build-state-btn hit c_linkbox">
-									<strong className="build-state-btn__char t_subtitle">{this.props.count}</strong>
-									<span className="build-state-btn__suffix t_label">Detects</span>
-								</a>
+								<TypeFilter type="detect" name="Detects" count="0" />
 							</li><li className="util__item">
-								<a href="#" className="build-state-btn hit c_linkbox">
-									<strong className="build-state-btn__char t_subtitle">0</strong>
-									<span className="build-state-btn__suffix t_label">Extras</span>
-								</a>
+								<TypeFilter type="extra" name="Extras" count="0" />
 							</li><li className="util__item">
-								<a href="#" className="build-state-btn hit c_linkbox">
-									<strong className="build-state-btn__char t_subtitle">&nbsp;</strong>
-									<span className="build-state-btn__suffix t_label">Standard</span>
-								</a>
+								<TypeFilter type="api" name="API" count="0" />
 							</li><li className="util__item">
 								<a href="#" className="t_action t_action--primary hit build-state-btn c_primary build-state-label">
 									Build
