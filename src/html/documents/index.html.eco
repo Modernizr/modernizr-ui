@@ -5,5 +5,5 @@ isPage: true
 ---
 
 <div id="app-container">
-	<%- @react('./js/components/App.jsx') %>
+	<%- @react('../js/components/App.jsx') %>
 </div>

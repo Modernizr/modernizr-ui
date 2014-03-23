@@ -11,10 +11,10 @@ var SelectionStore = require('../stores/Selection');
 var WithFlux = require('../mixins/WithFlux');
 var _ = require('lodash');
 
-var Header = require('./Header.jsx');
-var ResultList = require('./ResultList.jsx');
-var Detail = require('./Detail.jsx');
-var Search = require('./Search.jsx');
+var Header = require('jsx-loader!./Header.jsx');
+var ResultList = require('jsx-loader!./ResultList.jsx');
+var Detail = require('jsx-loader!./Detail.jsx');
+var Search = require('jsx-loader!./Search.jsx');
 
 var App = React.createClass({
 	mixins: [WithFlux],

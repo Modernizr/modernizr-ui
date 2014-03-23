@@ -3,8 +3,8 @@
  */
 
 var React = require('react');
-var Result = require('./Result.jsx');
-var TagResult = require('./TagResult.jsx');
+var Result = require('jsx-loader!./Result.jsx');
+var TagResult = require('jsx-loader!./TagResult.jsx');
 var ResultActions = require('../actions/ResultActions');
 var SelectionActions = require('../actions/SelectionActions');
 
