@@ -3,8 +3,7 @@
  */
 
 var React = require('react');
-// var logo = require("../../img/logo.svg");
-var logo = "";
+var logo = require("url?mimetype=image/svg+xml!../../img/logo.svg");
 
 var TypeFilter = require('./TypeFilter.jsx');
 
