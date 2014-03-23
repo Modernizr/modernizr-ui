@@ -27,6 +27,12 @@ var ResultActions = {
 		AppDispatcher.handleViewAction({
 			actionType: 'RESULT_DOWN'
 		});
+	},
+	filterByTag: function(cid) {
+		AppDispatcher.handleViewAction({
+			actionType: 'RESULT_FILTER_BY_TAG',
+			cid: cid
+		});
 	}
 };
 

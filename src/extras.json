@@ -1,0 +1,20 @@
+[
+	{
+		"name": "html5shiv",
+		"default": true
+	},
+	{
+		"name": "html5shiv w/ printshiv"
+	},
+	{
+		"name": "Modernizr.load (YepNope.js)",
+		"default": true
+	},
+	{
+		"name": "Media Queries"
+	},
+	{
+		"name": "Add CSS Classes",
+		"default": true
+	}
+]

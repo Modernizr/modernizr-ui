@@ -16,7 +16,8 @@
     "compression-webpack-plugin": "~0.1.1",
     "react-tools": "~0.10.0-rc1",
     "style-loader": "^0.6.3",
-    "css-loader": "^0.6.8"
+    "css-loader": "^0.6.8",
+    "grunt-gh-pages": "^0.9.1"
   },
   "dependencies": {
     "envify": "^1.2.1",

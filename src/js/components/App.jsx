@@ -23,7 +23,8 @@ var App = React.createClass({
 		'ResultsStore': {
 			results: ResultsStore.getResults,
 			currentIndex: ResultsStore.getCurrentIndex,
-			isFiltered: ResultsStore.isFiltered
+			isFiltered: ResultsStore.isFiltered,
+			searchValue: ResultsStore.getSearchValue
 		},
 		'SelectionStore': {
 			selection: SelectionStore.getSelection
@@ -38,7 +39,7 @@ var App = React.createClass({
 		var selectionCount = _.size(this.state.selection) || 0;
 		var currentResult = this.state.results && !isNaN(this.state.currentIndex) && this.state.results[this.state.currentIndex];
 
-		console.log('currentIndex', this.state.currentIndex);
+		console.log('searchValue', this.state.searchValue);
 
 		return (
 			<div className="app">
@@ -76,7 +77,7 @@ var App = React.createClass({
 						<Detail detect={currentResult} onClose={this.handleDetailClose} />
 						) || 
 						<div className="detail detail--intro">
-							<h1>Welcome to the <br />Modernizr detect library.</h1>
+							<h1>Welcome to<br />Modernizr's detect library.</h1>
 							<p>You can browser detects to find out about browser features, and also add detects to a build, ready to use on your project.</p>
 							<p><i>[Add more instructions here]</i></p>
 						</div>

@@ -40,12 +40,12 @@ var Results = React.createClass({
 				{this.props.results.map(function(result, i) {
 					var current = this.props.currentResult && this.props.currentResult.cid === result.cid;
 					var ref = i === 0 ? 'firstResult' : null
-					if(result.type === 'detect') {
-						var added = this.props.selection && this.props.selection[result.cid];
-						return <Result ref={ref} detect={result} current={current} added={added} />
+					if(result.type === 'tag') {
+						return <TagResult ref={ref} tag={result} current={current} />
 					}
 					else {
-						return <TagResult ref={ref} tag={result} current={current} />
+						var added = this.props.selection && this.props.selection[result.cid];
+						return <Result ref={ref} result={result} current={current} added={added} />
 					}
 				}.bind(this))}
 			</div>
@@ -61,7 +61,7 @@ var Results = React.createClass({
 				ResultActions.down();
 			break;
 			case 13: // Enter
-				if(this.props.currentResult && this.props.currentResult.type === 'detect') {
+				if(this.props.currentResult && this.props.currentResult.type !== 'tag') {
 					var added = this.props.selection && this.props.selection[this.props.currentResult.cid];
 					if(added) {
 						SelectionActions.remove(this.props.currentResult.cid);
@@ -69,6 +69,9 @@ var Results = React.createClass({
 					else {
 						SelectionActions.add(this.props.currentResult);
 					}
+				}
+				else if(this.props.currentResult && this.props.currentResult.type === 'tag') {
+					ResultActions.filterByTag(this.props.currentResult.cid);
 				}
 				else {
 					ResultActions.down();

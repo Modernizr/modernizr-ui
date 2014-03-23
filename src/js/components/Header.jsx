@@ -13,7 +13,7 @@ var Header = React.createClass({
 					<div className="header__logo row__column">
 						<a href="#" className="logo-nav c_linkbox">
 							<span className="logo">
-								<img src={logo} alt="Modernizr" />
+								<img src="logo.svg" alt="Modernizr" />
 							</span>
 						</a>
 					</div>
@@ -37,10 +37,6 @@ var Header = React.createClass({
 									<strong className="build-state-btn__char t_subtitle">&nbsp;</strong>
 									<span className="build-state-btn__suffix t_label">Standard</span>
 								</a>
-							</li><li className="util__item">
-								<div className="build-state-btn build-state-label t_label">
-									10KB
-								</div>
 							</li><li className="util__item">
 								<a href="#" className="t_action t_action--primary hit build-state-btn c_primary build-state-label">
 									Build
