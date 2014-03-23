@@ -23,7 +23,8 @@ var App = React.createClass({
 		'ResultsStore': {
 			results: ResultsStore.getResults,
 			currentIndex: ResultsStore.getCurrentIndex,
-			isFiltered: ResultsStore.isFiltered
+			isFiltered: ResultsStore.isFiltered,
+			searchValue: ResultsStore.getSearchValue
 		},
 		'SelectionStore': {
 			selection: SelectionStore.getSelection
@@ -38,7 +39,7 @@ var App = React.createClass({
 		var selectionCount = _.size(this.state.selection) || 0;
 		var currentResult = this.state.results && !isNaN(this.state.currentIndex) && this.state.results[this.state.currentIndex];
 
-		console.log('currentIndex', this.state.currentIndex);
+		console.log('searchValue', this.state.searchValue);
 
 		return (
 			<div className="app">
