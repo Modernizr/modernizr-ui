@@ -1,5 +1,6 @@
 var WithFlux = {
 	getInitialState: function() {
+		console.log(this.getState());
 		return this.getState();
 	},
 	getStoreByName: function(name) {

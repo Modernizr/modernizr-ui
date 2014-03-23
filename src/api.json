@@ -1,0 +1,26 @@
+[
+	{
+		"name": "Modernizr.addTest"
+	},
+	{
+		"name": "Modernizr.prefixed()"
+	},
+	{
+		"name": "Modernizr.testStyles()"
+	},
+	{
+		"name": "Modernizr.testProp()"
+	},
+	{
+		"name": "Modernizr.testAllProps()"
+	},
+	{
+		"name": "Modernizr.hasEvent()"
+	},
+	{
+		"name": "Modernizr._prefixes"
+	},
+	{
+		"name": "Modernizr._domPrefixes"
+	}
+]

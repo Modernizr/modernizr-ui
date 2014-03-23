@@ -18,7 +18,7 @@ var Result = React.createClass({
 		if(this.props.added) classes += ' is-added';
 		return (
 			<div className={classes} onClick={this._onClick}>
-				<span className="result__name">{this.props.detect && this.props.detect.name} {this.props.added && '✔'}</span>
+				<span className="result__name">{this.props.result && this.props.result.name} {this.props.added && '✔'}</span>
 				<div className="result__add-action c_action add-action t_action" onClick={this._onToggleBtnClick}>
 					{this.props.added ? 'Remove' : 'Add'}
 				</div>
@@ -30,7 +30,7 @@ var Result = React.createClass({
 		if(this.props.current) {
 			this._toggle();
 		} else {
-			ResultActions.focus(this.props.detect.cid);
+			ResultActions.focus(this.props.result.cid);
 		}
 	},
 
@@ -41,10 +41,10 @@ var Result = React.createClass({
 
 	_toggle: function() {
 		if(this.props.added) {
-			SelectionActions.remove(this.props.detect.cid);
+			SelectionActions.remove(this.props.result.cid);
 		}
 		else {
-			SelectionActions.add(this.props.detect);
+			SelectionActions.add(this.props.result);
 		}
 	}
 });

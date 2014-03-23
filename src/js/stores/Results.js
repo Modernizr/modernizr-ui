@@ -5,9 +5,10 @@ var MetadataStore = require('./Metadata');
 var Fuse = require('../../../bower_components/fuse/fuse');
 
 var _fuse,
-	_value,
+	_value = null,
 	_results = [],
-	_currentIndex = null;
+	_currentIndex = null,
+	_currentTag = null;
 
 MetadataStore.on('change', function() {
 	prepare();
@@ -26,18 +27,30 @@ function prepare() {
 }
 
 function search(value) {
-	if(value) {
-		// Modification for better results through Fuse
-		value = value.replace(/\s+/g, '');
-		value = value.split('').join(' ');
-		_results = _fuse.search(value);
-		_value = value;
+	_value = value;
+	if(_value) {
+		_results = _fuse.search(_getFuseValue(_value));
+		_results = _prioritiseMatchingTag(_results);
 		_currentIndex = 0;
 	}
 	else {
 		_results = MetadataStore.getAll();
 		_currentIndex = null;
 	}
+}
+
+function _prioritiseMatchingTag(results) {
+	var tagMatch = _.find(results, function(result) {
+		return (result.type === 'tag' && result.name === _value);
+	});
+
+	if(tagMatch) {
+		var restOfResults = _.without(results, tagMatch);
+
+		return [tagMatch].concat(restOfResults);
+	}
+
+	return results;
 }
 
 function focus(cid) {
@@ -52,6 +65,9 @@ function focus(cid) {
 
 function blur() {
 	_currentIndex = null;
+	_value = null;
+	_currentTag = null;
+	_results = MetadataStore.getAll();
 }
 
 function move(delta) {
@@ -66,6 +82,36 @@ function move(delta) {
 	}
 }
 
+function filterByTag(cid) {
+	var data = MetadataStore.getAll();
+	var tags = MetadataStore.getTags();
+
+	_currentTag = _.find(tags, function(tag) {
+		return tag.cid === cid;
+	});
+
+	_results = data.filter(function(obj) {
+		if(obj.tags instanceof Array) {
+			var match = _.find(obj.tags, function(tag) {
+				return tag.cid === cid;
+			});
+			if(match) {
+				return true;
+			}
+		}
+		return false;
+	});
+
+	_value = null;
+}
+
+function _getFuseValue(value) {
+	// Modification for better results through Fuse
+	var valueForFuse = value.replace(/\s+/g, '');
+	valueForFuse = valueForFuse.split('').join(' ');
+	return valueForFuse;
+}
+
 var ResultsStore = merge(EventEmitter.prototype, {
 	getResults: function() {
 		return _results;
@@ -75,6 +121,10 @@ var ResultsStore = merge(EventEmitter.prototype, {
 	},
 	getCurrentIndex: function() {
 		return _currentIndex;
+	},
+	getSearchValue: function() {
+		console.log('getting search value..');
+		return _value || '';
 	}
 });
 
@@ -84,7 +134,9 @@ AppDispatcher.register(function(payload) {
 	var action = payload.action;
 	switch(action.actionType) {
 		case 'RESULT_SEARCH':
+			console.log('searching...');
 			search(action.text);
+			console.log('searched...');
 		break;
 		case 'RESULT_FOCUS':
 			focus(action.cid);
@@ -98,11 +150,15 @@ AppDispatcher.register(function(payload) {
 		case 'RESULT_DOWN':
 			move(1);
 		break;
+		case 'RESULT_FILTER_BY_TAG':
+			filterByTag(action.cid);
+		break;
 		default:
 			return true;
 		break;
 	}
 
+	console.log('emit change...');
 	ResultsStore.emit('change');
 });
 
