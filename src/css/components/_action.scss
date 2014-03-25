@@ -1,0 +1,15 @@
+.Action {
+	.Action-label,
+	.Action-icon {
+		display: inline-block;
+		vertical-align: middle;
+	}
+	.Action-icon {
+		padding-left: 1em; // If icon is on right, ensure it has padding for the label
+		&:first-child {
+			// Switch the padding round if the icon is on left
+			padding-right: 1em;
+			padding-left: 0;
+		}
+	}
+}

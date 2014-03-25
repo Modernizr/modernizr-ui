@@ -1,0 +1,10 @@
+.MainHeader {
+	.MainHeader-block {
+		// Fixe height for the blocks in the header
+		@include rem(height, 13);
+	}
+	.MainHeader-logo {
+		// Fixed width for the logo in the main header
+		@include rem(width, 4);
+	}
+}

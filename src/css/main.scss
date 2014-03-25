@@ -1,10 +1,51 @@
-@import "../../bower_components/modularized-normalize-scss/normalize";
-@import "general";
-@import "layout";
-@import "color";
-@import "typography";
+// @import "../../bower_components/modularized-normalize-scss/normalize";
+// @import "general";
+// @import "layout";
+// @import "color";
+// @import "typography";
 // @import "site"; // TODO - fix some conflicts here.
+@import "../../bower_components/normalize.css/normalize.css";
+@import "../../bower_components/suit-base/base.css";
+@import "../../bower_components/suit-grid/grid.css";
+@import "../../bower_components/suit-utils-size/size.css";
+@import "../../bower_components/suit-utils-text/text.css";
+@import "../../bower_components/bourbon/app/assets/stylesheets/bourbon";
+@import "mixins/rem";
+@import "components/grid";
+@import "components/box-set";
+@import "components/box";
+@import "components/main-header";
+@import "components/ring";
+@import "components/search-bar";
+@import "components/action";
+@import "components/fruit-machine";
+@import "components/container";
+@import "components/icon";
+@import "components/bar";
+@import "utilities/size";
+@import "utilities/alignment";
+@import "utilities/misc";
+@import "color";
+@import "type";
+@import "layout";
 
-html {
-	font-size: 85%;
+.Result {
+	.Result-icon {
+		width: 3rem;
+		height: 3rem;
+		background: #000;
+		// background-image: url(add-alt-2.svg);
+		position: absolute;
+		right: 3em;
+		top: 0;
+		bottom: 0;
+		margin: auto;
+	}
+
+	&.is-selected {
+		position: relative;
+		z-index: 1;
+		outline: 10px solid #fff;
+		box-shadow: 0 0 30px rgba(0,0,0,0.2);
+	}
 }

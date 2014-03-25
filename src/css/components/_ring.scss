@@ -1,0 +1,15 @@
+/**
+ * A thick-bordered ring that's use for counts or icons
+ */
+
+.Ring {
+	border-width: 0.125em; // Ensure the border width scales with the size of the component
+	border-radius: 999px;
+	display: inline-block;
+	width: 1.5em;
+	height: 1.5em;
+	font-size: 1em;
+	overflow: hidden;
+	line-height: 1.5em;
+	text-align: center;
+}

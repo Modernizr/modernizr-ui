@@ -1,0 +1,10 @@
+/**
+ * - A set of items, spaced by fine a pixel between each one
+ * - Designed for use with Box component, which should be a child of a .BoxSet-item
+ */
+
+.BoxSet {
+	&>.BoxSet-item~.BoxSet-item {
+		margin-top: 1px;
+	}
+}

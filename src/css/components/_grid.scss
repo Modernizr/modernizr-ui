@@ -1,0 +1,24 @@
+/**
+ * Modifiers for Grid component
+ * Grid is defined in suit-grid
+ */
+
+.Grid--withGutter {
+	@include rem(margin, 0, -2);
+	& > .Grid-cell {
+		@include rem(padding, 0, 2);
+	}
+}
+
+.Grid--withDividers {
+	margin: 0 0 0 -1px; // NOTE :: compensates boxel model on the parent element (unidirectional, unlike Grid--withGutter)
+	&>.Grid-cell {
+		border-left-width: 1px;
+		&:first-child {
+			border-left-width: 0;
+			padding-left: 1px; // NOTE :: Keeps content-box same width, replacing border for padding
+		}
+	}
+}
+
+// TODO :: something to handle grid 'lips'

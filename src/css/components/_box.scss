@@ -1,0 +1,18 @@
+/**
+ * - Works as a content block for whatever content
+ */
+
+.Box {
+	@include rem(padding, 3);
+	&.is-selected {
+		@extend .c-contrast;
+	}
+}
+
+/**
+ * Less padding. useful for labels, etc.
+ */
+.Box--minor {
+	@include rem(padding-top, 2);
+	@include rem(padding-bottom, 2);
+}

@@ -1,0 +1,29 @@
+.FruitMachine {
+	overflow: hidden;
+	.FruitMachine-item {
+		overflow: hidden; // Why?
+	}
+	.FruitMachine-transport {
+		@include transform(translate3d(0, 0, 0));
+		-webkit-transition: -webkit-transform 0.6s cubic-bezier(1.000, 0.000, 0.000, 1.000);
+	}
+	.ChooseDetects-link {
+		// TODO :: move to the right place
+		// text-transform: uppercase;
+		// font-size: 2rem;
+		// font-weight: 600;
+		padding: 0 3rem;
+		-webkit-transition: background-color 0.3s 0.2s ease;
+		display: block;
+	}
+	&.is-moved {
+		.FruitMachine-transport {
+			@include transform(translate3d(0, -50%, 0));
+		}
+		.ChooseDetects-link {
+			// TODO ?????
+			background-color: transparent;
+			color: #eee;
+		}
+	}
+}

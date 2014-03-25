@@ -8,7 +8,7 @@ var TagResult = require('jsx-loader!./TagResult.jsx');
 var ResultActions = require('../actions/ResultActions');
 var SelectionActions = require('../actions/SelectionActions');
 
-var Results = React.createClass({
+var ResultList = React.createClass({
 	componentDidMount: function() {
 		$(window).on('keydown', this._onKeyDown);
 		$(document).on('keydown', function(e) {
@@ -25,6 +25,29 @@ var Results = React.createClass({
 	},
 
 	render: function() {
+		var root = React.DOM['div'];
+		return (
+			<root className="BoxSet">
+				{this.props.results.map(function(result, i) {
+					var current = this.props.currentResult && this.props.currentResult.cid === result.cid;
+					var ref = i === 0 ? 'firstResult' : null
+					// if(result.type === 'tag') {
+						// return <TagResult ref={ref} tag={result} current={current} />
+					// }
+					// else {
+						var added = this.props.selection && this.props.selection[result.cid];
+
+						return (
+							<div className="BoxSet-item">
+								<Result ref={ref} result={result} current={current} added={added} />
+							</div>
+						);
+					// }
+				}.bind(this))}
+			</root>
+		);
+
+		/*
 		return (
 			<div className="results">
 				{this.props.results.map(function(result, i) {
@@ -40,6 +63,7 @@ var Results = React.createClass({
 				}.bind(this))}
 			</div>
 		);
+		*/
 	},
 
 	_onKeyDown: function(e) {
@@ -76,6 +100,9 @@ var Results = React.createClass({
 	_updateScrollPosition: function() {
 		var scrollTop = $(this.getDOMNode()).scrollTop();
 		var resultHeight = $(this.refs.firstResult.getDOMNode()).height();
+
+		console.log(resultHeight);
+
 		var index = this.props.currentIndex || 0;
 		var offset = index * (resultHeight + 1) - 1;
 		var resultListHeight = $(this.getDOMNode()).height();
@@ -90,4 +117,4 @@ var Results = React.createClass({
 	}
 });
 
-module.exports = Results;
+module.exports = ResultList;

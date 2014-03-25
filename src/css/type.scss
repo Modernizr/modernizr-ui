@@ -1,0 +1,52 @@
+html {
+	font-size: 62.5%;
+	-webkit-font-smoothing: antialiased;
+}
+
+body {
+	font-family: 'Source Sans Pro', sans-serif;
+}
+
+strong {
+	font-weight: 600;
+}
+
+a {
+	text-decoration: none;
+}
+
+.t-heading {
+	@include rem(font-size, 2.8);
+}
+
+.t-label {
+	@include rem(font-size, 1.8);
+}
+
+.t-body {
+	@include rem(font-size, 1.6);
+}
+
+.t-action,
+.t-primaryAction {
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+}
+
+// .t-action {
+// 	@include rem(font-size, 1.2);
+// 	-webkit-font-smoothing: subpixel-antialiased;
+// }
+
+.t-primaryAction {
+	@include rem(font-size, 2);
+}
+
+.t-digits {
+	font-family: sans-serif;
+}
+
+.t-instruction {
+	font-style: italic;
+	letter-spacing: 0.05em;
+}

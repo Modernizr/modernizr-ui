@@ -15,6 +15,8 @@ var Header = require('jsx-loader!./Header.jsx');
 var ResultList = require('jsx-loader!./ResultList.jsx');
 var Detail = require('jsx-loader!./Detail.jsx');
 var Search = require('jsx-loader!./Search.jsx');
+var DetectsPage = require('jsx-loader!./DetectsPage.jsx');
+var ToggleAll = require('jsx-loader!./ToggleAll.jsx');
 
 var App = React.createClass({
 	mixins: [WithFlux],
@@ -57,7 +59,59 @@ var App = React.createClass({
 	render: function() {
 		var selectionCount = _.size(this.state.selection) || 0;
 		var currentResult = this.state.results && !isNaN(this.state.currentIndex) && this.state.results[this.state.currentIndex];
+		var allAdded = selectionCount === this.state.results.length;
+		return (
+			<div className="App c-base">
+				<div className="App-main">
+					<div className="Container">
+						<DetectsPage
+							side={
+								<div className="BoxSet">
+									{this.currentTag &&
+									<div className="BoxSet-item">
+										<div className="Box Box--minor c-filter">
+											<div className="Bar">
+												<div className="Bar-item">
+													<span className="t-label">{this.state.currentTag.name}</span>
+												</div>
+												<div className="Bar-item u-textRight">
+													<div className="Icon" style={{background: '#000'}} />
+												</div>
+											</div>
+										</div>
+									</div>
+									}
+									<div className="BoxSet-item">
+										<div className="Box Box--minor c-contrast">
+											<div className="Bar">
+												<div className="Bar-item">
+													<strong className="t-body c-aux">{this.state.results.length} results</strong>
+												</div>
+												<div className="Bar-item u-textRight">
+													<ToggleAll results={this.state.results} readyToRemove={selectionCount === this.state.results.length} />
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							}
+							main={
+								this.state.results ?
+								<ResultList currentResult={currentResult} results={this.state.results} selection={this.state.selection} />
+								: null
+							}
+							detail={
+								currentResult ?
+								<Detail detect={currentResult} />
+								: null
+							}
+						/>
+					</div>
+				</div>
+			</div>
+		);
 
+		/*
 		return (
 			<div className="app">
 				<Header count={selectionCount} searchComponent={
@@ -115,19 +169,11 @@ var App = React.createClass({
 				</div>
 			</div>
 		);
+		*/
 	},
 
 	_onCurrentFilterClick: function() {
 		ResultActions.blur();
-	},
-
-	_onRemoveAllClick: function() {
-		SelectionActions.remove(this.state.results);
-	},
-
-
-	_onAddAllClick: function() {
-		SelectionActions.add(this.state.results);
 	}
 });
 

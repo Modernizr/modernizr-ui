@@ -1,0 +1,55 @@
+a {
+	color: inherit;
+}
+
+.c-base {
+	background: #ececec;
+	color: #444;
+	border-color: #ddd;
+}
+
+.c-reverse {
+	background: #32292c;
+	color: #f0f0f0;
+}
+
+.c-reverseBorder {
+	border-color: #444 !important;
+}
+
+.c-reverseContrast {
+	background: #1e1619;
+	color: #fff;
+}
+
+.c-contrast {
+	background: #fff;
+	color: #444;
+	border-color: #ddd;
+}
+
+.c-selectable {
+	background: rgba(#fff, 0.3);
+	color: rgba(#444, 0.35);
+}
+
+.c-filter {
+	background: #f8fafc;
+	color: #4a7fab;
+}
+
+.c-aux {
+	color: #aaa8a9;
+}
+
+.c-action {
+	color: #e279a2;
+	.Icon {
+		background: #e279a2;
+	}
+}
+
+.c-btn {
+	background: #db4886;
+	color: #fff;
+}

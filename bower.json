@@ -2,6 +2,11 @@
   "name": "modernizr-ui",
   "dependencies": {
     "fuse": "*",
-    "modularized-normalize-scss": "~3.0.0"
+    "modularized-normalize-scss": "~3.0.0",
+    "bourbon": "~3.1.8",
+    "suit-grid": "~1.1.0",
+    "suit-base": "~0.3.0",
+    "suit-utils-size": "master",
+    "suit-utils-text": "~0.3.0"
   }
 }
