@@ -1,6 +1,3 @@
-require("normalize.css/normalize.css");
-require("../css/main.scss");
-
 var React = require('react');
 var App = require('./components/App.jsx');
 

@@ -1,7 +1,7 @@
 {
   "name": "modernizr-ui",
   "dependencies": {
-    "normalize.css": "~3.0.0",
-    "fuse": "*"
+    "fuse": "*",
+    "modularized-normalize-scss": "~3.0.0"
   }
 }

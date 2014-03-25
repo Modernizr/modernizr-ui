@@ -8,8 +8,8 @@ module.exports = function(grunt) {
 		"webpack-dev-server": {
 			options: {
 				webpack: webpackConfig,
-				publicPath: "/" + webpackConfig.output.publicPath,
-				contentBase: './dist'
+				publicPath: "/dist",
+				contentBase: './'
 			},
 			start: {
 				keepAlive: true,
@@ -17,6 +17,38 @@ module.exports = function(grunt) {
 					devtool: "sourcemap",
 					debug: true
 				}
+			}
+		},
+		watch: {
+			sass: {
+				files: ['src/css/**/*.scss'],
+				tasks: ['sass:dev'],
+				options: {
+					spawn: false
+				}
+			}
+		},
+		sass: {
+			dist: {
+				options: {
+					outputStyle: 'compressed'
+				},
+				files: { 'dist/app.css': 'src/css/main.scss' }
+			},
+			dev: {
+				options: {
+					outputStyle: 'expanded',
+					sourceComments: 'map'
+				},
+				files: { 'dist/app.css': 'src/css/main.scss' }
+			}
+		},
+		exec: {
+			docpad: {
+				cmd: "docpad generate --env production"
+			},
+			remove_maps: {
+				cmd: "rm ./dist/app.css.map"
 			}
 		},
 		execute: {
@@ -38,5 +70,6 @@ module.exports = function(grunt) {
 	});
 
 	grunt.registerTask("default", ["webpack-dev-server:start"]);
+	grunt.registerTask("dist", ["exec:docpad", "exec:remove_maps", "sass:dist"])
 
 };

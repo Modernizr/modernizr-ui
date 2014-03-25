@@ -17,7 +17,10 @@
     "react-tools": "~0.10.0-rc1",
     "style-loader": "^0.6.3",
     "css-loader": "^0.6.8",
-    "grunt-gh-pages": "^0.9.1"
+    "grunt-gh-pages": "^0.9.1",
+    "grunt-sass": "~0.11.0",
+    "grunt-contrib-watch": "~0.6.1",
+    "grunt-exec": "~0.4.5"
   },
   "dependencies": {
     "envify": "^1.2.1",
