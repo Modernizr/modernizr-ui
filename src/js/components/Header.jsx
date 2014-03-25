@@ -3,9 +3,9 @@
  */
 
 var React = require('react');
-var logo = require("url?mimetype=image/svg+xml!../../img/logo.svg");
+var logo = require("url-loader?mimetype=image/svg+xml!../../img/logo.svg");
 
-var TypeFilter = require('./TypeFilter.jsx');
+var TypeFilter = require('jsx-loader!./TypeFilter.jsx');
 
 var Header = React.createClass({
 
@@ -15,7 +15,7 @@ var Header = React.createClass({
 					<div className="header__logo row__column">
 						<a href="#" className="logo-nav c_linkbox">
 							<span className="logo">
-								<img src="logo.svg" alt="Modernizr" />
+								<img src={logo} alt="Modernizr" />
 							</span>
 						</a>
 					</div>

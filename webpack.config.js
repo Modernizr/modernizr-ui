@@ -18,7 +18,7 @@ module.exports = {
 			{ test: /\.jsx$/, loader: "jsx-loader" },
 			{ test: /\.scss$/, loader: "style-loader!sass-loader?outputStyle=expanded" },
 			{ test: /\.css$/, loader: "style!css" },
-			{ test: /\.svg$/, loader: "url-loader?limit=100000&mimetype=image/svg+xml" },
+			// { test: /\.svg$/, loader: "url-loader?limit=100000&mimetype=image/svg+xml" },
 			{ test: /\.json$/, loader: 'json' }
 		]
 	},
