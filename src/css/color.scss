@@ -6,6 +6,9 @@ a {
 	background: #ececec;
 	color: #444;
 	border-color: #ddd;
+	* {
+		border-color: #ddd;
+	}
 }
 
 .c-reverse {
@@ -52,4 +55,8 @@ a {
 .c-btn {
 	background: #db4886;
 	color: #fff;
+}
+
+.c-menuBar {
+	background: #444;
 }

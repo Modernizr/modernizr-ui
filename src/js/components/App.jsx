@@ -17,6 +17,10 @@ var Detail = require('jsx-loader!./Detail.jsx');
 var Search = require('jsx-loader!./Search.jsx');
 var DetectsPage = require('jsx-loader!./DetectsPage.jsx');
 var ToggleAll = require('jsx-loader!./ToggleAll.jsx');
+var MainHeader = require('jsx-loader!./MainHeader.jsx');
+var MainNav = require('jsx-loader!./MainNav.jsx');
+var Search = require('jsx-loader!./Search.jsx');
+var FilterLabel = require('jsx-loader!./FilterLabel.jsx');
 
 var App = React.createClass({
 	mixins: [WithFlux],
@@ -31,7 +35,10 @@ var App = React.createClass({
 			currentType: ResultsStore.getCurrentType
 		},
 		'SelectionStore': {
-			selection: SelectionStore.getSelection
+			selection: SelectionStore.getSelection,
+			detectCount: SelectionStore.getDetectCount,
+			extraCount: SelectionStore.getExtraCount,
+			apiCount: SelectionStore.getAPICount
 		}
 	},
 
@@ -62,23 +69,29 @@ var App = React.createClass({
 		var allAdded = selectionCount === this.state.results.length;
 		return (
 			<div className="App c-base">
+				<div className="App-header c-contrast">
+					<MainHeader
+						nav={<MainNav items={['Detects', 'Guide', 'News', 'Resources']} />}
+						search={<Search searchValue={this.state.searchValue} />}
+						selectionCount={selectionCount}
+						detectCount={this.state.detectCount}
+						extraCount={this.state.extraCount}
+						apiCount={this.state.apiCount}
+					/>
+				</div>
 				<div className="App-main">
 					<div className="Container">
 						<DetectsPage
 							side={
 								<div className="BoxSet">
-									{this.currentTag &&
+									{this.state.currentTag &&
 									<div className="BoxSet-item">
-										<div className="Box Box--minor c-filter">
-											<div className="Bar">
-												<div className="Bar-item">
-													<span className="t-label">{this.state.currentTag.name}</span>
-												</div>
-												<div className="Bar-item u-textRight">
-													<div className="Icon" style={{background: '#000'}} />
-												</div>
-											</div>
-										</div>
+										<FilterLabel tag={this.state.currentTag} />
+									</div>
+									}
+									{this.state.currentType &&
+									<div className="BoxSet-item">
+										<FilterLabel tag={{type: this.state.currentType, name: this._getResultNameByType(this.state.currentType)}} />
 									</div>
 									}
 									<div className="BoxSet-item">

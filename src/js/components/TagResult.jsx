@@ -4,23 +4,27 @@
 
 var React = require('react');
 var ResultActions = require('../actions/ResultActions');
+var cx = require('react/lib/cx');
 
 var Result = React.createClass({
+	propTypes: {
+		result: React.PropTypes.object.isRequired,
+		current: React.PropTypes.bool
+	},
+
 	render: function() {
-		var classes = 'result';
-		if(this.props.current) classes += ' is-focused';
+		var root = React.DOM['div'];
 		return (
-			<div className={classes} onClick={this._onClick}>
-				<span className="result__name">
-					{this.props.tag && this.props.tag.name}
-				</span>
-			</div>
+			<root onClick={this._onClick} className={cx({Result: true, Box: true, 'is-selected': this.props.current, 'c-selectable': true, 'u-contain': true})}>
+				<div onClick={this._onToggleBtnClick} className="Icon Result-icon"></div>
+				<div className="t-heading u-textTruncate">{this.props.result.name}</div>
+			</root>
 		);
 	},
 
 	_onClick: function(event) {
 		event.preventDefault();
-		ResultActions.filterByTag(this.props.tag.cid);
+		ResultActions.filterByTag(this.props.result.cid);
 	}
 });
 

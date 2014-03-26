@@ -14,7 +14,7 @@
 	}
 }
 
-.MenuIcon.is-active {
+.MainNav.is-active {
 	.MenuIcon-bar {
 		&:first-child {
 			-webkit-transform: translate3d(0, 8px, 0);
@@ -24,3 +24,4 @@
 		}
 	}
 }
+

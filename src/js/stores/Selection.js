@@ -29,6 +29,21 @@ function removeAll(data) {
 var SelectionStore = merge(EventEmitter.prototype, {
 	getSelection: function() {
 		return _selection;
+	},
+	getDetectCount: function() {
+		return _.filter(_selection, function(obj) {
+			return obj.type === 'detect';
+		}).length;
+	},
+	getExtraCount: function() {
+		return _.filter(_selection, function(obj) {
+			return obj.type === 'extra';
+		}).length;
+	},
+	getAPICount: function() {
+		return _.filter(_selection, function(obj) {
+			return obj.type === 'api';
+		}).length;
 	}
 });
 

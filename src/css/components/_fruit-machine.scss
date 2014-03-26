@@ -18,7 +18,7 @@
 	}
 	&.is-moved {
 		.FruitMachine-transport {
-			@include transform(translate3d(0, -50%, 0));
+			@include transform(translate3d(0, -100%, 0));
 		}
 		.ChooseDetects-link {
 			// TODO ?????

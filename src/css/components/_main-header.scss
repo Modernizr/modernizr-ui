@@ -8,3 +8,8 @@
 		@include rem(width, 4);
 	}
 }
+
+.MainHeader-countList {
+	border-left-width: 1px;
+	@include rem(padding, 0, 3);
+}

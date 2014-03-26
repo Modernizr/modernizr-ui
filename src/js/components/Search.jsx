@@ -17,9 +17,7 @@ var Search = React.createClass({
 
 	render: function() {
 		return (
-			<div className="search">
-				<input ref="input" type="text" value={this.props.searchValue} autoFocus onChange={this._onInputChange} className="search__input t_search-label" placeholder="Type a browser feature" />
-			</div>
+			<input ref="input" type="text" value={this.props.searchValue} autoFocus onChange={this._onInputChange} className="SearchBar t-heading t-instruction" placeholder="Type a browser feature" />
 		);
 	},
 	_onInputChange: function(event) {
