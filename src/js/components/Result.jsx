@@ -54,7 +54,8 @@ var Result = React.createClass({
 		// );
 	},
 
-	_onClick: function() {
+	_onClick: function(event) {
+		event.preventDefault();
 		if(this.props.current) {
 			this._toggle();
 		} else {

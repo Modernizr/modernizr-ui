@@ -117,7 +117,7 @@ var App = React.createClass({
 							}
 							main={
 								this.state.results ?
-								<ResultList currentResult={currentResult} results={this.state.results} selection={this.state.selection} />
+								<ResultList currentResult={currentResult} results={this.state.results} selection={this.state.selection} currentIndex={this.state.currentIndex} />
 								: null
 							}
 							detail={

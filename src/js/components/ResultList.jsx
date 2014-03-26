@@ -27,7 +27,7 @@ var ResultList = React.createClass({
 	render: function() {
 		var root = React.DOM['div'];
 		return (
-			<root className="BoxSet">
+			<root className="BoxSet" style={{'position': 'absolute', 'top': '17rem', 'bottom': 0, 'width': '51.12%', 'overflowY': 'auto', 'marginLeft': '-4rem', 'marginRight': '-4rem', 'paddingLeft': '4rem', 'paddingRight': '4rem', 'marginTop': '-4rem', 'paddingTop': '4rem'}}>
 				{this.props.results.map(function(result, i) {
 					var current = this.props.currentResult && this.props.currentResult.cid === result.cid;
 					var ref = i === 0 ? 'firstResult' : null
@@ -102,20 +102,27 @@ var ResultList = React.createClass({
 
 	_updateScrollPosition: function() {
 		var scrollTop = $(this.getDOMNode()).scrollTop();
-		var resultHeight = $(this.refs.firstResult.getDOMNode()).height();
-
-		console.log(resultHeight);
+		var resultHeight = $(this.refs.firstResult.getDOMNode()).outerHeight();
 
 		var index = this.props.currentIndex || 0;
 		var offset = index * (resultHeight + 1) - 1;
 		var resultListHeight = $(this.getDOMNode()).height();
 		var bottomOffset = resultHeight / 2;
+
 		if((offset + resultHeight) > (scrollTop + resultListHeight)) {
 			scrollTop = (offset + resultHeight) - resultListHeight;
-			$(this.getDOMNode()).scrollTop(scrollTop + bottomOffset);
+			$(this.getDOMNode()).animate({
+				scrollTop: scrollTop + bottomOffset
+			}, {
+				duration: 200
+			});
 		}
 		else if(offset < scrollTop) {
-			$(this.getDOMNode()).scrollTop(offset);
+			$(this.getDOMNode()).animate({
+				scrollTop: offset
+			}, {
+				duration: 200
+			});
 		}
 	}
 });
