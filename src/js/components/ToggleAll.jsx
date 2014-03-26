@@ -4,8 +4,8 @@
 
 var React = require('react');
 var SelectionActions = require('../actions/SelectionActions');
-var addIcon = require('url?mimetype=image/svg+xml!../../img/add-pink.svg');
-var removeIcon = require('url?mimetype=image/svg+xml!../../img/remove-pink.svg');
+var addIcon = require('url?limit=0&mimetype=image/svg+xml!../../img/add-pink.svg');
+var removeIcon = require('url?limit=0&mimetype=image/svg+xml!../../img/remove-pink.svg');
 var cx = require('react/lib/cx');
 
 var ToggleAll = React.createClass({

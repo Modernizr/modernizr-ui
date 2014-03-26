@@ -4,7 +4,7 @@
 
 var React = require('react');
 var ResultActions = require('../actions/ResultActions');
-var closeIcon = require('url?mimetype=image/svg+xml!../../img/close.svg');
+var closeIcon = require('url?limit=0&mimetype=image/svg+xml!../../img/close.svg');
 
 var FilterLabel = React.createClass({
 

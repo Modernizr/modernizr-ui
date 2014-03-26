@@ -3,7 +3,7 @@
  */
 
 var React = require('react');
-var logo = require('url?mimetype=image/svg+xml!../../img/logo.svg');
+var logo = require('url?limit=0&mimetype=image/svg+xml!../../img/logo.svg');
 var ResultActions = require('../actions/ResultActions');
 var cx = require('react/lib/cx');
 

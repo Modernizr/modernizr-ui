@@ -1,14 +1,8 @@
-// @import "../../bower_components/modularized-normalize-scss/normalize";
-// @import "general";
-// @import "layout";
-// @import "color";
-// @import "typography";
-// @import "site"; // TODO - fix some conflicts here.
-@import "../../bower_components/normalize.css/normalize.css";
-@import "../../bower_components/suit-base/base.css";
-@import "../../bower_components/suit-grid/grid.css";
-@import "../../bower_components/suit-utils-size/size.css";
-@import "../../bower_components/suit-utils-text/text.css";
+@import "../../bower_components/modularized-normalize-scss/normalize";
+@import "suit/suit-base/base";
+@import "suit/suit-grid/grid";
+@import "suit/suit-utils-size/size";
+@import "suit/suit-utils-text/text";
 @import "../../bower_components/bourbon/app/assets/stylesheets/bourbon";
 @import "mixins/rem";
 @import "components/grid";
@@ -32,6 +26,7 @@
 @import "layout";
 
 $easeInOutExpo: cubic-bezier(1.000, 0.000, 0.000, 1.000);
+
 .OpenSide {
 	.OpenSide-item {
 		-webkit-transition: width 0.6s 0s $easeInOutExpo;

@@ -1,0 +1,27 @@
+{
+  "name": "suit-utils-size",
+  "author": "Nicolas Gallagher",
+  "main": [
+    "size.css",
+    "size-v1.css",
+    "size-v2.css",
+    "size-v3.css"
+  ],
+  "ignore": [
+    ".*",
+    "CHANGELOG.md",
+    "component.json",
+    "package.json",
+    "test.html"
+  ],
+  "homepage": "https://github.com/suitcss/utils-size",
+  "_release": "7bc38155ab",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "7bc38155ab49f4c3a724e5b565df16640e829ed3"
+  },
+  "_source": "git://github.com/suitcss/utils-size.git",
+  "_target": "master",
+  "_originalSource": "suit-utils-size"
+}

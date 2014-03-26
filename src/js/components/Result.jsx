@@ -6,8 +6,9 @@ var React = require('react');
 var SelectionActions = require('../actions/SelectionActions');
 var ResultActions = require('../actions/ResultActions');
 var cx = require('react/lib/cx');
-var addIcon = require('url?mimetype=image/svg+xml!../../img/add.svg');
-var acceptIcon = require('url?mimetype=image/svg+xml!../../img/accept.svg');
+
+var addIcon = require('url?limit=0&mimetype=image/svg+xml!../../img/add.svg');
+var acceptIcon = require('url?limit=0&mimetype=image/svg+xml!../../img/accept.svg');
 
 var Result = React.createClass({
 	propTypes: {
