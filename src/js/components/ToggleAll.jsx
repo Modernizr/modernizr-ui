@@ -4,7 +4,9 @@
 
 var React = require('react');
 var SelectionActions = require('../actions/SelectionActions');
-var addIcon = require('url?mimetype=image/svg+xml!../../img/add-alt.svg');
+var addIcon = require('url?mimetype=image/svg+xml!../../img/add-pink.svg');
+var removeIcon = require('url?mimetype=image/svg+xml!../../img/remove-pink.svg');
+var cx = require('react/lib/cx');
 
 var ToggleAll = React.createClass({
 
@@ -16,7 +18,14 @@ var ToggleAll = React.createClass({
 						<strong className="c-action t-body t-action">{this.props.readyToRemove ? 'Remove' : 'Add'} all</strong>
 					</div>
 					<div className="Action-icon">
-						<img className="Icon" src={addIcon} />
+						<div className={cx({'Ring': true, 'Ring--small': true, 'c-actionBorder': true, 'is-moved': this.props.readyToRemove})}>
+							<div className="Ring-inner u-contain">
+								<img src={addIcon} alt="Toggle" className="u-stretch" />
+							</div>
+							<div className="Ring-inner u-contain">
+								<img src={removeIcon} alt="Toggle" className="u-stretch" />
+							</div>
+						</div>
 					</div>
 				</a>
 			</div>

@@ -3,13 +3,15 @@ var EventEmitter = require('events').EventEmitter;
 var merge = require('react/lib/merge');
 var MetadataStore = require('./Metadata');
 var Fuse = require('../../../bower_components/fuse/fuse');
+var SelectionStore = require('./Selection');
 
 var _fuse,
 	_value = null,
 	_results = [],
 	_currentIndex = null,
 	_currentTag = null,
-	_currentType = null;
+	_currentType = null,
+	_selectionOnly = false;
 
 MetadataStore.on('change', function() {
 	prepare();
@@ -73,6 +75,7 @@ function blur() {
 	_currentTag = null;
 	_currentType = null;
 	_results = MetadataStore.getAll();
+	_selectionOnly = false;
 }
 
 function move(delta) {
@@ -91,6 +94,7 @@ function filterByTag(cid) {
 	var data = MetadataStore.getAll();
 	var tags = MetadataStore.getTags();
 	_currentType = null;
+	_selectionOnly = false;
 
 	_currentTag = _.find(tags, function(tag) {
 		return tag.cid === cid;
@@ -114,11 +118,25 @@ function filterByTag(cid) {
 function filterByType(type) {
 	var data = MetadataStore.getAll();
 	_currentTag = null;
+	_selectionOnly = false;
 	_currentType = type;
 
 	_results = data.filter(function(obj) {
 		return obj.type === type;
 	});
+}
+
+function showSelectionOnly() {
+	if(!_selectionOnly) {
+		_selectionOnly = true;
+		_currentType = null;
+		_currentTag = null;
+		_results = _.map(SelectionStore.getSelection(), function(obj) {
+			return obj
+		});
+	} else {
+		blur();
+	}
 }
 
 function _getFuseValue(value) {
@@ -146,6 +164,9 @@ var ResultsStore = merge(EventEmitter.prototype, {
 	},
 	getCurrentType: function() {
 		return _currentType;
+	},
+	getSelectionOnly: function() {
+		return _selectionOnly;
 	}
 });
 
@@ -174,6 +195,9 @@ AppDispatcher.register(function(payload) {
 		break;
 		case 'RESULT_FILTER_BY_TYPE':
 			filterByType(action.type);
+		break;
+		case 'RESULT_SHOW_SELECTION_ONLY':
+			showSelectionOnly();
 		break;
 		default:
 			return true;

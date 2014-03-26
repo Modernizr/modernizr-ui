@@ -4,6 +4,7 @@
 
 var React = require('react');
 var ResultActions = require('../actions/ResultActions');
+var closeIcon = require('url?mimetype=image/svg+xml!../../img/close.svg');
 
 var FilterLabel = React.createClass({
 
@@ -15,7 +16,11 @@ var FilterLabel = React.createClass({
 						<span className="t-label">{this.props.tag.name}</span>
 					</div>
 					<div className="Bar-item u-textRight">
-						<div className="Icon" onClick={this._onClick} style={{background: '#000'}} />
+						<div className="Ring Ring--small Ring--close" onClick={this._onClick}>
+							<div className="Ring-inner u-contain">
+								<img src={closeIcon}  alt="Close" className="u-stretch" />
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>

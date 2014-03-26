@@ -19,12 +19,49 @@ $easeInOutExpo: cubic-bezier(1.000, 0.000, 0.000, 1.000);
 .Ring-inner {
 	height: 100%;
 	line-height: 1.6em;
-	// -webkit-transform: translate3d(0,0,0);
-	// -webkit-transition: -webkit-transform 0.6s $easeInOutExpo;
+	-webkit-transform: translate3d(0,0,0);
+	-webkit-transition: -webkit-transform 0.4s $easeInOutExpo;
 }
 
 .Ring.is-moved {
 	.Ring-inner {
-		// -webkit-transform: translate3d(0,-1.6em,0);
+		-webkit-transform: translate3d(0,-1.6em,0);
+	}
+}
+
+.Ring--small {
+	font-size: 1.4em;
+	cursor: pointer;
+	border-color: rgba(#db4886, 0.3) !important;
+	img {
+		width: 1em;
+		height: 1em;
+	}
+	&:hover {
+		border-color: rgba(#db4886, 1) !important;
+	}
+	.Ring-inner {
+
+	}
+	&.is-moved .Ring-inner {
+		-webkit-transform: translate3d(0,-1.7em,0);
+	}
+}
+
+.Ring--close {
+	border-color: rgba(#444, 0.3) !important;
+	&:hover {
+		border-color: #444 !important;
+	}
+}
+
+.Ring--selection {
+	-webkit-transition: border-color 0.4s ease;
+	    cursor: pointer;
+	&:hover {
+		border-color: rgba(#fff, 0.5) !important;
+	}
+	&.is-active {
+		border-color: rgba(#fff, 1) !important;
 	}
 }

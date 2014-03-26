@@ -10,7 +10,7 @@ var Search = React.createClass({
 	componentWillReceiveProps: function(nextProps) {
 		// Ensure the search box is focused whenever the search value is removed,
 		// ready for searching again.
-		if(nextProps.searchValue === '') {
+		if(nextProps.searchValue === '' && nextProps.searchValue !== this.props.searchValue) {
 			this.refs.input.getDOMNode().focus();
 		}
 	},

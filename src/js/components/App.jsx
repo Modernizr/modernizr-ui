@@ -32,7 +32,8 @@ var App = React.createClass({
 			isFiltered: ResultsStore.isFiltered,
 			searchValue: ResultsStore.getSearchValue,
 			currentTag: ResultsStore.getCurrentTag,
-			currentType: ResultsStore.getCurrentType
+			currentType: ResultsStore.getCurrentType,
+			selectionOnly: ResultsStore.getSelectionOnly
 		},
 		'SelectionStore': {
 			selection: SelectionStore.getSelection,
@@ -77,6 +78,7 @@ var App = React.createClass({
 						detectCount={this.state.detectCount}
 						extraCount={this.state.extraCount}
 						apiCount={this.state.apiCount}
+						selectionOnly={this.state.selectionOnly}
 					/>
 				</div>
 				<div className="App-main">
@@ -84,6 +86,11 @@ var App = React.createClass({
 						<DetectsPage
 							side={
 								<div className="BoxSet">
+									{this.state.selectionOnly &&
+									<div className="BoxSet-item">
+										<FilterLabel tag={{name: 'Your selection'}} />
+									</div>
+									}
 									{this.state.currentTag &&
 									<div className="BoxSet-item">
 										<FilterLabel tag={this.state.currentTag} />

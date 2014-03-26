@@ -39,6 +39,11 @@ var ResultActions = {
 			actionType: 'RESULT_FILTER_BY_TYPE',
 			type: type
 		});
+	},
+	showSelectionOnly: function() {
+		AppDispatcher.handleViewAction({
+			actionType: 'RESULT_SHOW_SELECTION_ONLY'
+		});
 	}
 };
 

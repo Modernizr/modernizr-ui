@@ -32,12 +32,16 @@ var ResultList = React.createClass({
 					var current = this.props.currentResult && this.props.currentResult.cid === result.cid;
 					var ref = i === 0 ? 'firstResult' : null
 					if(result.type === 'tag') {
-						return <TagResult ref={ref} result={result} current={current} />
+						return (
+							<div key={result.cid} className="BoxSet-item">
+								<TagResult ref={ref} result={result} current={current} />
+							</div>
+						);
 					}
 					else {
 						var added = this.props.selection && this.props.selection[result.cid];
 						return (
-							<div className="BoxSet-item">
+							<div key={result.cid} className="BoxSet-item">
 								<Result ref={ref} result={result} current={current} added={added} />
 							</div>
 						);

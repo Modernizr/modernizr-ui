@@ -18,6 +18,9 @@ function addAll(data) {
 
 function remove(cid) {
 	delete _selection[cid];
+	if(_.size(_selection) === 0) {
+		
+	}
 }
 
 function removeAll(data) {

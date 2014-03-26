@@ -76,8 +76,37 @@
 
 .Ring-inner {
   height: 100%;
-  line-height: 1.6em; }
+  line-height: 1.6em;
+  -webkit-transform: translate3d(0, 0, 0);
+  -webkit-transition: -webkit-transform 0.4s cubic-bezier(1, 0, 0, 1); }
 
+.Ring.is-moved .Ring-inner {
+  -webkit-transform: translate3d(0, -1.6em, 0); }
+
+.Ring--small {
+  font-size: 1.4em;
+  cursor: pointer;
+  border-color: rgba(219, 72, 134, 0.3) !important; }
+  .Ring--small img {
+    width: 1em;
+    height: 1em; }
+  .Ring--small:hover {
+    border-color: #db4886 !important; }
+  .Ring--small.is-moved .Ring-inner {
+    -webkit-transform: translate3d(0, -1.7em, 0); }
+
+.Ring--close {
+  border-color: rgba(68, 68, 68, 0.3) !important; }
+  .Ring--close:hover {
+    border-color: #444 !important; }
+
+.Ring--selection {
+  -webkit-transition: border-color 0.4s ease;
+  cursor: pointer; }
+  .Ring--selection:hover {
+    border-color: rgba(255, 255, 255, 0.5) !important; }
+  .Ring--selection.is-active {
+    border-color: white !important; }
 
 .SearchBar {
   background: transparent;
@@ -375,7 +404,7 @@ a {
   background: #444; }
 
 .c-added {
-  background: green;
+  background: #85d900;
   color: #fff; }
 
 html {
@@ -432,7 +461,7 @@ a {
   box-sizing: border-box;
   border: 0px solid; }
 
-html, body {
+html, body, #app-container, .App {
   height: 100%; }
 
 .OpenSide .OpenSide-item {
@@ -482,31 +511,31 @@ html, body {
 
 .Result-icon {
   position: absolute;
-  right: 3em;
+  right: 2em;
   top: 0;
   bottom: 0;
   width: 3em;
   height: 3em;
   line-height: 2.6em;
   margin: auto;
-  -webkit-transition: background 0.2s ease; }
+  -webkit-transition: background 0.4s ease, border-color 0.4s ease; }
   .Result.is-selected .Result-icon, .Result-icon:hover {
     border-color: #444; }
     .Result.is-selected .Result-icon .Ring-inner > img, .Result-icon:hover .Ring-inner > img {
       opacity: 1; }
   .Result.is-added .Result-icon {
-    border-color: green; }
+    border-color: #85d900;
+    -webkit-transition-delay: 0.2s, 0.2s; }
+    .Result.is-added .Result-icon .Ring-inner > img {
+      opacity: 1; }
   .Result-icon .Ring-inner {
-    line-height: 2.6em;
-    position: relative;
-    top: 0;
-    -webkit-transition: top 0.2s cubic-bezier(1, 0, 0, 1); }
+    line-height: 2.6em; }
     .Result-icon .Ring-inner img {
       width: 1.5em;
       height: 1.5em;
       opacity: 0.5; }
   .Result-icon.is-moved .Ring-inner {
-    top: -2.6em; }
+    -webkit-transform: translate3d(0, -2.6em, 0); }
 
 .CombinationMark {
   text-align: center; }

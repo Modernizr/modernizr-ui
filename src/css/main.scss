@@ -98,14 +98,14 @@ $easeInOutExpo: cubic-bezier(1.000, 0.000, 0.000, 1.000);
 
 .Result-icon {
 	position: absolute;
-	right: 3em;
+	right: 2em;
 	top: 0;
 	bottom: 0;
 	width: 3em;
 	height: 3em;
 	line-height: (3em - 0.4em);
 	margin: auto;
-	-webkit-transition: background 0.2s ease;
+	-webkit-transition: background 0.4s  ease, border-color 0.4s  ease;
 	.Result.is-selected &,
 	&:hover {
 		border-color: #444;
@@ -114,13 +114,14 @@ $easeInOutExpo: cubic-bezier(1.000, 0.000, 0.000, 1.000);
 		}
 	}
 	.Result.is-added & {
-		border-color: green;
+		border-color: #85d900;
+		-webkit-transition-delay: 0.2s, 0.2s;
+		.Ring-inner>img {
+			opacity: 1;
+		}
 	}
 	.Ring-inner {
 		line-height: (3em - 0.4em);
-		position: relative;
-		top: 0;
-		-webkit-transition: top 0.2s $easeInOutExpo;
 		img {
 			width: 1.5em;
 			height: 1.5em;
@@ -129,7 +130,7 @@ $easeInOutExpo: cubic-bezier(1.000, 0.000, 0.000, 1.000);
 	}
 	&.is-moved {
 		.Ring-inner {
-			top: 0 - (3em - 0.4em);
+			-webkit-transform: translate3d(0, 0 - (3em - 0.4em),0);
 		}
 	}
 }
