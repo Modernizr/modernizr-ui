@@ -190,6 +190,10 @@ $easeInOutExpo: cubic-bezier(1.000, 0.000, 0.000, 1.000);
 	}
 }
 
+.MainNav-icon, .Btn {
+	cursor: pointer;
+}
+
 .ResultsList {
 	-webkit-transition: all 0.2s ease;
 	position: absolute;
