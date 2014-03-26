@@ -165,7 +165,11 @@ $easeInOutExpo: cubic-bezier(1.000, 0.000, 0.000, 1.000);
 }
 
 .HomePage-cta {
-	background-color: #db4886; color: #fff; padding: 0.8em 1em
+	background-color: #db4886; color: #fff; padding: 0.8em 1em;
+	-webkit-transition: opacity 0.3s ease;
+	&:hover {
+		opacity: 0.5;
+	}
 }
 
 .HomePage-secondaryCta {

@@ -1196,7 +1196,10 @@ html, body, #app-container, .App {
 .HomePage-cta {
   background-color: #db4886;
   color: #fff;
-  padding: 0.8em 1em; }
+  padding: 0.8em 1em;
+  -webkit-transition: opacity 0.3s ease; }
+  .HomePage-cta:hover {
+    opacity: 0.5; }
 
 .HomePage-secondaryCta {
   margin-left: 1em;

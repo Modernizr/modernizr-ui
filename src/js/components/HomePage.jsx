@@ -107,7 +107,7 @@ var HomePage = React.createClass({
 	},
 
 	_onClick: function() {
-		this.props.onCTAClick();
+		$('.js-main-nav__start').click();
 	}
 
 });

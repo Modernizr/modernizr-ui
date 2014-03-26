@@ -80,7 +80,7 @@ var App = React.createClass({
 			<div className="App">
 				<div className="App-header c-contrast">
 					<MainHeader
-						nav={<MainNav page={this.state.page} items={['Detects', 'Guide', 'News', 'Resources']} />}
+						nav={<MainNav page={this.state.page} onStartClick={this._onCTAClick} items={['Detects', 'Guide', 'News', 'Resources']} />}
 						search={<Search searchValue={this.state.searchValue} />}
 						selectionCount={selectionCount}
 						detectCount={this.state.detectCount}
@@ -218,9 +218,13 @@ var App = React.createClass({
 	// },
 
 	_onCTAClick: function() {
-		this.setState({
-			page: 'detects'
-		});
+		var _this = this;
+		setTimeout(function(){ 
+			_this.setState({
+				page: 'detects'
+			});
+		}, 600);
+		
 	}
 });
 
