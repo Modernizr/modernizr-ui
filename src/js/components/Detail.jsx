@@ -15,6 +15,7 @@ var Detail = React.createClass({
 	},
 	render: function() {
 		var root = React.DOM['div'];
+		var authors = this.props.detect.authors && this.props.detect.authors.join(', ');
 		return (
 			<root className="BoxSet">
 				<div className="BoxSet-item">
@@ -22,11 +23,24 @@ var Detail = React.createClass({
 						<div className="t-heading u-textTruncate">{this.props.detect.name}</div>
 					</div>
 				</div>
+				{authors &&
 				<div className="BoxSet-item">
 					<div className="Box c-contrast">
-						<div className="t-label">Usage</div>
+						<div className="t-label">Authors</div>
+						<div className="t-content">
+							<p>{authors}</p>
+						</div>
 					</div>
 				</div>
+				}
+				{this.props.detect.doc &&
+				<div className="BoxSet-item">
+					<div className="Box c-contrast">
+						<div className="t-label">Description</div>
+						<div className="t-content" dangerouslySetInnerHTML={{__html: this.props.detect.doc}} />
+					</div>
+				</div>
+				}
 			</root>
 		);
 

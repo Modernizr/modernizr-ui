@@ -2,14 +2,29 @@
  * A thick-bordered ring that's use for counts or icons
  */
 
+$easeInOutExpo: cubic-bezier(1.000, 0.000, 0.000, 1.000);
+
 .Ring {
-	border-width: 0.125em; // Ensure the border width scales with the size of the component
+	border-width: 0.2em;
 	border-radius: 999px;
 	display: inline-block;
-	width: 1.5em;
-	height: 1.5em;
+	width: 2em;
+	height: 2em;
 	font-size: 1em;
 	overflow: hidden;
-	line-height: 1.5em;
+	line-height: 1.6em;
 	text-align: center;
+}
+
+.Ring-inner {
+	height: 100%;
+	line-height: 1.6em;
+	// -webkit-transform: translate3d(0,0,0);
+	// -webkit-transition: -webkit-transform 0.6s $easeInOutExpo;
+}
+
+.Ring.is-moved {
+	.Ring-inner {
+		// -webkit-transform: translate3d(0,-1.6em,0);
+	}
 }

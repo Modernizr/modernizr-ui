@@ -95,7 +95,7 @@ var App = React.createClass({
 									</div>
 									}
 									<div className="BoxSet-item">
-										<div className="Box Box--minor c-contrast">
+										<div className="Box Box--minor c-contrast u-gutterLipLeft u-gutterPadLeft">
 											<div className="Bar">
 												<div className="Bar-item">
 													<strong className="t-body c-aux">{this.state.results.length} results</strong>

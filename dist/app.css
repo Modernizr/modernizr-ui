@@ -64,15 +64,20 @@
  * A thick-bordered ring that's use for counts or icons
  */
 .Ring {
-  border-width: 0.125em;
+  border-width: 0.2em;
   border-radius: 999px;
   display: inline-block;
-  width: 1.5em;
-  height: 1.5em;
+  width: 2em;
+  height: 2em;
   font-size: 1em;
   overflow: hidden;
-  line-height: 1.5em;
+  line-height: 1.6em;
   text-align: center; }
+
+.Ring-inner {
+  height: 100%;
+  line-height: 1.6em; }
+
 
 .SearchBar {
   background: transparent;
@@ -304,6 +309,22 @@ input.SearchBar {
   white-space: nowrap;
   overflow: hidden; }
 
+.u-gutterLipLeft {
+  margin-left: -40px;
+  margin-left: -4rem; }
+
+.u-gutterLipRight {
+  margin-right: -40px;
+  margin-right: -4rem; }
+
+.u-gutterPadLeft {
+  padding-left: 40px;
+  padding-left: 4rem; }
+
+.u-gutterPadRight {
+  padding-right: 40px;
+  padding-right: 4rem; }
+
 a {
   color: inherit; }
 
@@ -353,6 +374,10 @@ a {
 .c-menuBar {
   background: #444; }
 
+.c-added {
+  background: green;
+  color: #fff; }
+
 html {
   font-size: 62.5%;
   -webkit-font-smoothing: antialiased; }
@@ -377,7 +402,7 @@ a {
   font-size: 18px;
   font-size: 1.8rem; }
 
-.t-body {
+.t-body, .t-content p {
   font-size: 16px;
   font-size: 1.6rem; }
 
@@ -395,6 +420,13 @@ a {
 .t-instruction {
   font-style: italic;
   letter-spacing: 0.05em; }
+
+.t-content {
+  overflow: hidden; }
+  .t-content p {
+    color: #666;
+    padding-top: 1em;
+    line-height: 1.5; }
 
 * {
   box-sizing: border-box;
@@ -434,20 +466,47 @@ html, body {
   padding: 0px 60px;
   padding: 0rem 6rem; }
 
-.Result .Result-icon {
-  width: 3rem;
-  height: 3rem;
-  background: #000;
+.Result {
+  -webkit-transition: outline-width 0.2s ease, box-shadow 0.2s ease;
+  outline: 0 solid #fff;
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  color: #999; }
+  .Result:hover {
+    color: #444; }
+  .Result.is-selected {
+    position: relative;
+    z-index: 1;
+    outline-width: 10px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.2); }
+
+.Result-icon {
   position: absolute;
   right: 3em;
   top: 0;
   bottom: 0;
-  margin: auto; }
-.Result.is-selected {
-  position: relative;
-  z-index: 1;
-  outline: 10px solid #fff;
-  box-shadow: 0 0 30px rgba(0, 0, 0, 0.2); }
+  width: 3em;
+  height: 3em;
+  line-height: 2.6em;
+  margin: auto;
+  -webkit-transition: background 0.2s ease; }
+  .Result.is-selected .Result-icon, .Result-icon:hover {
+    border-color: #444; }
+    .Result.is-selected .Result-icon .Ring-inner > img, .Result-icon:hover .Ring-inner > img {
+      opacity: 1; }
+  .Result.is-added .Result-icon {
+    border-color: green; }
+  .Result-icon .Ring-inner {
+    line-height: 2.6em;
+    position: relative;
+    top: 0;
+    -webkit-transition: top 0.2s cubic-bezier(1, 0, 0, 1); }
+    .Result-icon .Ring-inner img {
+      width: 1.5em;
+      height: 1.5em;
+      opacity: 0.5; }
+  .Result-icon.is-moved .Ring-inner {
+    top: -2.6em; }
 
 .CombinationMark {
   text-align: center; }
@@ -458,13 +517,5 @@ html, body {
   .CombinationMark .CombinationMark-text {
     color: #db4886;
     padding-left: 0.5em; }
-
-.u-gutterLipLeft {
-  margin-left: -40px;
-  margin-left: -4rem; }
-
-.u-gutterLipRight {
-  margin-right: -40px;
-  margin-right: -4rem; }
 
 /*# sourceMappingURL=app.css.map */

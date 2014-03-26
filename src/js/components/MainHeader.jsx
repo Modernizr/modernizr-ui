@@ -90,8 +90,13 @@ var MainHeader = React.createClass({
 												<div className={cx({'Grid-cell': true, 'u-size1of1': !this.props.selectionCount, 'u-size1of2': this.props.selectionCount, 'OpenSide-item': true, 'u-textCenter': true, 'u-fullHeight': true})}>
 													<div className="u-vcContainer">
 														<div className="u-vc">
-															<div className="Ring t-heading">
-																<span>{this.props.selectionCount}</span>
+															<div className="Ring t-heading c-reverseBorder">
+																<div className="Ring-inner">
+																	<strong className="t-digits">{this.props.selectionCount}</strong>
+																</div>
+																<div className="Ring-inner">
+																	<strong className="t-digits">{this.props.selectionCount}</strong>
+																</div>
 															</div>
 														</div>
 													</div>

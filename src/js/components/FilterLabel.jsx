@@ -9,7 +9,7 @@ var FilterLabel = React.createClass({
 
 	render: function() {
 		return (
-			<div className="Box Box--minor c-filter">
+			<div className="Box Box--minor c-filter u-gutterLipLeft u-gutterPadLeft">
 				<div className="Bar">
 					<div className="Bar-item">
 						<span className="t-label">{this.props.tag.name}</span>

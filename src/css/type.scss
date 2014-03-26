@@ -54,3 +54,13 @@ a {
 	font-style: italic;
 	letter-spacing: 0.05em;
 }
+
+.t-content {
+	overflow: hidden;
+	p {
+		@extend .t-body;
+ 		color: #666;
+		padding-top: 1em;
+		line-height: 1.5;
+	}
+}

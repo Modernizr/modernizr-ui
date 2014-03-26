@@ -13,3 +13,19 @@
 	white-space: nowrap;
 	overflow: hidden;
 }
+
+.u-gutterLipLeft {
+	@include rem(margin-left, -4);
+}
+
+.u-gutterLipRight {
+	@include rem(margin-right, -4);
+}
+
+.u-gutterPadLeft {
+	@include rem(padding-left, 4);
+}
+
+.u-gutterPadRight {
+	@include rem(padding-right, 4);
+}
