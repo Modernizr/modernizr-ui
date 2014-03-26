@@ -15,6 +15,7 @@ var MainNav = React.createClass({
 
 	componentDidMount: function() {
 		this.navSlider = new NavSlider();
+		this._checkSlider();
 	},
 
 	render: function() {
@@ -52,6 +53,14 @@ var MainNav = React.createClass({
 		this.setState({
 			active: !this.state.active
 		});
+	},
+
+	_checkSlider: function() {
+		if(this.props.page === 'index') {
+			this.navSlider.toggle({
+				first: true
+			});
+		}
 	}
 });
 

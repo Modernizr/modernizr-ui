@@ -27,7 +27,7 @@ var ResultList = React.createClass({
 	render: function() {
 		var root = React.DOM['div'];
 		return (
-			<root className="BoxSet" style={{'position': 'absolute', 'top': '17rem', 'bottom': 0, 'width': '51.12%', 'overflowY': 'auto', 'marginLeft': '-4rem', 'marginRight': '-4rem', 'paddingLeft': '4rem', 'paddingRight': '4rem', 'marginTop': '-4rem', 'paddingTop': '4rem'}}>
+			<root className="ResultList BoxSet">
 				{this.props.results.map(function(result, i) {
 					var current = this.props.currentResult && this.props.currentResult.cid === result.cid;
 					var ref = i === 0 ? 'firstResult' : null

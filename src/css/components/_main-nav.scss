@@ -74,3 +74,10 @@
 	// }
 }
 
+.MainNav {
+	&.is-animation-disabled {
+		&, * {
+			-webkit-transition: none;
+		}
+	}
+}

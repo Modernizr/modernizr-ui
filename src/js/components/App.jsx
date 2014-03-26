@@ -3,6 +3,7 @@
  */
 
 var React = require('react/react');
+var ReactCSSTransitionGroup = require('react/lib/ReactCSSTransitionGroup');
 var MetadataActions = require('../actions/MetadataActions');
 var SelectionActions = require('../actions/SelectionActions');
 var MetadataStore = require('../stores/Metadata');
@@ -21,6 +22,7 @@ var MainHeader = require('jsx-loader!./MainHeader.jsx');
 var MainNav = require('jsx-loader!./MainNav.jsx');
 var Search = require('jsx-loader!./Search.jsx');
 var FilterLabel = require('jsx-loader!./FilterLabel.jsx');
+var HomePage = require('jsx-loader!./HomePage.jsx');
 
 var App = React.createClass({
 	mixins: [WithFlux],
@@ -41,6 +43,12 @@ var App = React.createClass({
 			extraCount: SelectionStore.getExtraCount,
 			apiCount: SelectionStore.getAPICount
 		}
+	},
+
+	getInitialState: function() {
+		return {
+			page: 'index'
+		};
 	},
 
 	componentWillMount: function() {
@@ -69,10 +77,10 @@ var App = React.createClass({
 		var currentResult = this.state.results && !isNaN(this.state.currentIndex) && this.state.results[this.state.currentIndex];
 		var allAdded = selectionCount === this.state.results.length;
 		return (
-			<div className="App c-base">
+			<div className="App">
 				<div className="App-header c-contrast">
 					<MainHeader
-						nav={<MainNav items={['Detects', 'Guide', 'News', 'Resources']} />}
+						nav={<MainNav page={this.state.page} items={['Detects', 'Guide', 'News', 'Resources']} />}
 						search={<Search searchValue={this.state.searchValue} />}
 						selectionCount={selectionCount}
 						detectCount={this.state.detectCount}
@@ -83,49 +91,62 @@ var App = React.createClass({
 				</div>
 				<div className="App-main">
 					<div className="Container">
-						<DetectsPage
-							side={
-								<div className="BoxSet">
-									{this.state.selectionOnly &&
-									<div className="BoxSet-item">
-										<FilterLabel tag={{name: 'Your selection'}} />
-									</div>
-									}
-									{this.state.currentTag &&
-									<div className="BoxSet-item">
-										<FilterLabel tag={this.state.currentTag} />
-									</div>
-									}
-									{this.state.currentType &&
-									<div className="BoxSet-item">
-										<FilterLabel tag={{type: this.state.currentType, name: this._getResultNameByType(this.state.currentType)}} />
-									</div>
-									}
-									<div className="BoxSet-item">
-										<div className="Box Box--minor c-contrast u-gutterLipLeft u-gutterPadLeft">
-											<div className="Bar">
-												<div className="Bar-item">
-													<strong className="t-body c-aux">{this.state.results.length} results</strong>
-												</div>
-												<div className="Bar-item u-textRight">
-													<ToggleAll results={this.state.results} readyToRemove={selectionCount === this.state.results.length} />
+
+						<ReactCSSTransitionGroup transitionName="pageswitch" component={React.DOM.div}>
+
+							{this.state.page === 'detects' &&
+							<DetectsPage
+								key="detects"
+								side={
+									<div className="BoxSet">
+										{this.state.selectionOnly &&
+										<div className="BoxSet-item">
+											<FilterLabel tag={{name: 'Your selection'}} />
+										</div>
+										}
+										{this.state.currentTag &&
+										<div className="BoxSet-item">
+											<FilterLabel tag={this.state.currentTag} />
+										</div>
+										}
+										{this.state.currentType &&
+										<div className="BoxSet-item">
+											<FilterLabel tag={{type: this.state.currentType, name: this._getResultNameByType(this.state.currentType)}} />
+										</div>
+										}
+										<div className="BoxSet-item">
+											<div className="Box Box--minor c-contrast u-gutterLipLeft u-gutterPadLeft">
+												<div className="Bar">
+													<div className="Bar-item">
+														<strong className="t-body c-aux">{this.state.results.length} results</strong>
+													</div>
+													<div className="Bar-item u-textRight">
+														<ToggleAll results={this.state.results} readyToRemove={selectionCount === this.state.results.length} />
+													</div>
 												</div>
 											</div>
 										</div>
 									</div>
-								</div>
+								}
+								main={
+									this.state.results ?
+									<ResultList currentResult={currentResult} results={this.state.results} selection={this.state.selection} currentIndex={this.state.currentIndex} />
+									: null
+								}
+								detail={
+									currentResult ?
+									<Detail detect={currentResult} />
+									: null
+								}
+							/>
 							}
-							main={
-								this.state.results ?
-								<ResultList currentResult={currentResult} results={this.state.results} selection={this.state.selection} currentIndex={this.state.currentIndex} />
-								: null
+
+							{this.state.page === 'index' &&
+								<HomePage key="home" onCTAClick={this._onCTAClick} />
 							}
-							detail={
-								currentResult ?
-								<Detail detect={currentResult} />
-								: null
-							}
-						/>
+
+						</ReactCSSTransitionGroup>
+
 					</div>
 				</div>
 			</div>
@@ -192,8 +213,14 @@ var App = React.createClass({
 		*/
 	},
 
-	_onCurrentFilterClick: function() {
-		ResultActions.blur();
+	// _onCurrentFilterClick: function() {
+	// 	ResultActions.blur();
+	// },
+
+	_onCTAClick: function() {
+		this.setState({
+			page: 'detects'
+		});
 	}
 });
 

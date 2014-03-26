@@ -1,4 +1,10 @@
 var React = require('react');
 var App = require('./components/App.jsx');
 
-React.renderComponent(App(), document.getElementById('app-container'));
+var app = App();
+
+React.renderComponent(app, document.getElementById('app-container'));
+
+// app.setProps({
+	// page: 'detects/'
+// });

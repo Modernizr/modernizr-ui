@@ -16,7 +16,7 @@ var DetectsPage = React.createClass({
 							<div className="Grid-cell u-size4of14">
 								{this.props.side}
 							</div>
-							<div className="Grid-cell u-size10of14">
+							<div className="Grid-cell u-size10of14" style={{minHeight: 1}}>
 								{this.props.main}
 							</div>
 						</div>

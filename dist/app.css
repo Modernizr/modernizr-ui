@@ -886,6 +886,9 @@ input.SearchBar {
   .MainNav.is-active .NavList .NavList-item:nth-child(4) > .NavList-link {
     -webkit-transition-delay: 1.1s, 0; }
 
+.MainNav.is-animation-disabled, .MainNav.is-animation-disabled * {
+  -webkit-transition: none; }
+
 .MenuIcon {
   width: 40px;
   height: 18px; }
@@ -1005,7 +1008,7 @@ a {
   border-color: #ddd; }
 
 .c-selectable {
-  background: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.6);
   color: rgba(68, 68, 68, 0.35); }
 
 .c-filter {
@@ -1170,5 +1173,76 @@ html, body, #app-container, .App {
   .CombinationMark .CombinationMark-text {
     color: #db4886;
     padding-left: 0.5em; }
+
+.HomePage li + li {
+  padding-top: 1.6rem; }
+
+.HomePage-hero {
+  padding: 50px 0px;
+  padding: 5rem 0rem; }
+
+.HomePage-heading {
+  font-size: 10rem;
+  letter-spacing: -0.03em;
+  line-height: 1.1; }
+
+.HomePage-content {
+  max-width: 70rem;
+  padding-top: 2em; }
+
+.HomePage-subHeading {
+  line-height: 1.5; }
+
+.HomePage-cta {
+  background-color: #db4886;
+  color: #fff;
+  padding: 0.8em 1em; }
+
+.HomePage-secondaryCta {
+  margin-left: 1em;
+  padding: 0.8em 1em; }
+  .HomePage-secondaryCta > span {
+    border-bottom: 1px solid #ccc; }
+
+.pageswitch-enter, .pageswitch-leave {
+  position: absolute;
+  top: 17rem;
+  right: 4rem;
+  bottom: 0;
+  left: 4rem; }
+  .pageswitch-enter .ResultList, .pageswitch-leave .ResultList {
+    top: 0 !important; }
+
+.ResultsList {
+  -webkit-transition: all 0.2s ease;
+  position: absolute;
+  top: 17rem;
+  bottom: 0;
+  width: 51.12%;
+  overflow-y: auto;
+  margin-left: -4rem;
+  margin-right: -4rem;
+  padding-left: 4rem;
+  padding-right: 4rem;
+  margin-top: -4rem;
+  padding-top: 4rem; }
+
+.pageswitch-enter {
+  opacity: 0.01;
+  -webkit-transform: translate3d(0, 100px, 0);
+  transition: opacity 0.6s 0.2s cubic-bezier(1, 0, 0, 1), -webkit-transform 0.6s 0.2s cubic-bezier(1, 0, 0, 1); }
+
+.pageswitch-leave {
+  opacity: 1;
+  -webkit-transform: translate3d(0, 0, 0);
+  transition: opacity 0.6s cubic-bezier(1, 0, 0, 1), -webkit-transform 0.6s cubic-bezier(1, 0, 0, 1); }
+
+.pageswitch-enter.pageswitch-enter-active {
+  opacity: 1;
+  -webkit-transform: translate3d(0, 0, 0); }
+
+.pageswitch-leave.pageswitch-leave-active {
+  opacity: 0.01;
+  -webkit-transform: translate3d(0, 100px, 0); }
 
 /*# sourceMappingURL=app.css.map */
