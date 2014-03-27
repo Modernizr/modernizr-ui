@@ -18,7 +18,7 @@ See the [Trello board](https://trello.com/b/JNSnhIuf/modernizr-com)
 	+ `grunt watch` for sass
 	+ `docpad run` for html
 
-4. Go to: `http://localhost:8080/webpack-dev-server/dist`
+4. Go to: `http://localhost:8080/webpack-dev-server/`
 
 
 ## Deploy

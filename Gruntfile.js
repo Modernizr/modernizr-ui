@@ -8,8 +8,8 @@ module.exports = function(grunt) {
 		"webpack-dev-server": {
 			options: {
 				webpack: webpackConfig,
-				publicPath: "/dist",
-				contentBase: './'
+				publicPath: "",
+				contentBase: './dist'
 			},
 			start: {
 				keepAlive: true,

@@ -6,7 +6,7 @@
 	<% if 'production' in @getEnvironments(): %>
 		<%- @getBlock('styles').add([@asset('/build.css')]).toHTML() %>
 	<% else: %>
-		<%- @getBlock('styles').add(['main.css']).toHTML() %>
+		<%- @getBlock('styles').add(['/main.css']).toHTML() %>
 	<% end %>
 	<link href="http://fonts.googleapis.com/css?family=Open+Sans:300,300italic,600" rel="stylesheet">
 </head>
@@ -15,7 +15,7 @@
 	<% if 'production' in @getEnvironments(): %>
 		<%- @getBlock("scripts").add([@asset('/build.js')]).toHTML() %>
 	<% else: %>
-		<%- @getBlock('scripts').add(['main.js']).toHTML() %>
+		<%- @getBlock('scripts').add(['/main.js']).toHTML() %>
 	<% end %>
 </body>
 </html>

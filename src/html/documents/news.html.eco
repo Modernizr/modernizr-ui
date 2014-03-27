@@ -1,0 +1,14 @@
+---
+title: "News"
+isPage: true
+---
+
+<ul>
+    <% for post in @getCollection("posts").toJSON(): %>
+        <li>
+            <a href="<%= post.url %>">
+                <%= post.title %>
+            </a>
+        </li>
+    <% end %>
+</ul>
