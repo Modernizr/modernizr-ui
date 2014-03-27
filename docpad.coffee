@@ -8,6 +8,7 @@ docpadConfig = {
 	environments:
 		development:
 			outPath: 'dev'
+			ignoreCustomPatterns: /build.js|build.css.scss/
 		production:
 			outPath: 'dist'
 	plugins:
