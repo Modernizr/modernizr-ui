@@ -8,7 +8,7 @@ docpadConfig = {
 	srcPath: 'src/html'
 	plugins:
 		webpack: webpackConfig
-		sass:
+		nodesass:
 			outputStyle: 'compressed'
 	collections:
 		pages: ->
