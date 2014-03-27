@@ -9,7 +9,7 @@ module.exports = {
 		modulesDirectories: ['node_modules', 'bower_components']
 	},
 	output: {
-		path: './dist',
+		path: './dev',
 		filename: 'main.js',
 		publicPath: ''
 	},

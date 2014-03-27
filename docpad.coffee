@@ -4,8 +4,12 @@ webpack = require('webpack')
 webpackConfig.plugins.push(new webpack.optimize.UglifyJsPlugin())
 
 docpadConfig = {
-	outPath: 'dist'
 	srcPath: 'src/html'
+	environments:
+		development:
+			outPath: 'dev'
+		production:
+			outPath: 'dist'
 	plugins:
 		webpack: webpackConfig
 		nodesass:

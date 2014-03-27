@@ -9,7 +9,7 @@ module.exports = function(grunt) {
 			options: {
 				webpack: webpackConfig,
 				publicPath: "",
-				contentBase: './dist'
+				contentBase: './dev'
 			},
 			start: {
 				keepAlive: true,
@@ -34,12 +34,12 @@ module.exports = function(grunt) {
 					outputStyle: 'expanded',
 					sourceComments: 'map'
 				},
-				files: { 'dist/main.css': 'src/css/main.scss' }
+				files: { 'dev/main.css': 'src/css/main.scss' }
 			}
 		},
 		exec: {
 			docpad: {
-				cmd: "docpad generate --env production"
+				cmd: "docpad generate -e production"
 			},
 			clear_dist: {
 				cmd: "rm -rf ./dist/"
