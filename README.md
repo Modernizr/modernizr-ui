@@ -19,3 +19,12 @@ See the [Trello board](https://trello.com/b/JNSnhIuf/modernizr-com)
 	+ `docpad run` for html
 
 4. Go to: `http://localhost:8080/webpack-dev-server/dist`
+
+
+## Deploy
+
+1. Use the following Grunt task to clear the build folder and generate the files with Docpad
+	+ `grunt dist`
+
+2. Deploy to Github Pages with
+	+ `grunt gh-pages`

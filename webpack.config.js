@@ -10,7 +10,7 @@ module.exports = {
 	},
 	output: {
 		path: './dist',
-		filename: 'app.js',
+		filename: 'main.js',
 		publicPath: ''
 	},
 	module: {

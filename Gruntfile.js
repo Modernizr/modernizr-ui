@@ -29,26 +29,20 @@ module.exports = function(grunt) {
 			}
 		},
 		sass: {
-			dist: {
-				options: {
-					outputStyle: 'compressed'
-				},
-				files: { 'dist/app.css': 'src/css/main.scss' }
-			},
 			dev: {
 				options: {
 					outputStyle: 'expanded',
 					sourceComments: 'map'
 				},
-				files: { 'dist/app.css': 'src/css/main.scss' }
+				files: { 'dist/main.css': 'src/css/main.scss' }
 			}
 		},
 		exec: {
 			docpad: {
 				cmd: "docpad generate --env production"
 			},
-			remove_maps: {
-				cmd: "rm ./dist/app.css.map"
+			clear_dist: {
+				cmd: "rm -rf ./dist/"
 			}
 		},
 		execute: {
@@ -70,6 +64,6 @@ module.exports = function(grunt) {
 	});
 
 	grunt.registerTask("default", ["webpack-dev-server:start"]);
-	grunt.registerTask("dist", ["exec:docpad", "exec:remove_maps", "sass:dist"])
+	grunt.registerTask("dist", ["exec:clear_dist", "exec:docpad"])
 
 };

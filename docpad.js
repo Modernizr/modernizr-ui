@@ -7,7 +7,10 @@ docpadConfig = {
 	outPath: 'dist',
 	srcPath: 'src/html',
 	plugins: {
-		webpack: webpackConfig
+		webpack: webpackConfig,
+		sass: {
+			outputStyle: 'compressed'
+		}
 	}
 };
 
