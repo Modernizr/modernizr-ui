@@ -29,7 +29,9 @@ Any archived issues, or unassigned issues remain in the [Trello board](https://t
 1. Use the following Grunt task to clear the build folder and generate the files with Docpad
 	+ `grunt dist`
 
-2. Deploy to Github Pages with
+2. (Temporary step) Remove the leading `/./` for the style and script tags, generated in `dist/index.html`
+
+3. Deploy to Github Pages with
 	+ `grunt gh-pages`
 
 ## Terminology
