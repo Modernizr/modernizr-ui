@@ -909,6 +909,30 @@ input.SearchBar {
 .MainNav.is-active .MenuIcon-bar:last-child {
   -webkit-transform: translate3d(0, -8px, 0); }
 
+.Overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(50, 41, 44, 0.8);
+  color: #f0f0f0; }
+
+.Overlay-inner {
+  overflow-y: auto;
+  height: 100%; }
+
+.Overlay-content {
+  width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  display: table;
+  height: 100%; }
+
+.Overlay-contentInner {
+  display: table-cell;
+  vertical-align: middle; }
+
 /**
  * Extensions on the idea from suit-utils/size
  * - Added on a case-by-case basis

@@ -101,7 +101,7 @@ var MainHeader = React.createClass({
 														</div>
 													</div>
 												</div>
-												<div className={cx({'Grid-cell': true, 'u-size0': !this.props.selectionCount, 'u-size1of2': this.props.selectionCount, 'OpenSide-item': true, 'u-fullHeight': true})}>
+												<div className={cx({'Grid-cell': true, 'u-size0': !this.props.selectionCount, 'u-size1of2': this.props.selectionCount, 'OpenSide-item': true, 'u-fullHeight': true})} onClick={this._onBuildBtnClick}>
 													<div className="c-btn u-fullHeight Btn u-textCenter">
 														<strong className="t-action t-label">Build</strong>
 													</div>
@@ -124,8 +124,11 @@ var MainHeader = React.createClass({
 
 	_onTypeClick: function(props) {
 		ResultActions.filterByType(props.type);
-	}
+	},
 
+	_onBuildBtnClick: function(event) {
+		this.props.onBuildBtnClick(event);
+	}
 });
 
 module.exports = MainHeader;

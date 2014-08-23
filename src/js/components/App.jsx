@@ -23,6 +23,7 @@ var MainNav = require('jsx-loader!./MainNav.jsx');
 var Search = require('jsx-loader!./Search.jsx');
 var FilterLabel = require('jsx-loader!./FilterLabel.jsx');
 var HomePage = require('jsx-loader!./HomePage.jsx');
+var BuildOptionsOverlay = require('jsx-loader!./BuildOptionsOverlay.jsx');
 
 var App = React.createClass({
 	mixins: [WithFlux],
@@ -47,7 +48,8 @@ var App = React.createClass({
 
 	getInitialState: function() {
 		return {
-			page: 'index'
+			page: 'index',
+			buildOverlayOpen: false
 		};
 	},
 
@@ -79,7 +81,7 @@ var App = React.createClass({
 
 		var pages = [];
 
-		if(this.state.page === 'detects') {
+		// if(this.state.page === 'detects') {
 			pages.push(
 				<DetectsPage
 					key="detects"
@@ -126,25 +128,27 @@ var App = React.createClass({
 					}
 				/>
 			);
-		}
+		// }
 
-		{this.state.page === 'index' &&
-			pages.push(
-				<HomePage key="home" onCTAClick={this._onCTAClick} />
-			);
-		}
+		// {this.state.page === 'index' &&
+		// 	pages.push(
+		// 		<HomePage key="home" onCTAClick={this._onCTAClick} />
+		// 	);
+		// }
+
+		// /nav={<MainNav page={this.state.page} onStartClick={this._onCTAClick} items={['Detects', 'Guide', 'News', 'Resources']} />}
 
 		return (
 			<div className="App">
 				<div className="App-header c-contrast">
 					<MainHeader
-						nav={<MainNav page={this.state.page} onStartClick={this._onCTAClick} items={['Detects', 'Guide', 'News', 'Resources']} />}
 						search={<Search searchValue={this.state.searchValue} />}
 						selectionCount={selectionCount}
 						detectCount={this.state.detectCount}
 						extraCount={this.state.extraCount}
 						apiCount={this.state.apiCount}
 						selectionOnly={this.state.selectionOnly}
+						onBuildBtnClick={this._onMainHeaderBuildBtnClick}
 					/>
 				</div>
 				<div className="App-main">
@@ -156,6 +160,11 @@ var App = React.createClass({
 
 					</div>
 				</div>
+				{this.state.buildOverlayOpen &&
+					<BuildOptionsOverlay
+						onClick={this._onBuildOptionsOverlayClick}
+					/>
+				}
 			</div>
 		);
 
@@ -232,6 +241,18 @@ var App = React.createClass({
 			});
 		}, 600);
 		
+	},
+
+	_onMainHeaderBuildBtnClick: function() {
+		this.setState({
+			buildOverlayOpen: true
+		});
+	},
+
+	_onBuildOptionsOverlayClick: function() {
+		this.setState({
+			buildOverlayOpen: false
+		});
 	}
 });
 
