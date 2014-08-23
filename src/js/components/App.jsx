@@ -76,6 +76,64 @@ var App = React.createClass({
 		var selectionCount = _.size(this.state.selection) || 0;
 		var currentResult = this.state.results && !isNaN(this.state.currentIndex) && this.state.results[this.state.currentIndex];
 		var allAdded = selectionCount === this.state.results.length;
+
+		var pages = [];
+
+		if(this.state.page === 'detects') {
+			pages.push(
+				<DetectsPage
+					key="detects"
+					side={
+						<div className="BoxSet">
+							{this.state.selectionOnly &&
+							<div className="BoxSet-item">
+								<FilterLabel tag={{name: 'Your selection'}} />
+							</div>
+							}
+							{this.state.currentTag &&
+							<div className="BoxSet-item">
+								<FilterLabel tag={this.state.currentTag} />
+							</div>
+							}
+							{this.state.currentType &&
+							<div className="BoxSet-item">
+								<FilterLabel tag={{type: this.state.currentType, name: this._getResultNameByType(this.state.currentType)}} />
+							</div>
+							}
+							<div className="BoxSet-item">
+								<div className="Box Box--minor c-contrast u-gutterLipLeft u-gutterPadLeft">
+									<div className="Bar">
+										<div className="Bar-item">
+											<strong className="t-body c-aux">{this.state.results.length} results</strong>
+										</div>
+										<div className="Bar-item u-textRight">
+											<ToggleAll results={this.state.results} readyToRemove={selectionCount === this.state.results.length} />
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					}
+					main={
+						this.state.results ?
+						<ResultList currentResult={currentResult} results={this.state.results} selection={this.state.selection} currentIndex={this.state.currentIndex} />
+						: null
+					}
+					detail={
+						currentResult ?
+						<Detail detect={currentResult} />
+						: null
+					}
+				/>
+			);
+		}
+
+		{this.state.page === 'index' &&
+			pages.push(
+				<HomePage key="home" onCTAClick={this._onCTAClick} />
+			);
+		}
+
 		return (
 			<div className="App">
 				<div className="App-header c-contrast">
@@ -93,58 +151,7 @@ var App = React.createClass({
 					<div className="Container">
 
 						<ReactCSSTransitionGroup transitionName="pageswitch" component={React.DOM.div}>
-
-							{this.state.page === 'detects' &&
-							<DetectsPage
-								key="detects"
-								side={
-									<div className="BoxSet">
-										{this.state.selectionOnly &&
-										<div className="BoxSet-item">
-											<FilterLabel tag={{name: 'Your selection'}} />
-										</div>
-										}
-										{this.state.currentTag &&
-										<div className="BoxSet-item">
-											<FilterLabel tag={this.state.currentTag} />
-										</div>
-										}
-										{this.state.currentType &&
-										<div className="BoxSet-item">
-											<FilterLabel tag={{type: this.state.currentType, name: this._getResultNameByType(this.state.currentType)}} />
-										</div>
-										}
-										<div className="BoxSet-item">
-											<div className="Box Box--minor c-contrast u-gutterLipLeft u-gutterPadLeft">
-												<div className="Bar">
-													<div className="Bar-item">
-														<strong className="t-body c-aux">{this.state.results.length} results</strong>
-													</div>
-													<div className="Bar-item u-textRight">
-														<ToggleAll results={this.state.results} readyToRemove={selectionCount === this.state.results.length} />
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								}
-								main={
-									this.state.results ?
-									<ResultList currentResult={currentResult} results={this.state.results} selection={this.state.selection} currentIndex={this.state.currentIndex} />
-									: null
-								}
-								detail={
-									currentResult ?
-									<Detail detect={currentResult} />
-									: null
-								}
-							/>
-							}
-
-							{this.state.page === 'index' &&
-								<HomePage key="home" onCTAClick={this._onCTAClick} />
-							}
-
+							{pages}
 						</ReactCSSTransitionGroup>
 
 					</div>
