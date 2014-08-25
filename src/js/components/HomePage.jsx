@@ -3,6 +3,8 @@
  */
 
 var React = require('react');
+var Router = require('react-router');
+var Link = Router.Link;
 
 var HomePage = React.createClass({
 
@@ -17,7 +19,7 @@ var HomePage = React.createClass({
 						<div className="HomePage-content">
 							<div className="t-heading c-aux HomePage-subHeading">Modernizr tells you what HTML, CSS and JavaScript features the user’s browser has to offer.</div>
 							<p style={{'paddingTop': '3em'}} className="t-heading">
-								<a href="#" className="HomePage-cta" onClick={this._onClick}>Add your detects</a>
+								<Link to="detects" className="HomePage-cta">Add your detects</Link>
 								<a href="#" className="t-label HomePage-secondaryCta">
 									<span>Download a development copy</span>
 								</a>
@@ -104,12 +106,7 @@ var HomePage = React.createClass({
 				</div>
 			</div>
 		);
-	},
-
-	_onClick: function() {
-		$('.js-main-nav__start').click();
 	}
-
 });
 
 module.exports = HomePage;

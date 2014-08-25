@@ -6,6 +6,8 @@ var React = require('react');
 var logo = require('url?limit=0&mimetype=image/svg+xml!../../img/logo.svg');
 var ResultActions = require('../actions/ResultActions');
 var cx = require('react/lib/cx');
+var Router = require('react-router');
+var Link = Router.Link;
 
 var MainHeader = React.createClass({
 
@@ -21,15 +23,10 @@ var MainHeader = React.createClass({
 										<div className="u-vcContainer">
 											<div className="u-vc CombinationMark">
 												<img src={logo} className="CombinationMark-logo" />
-												<strong className="CombinationMark-text t-label">Modernizr</strong>
+												<Link to="index">
+													<strong className="CombinationMark-text t-label">Modernizr</strong>
+												</Link>
 											</div>
-										</div>
-									</div>
-								</div>
-								<div className="Grid-cell u-size1of3">
-									<div className="MainHeader-block">
-										<div className="MainHeader-nav u-fullHeight">
-											{this.props.nav}
 										</div>
 									</div>
 								</div>

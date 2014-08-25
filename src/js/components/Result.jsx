@@ -43,15 +43,6 @@ var Result = React.createClass({
 				<div className="t-heading u-textTruncate">{this.props.result.name}</div>
 			</root>
 		);
-
-		// return (
-		// 	<div className={classes} onClick={this._onClick}>
-		// 		<span className="result__name">{this.props.result && this.props.result.name} {this.props.added && '✔'}</span>
-		// 		<div className="result__add-action c_action add-action t_action" onClick={this._onToggleBtnClick}>
-		// 			{this.props.added ? 'Remove' : 'Add'}
-		// 		</div>
-		// 	</div>
-		// );
 	},
 
 	_onClick: function(event) {

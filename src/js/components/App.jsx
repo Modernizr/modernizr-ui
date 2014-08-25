@@ -4,6 +4,7 @@
 
 var React = require('react/react');
 var ReactCSSTransitionGroup = require('react/lib/ReactCSSTransitionGroup');
+
 var MetadataActions = require('../actions/MetadataActions');
 var SelectionActions = require('../actions/SelectionActions');
 var MetadataStore = require('../stores/Metadata');
@@ -12,17 +13,11 @@ var SelectionStore = require('../stores/Selection');
 var WithFlux = require('../mixins/WithFlux');
 var _ = require('lodash');
 
-var Header = require('jsx-loader!./Header.jsx');
-var ResultList = require('jsx-loader!./ResultList.jsx');
-var Detail = require('jsx-loader!./Detail.jsx');
+// var Header = require('jsx-loader!./Header.jsx');
 var Search = require('jsx-loader!./Search.jsx');
-var DetectsPage = require('jsx-loader!./DetectsPage.jsx');
-var ToggleAll = require('jsx-loader!./ToggleAll.jsx');
 var MainHeader = require('jsx-loader!./MainHeader.jsx');
 var MainNav = require('jsx-loader!./MainNav.jsx');
-var Search = require('jsx-loader!./Search.jsx');
-var FilterLabel = require('jsx-loader!./FilterLabel.jsx');
-var HomePage = require('jsx-loader!./HomePage.jsx');
+
 var BuildOptionsOverlay = require('jsx-loader!./BuildOptionsOverlay.jsx');
 
 var App = React.createClass({
@@ -57,77 +52,28 @@ var App = React.createClass({
 		MetadataActions.fetch();
 	},
 
-	_getResultNameByType: function(type) {
-		switch(type) {
-			case 'detect':
-				return 'detects';
-			break;
-			case 'extra':
-				return 'extras';
-			break;
-			case 'api':
-				return 'API methods'
-			break;
-			default:
-				return 'results';
-			break;
-		}
-	},
-
 	render: function() {
 		var selectionCount = _.size(this.state.selection) || 0;
 		var currentResult = this.state.results && !isNaN(this.state.currentIndex) && this.state.results[this.state.currentIndex];
-		var allAdded = selectionCount === this.state.results.length;
+		// var allAdded = selectionCount === this.state.results.length;
 
-		var pages = [];
+		// var pages = [];
 
 		// if(this.state.page === 'detects') {
-			pages.push(
-				<DetectsPage
-					key="detects"
-					side={
-						<div className="BoxSet">
-							{this.state.selectionOnly &&
-							<div className="BoxSet-item">
-								<FilterLabel tag={{name: 'Your selection'}} />
-							</div>
-							}
-							{this.state.currentTag &&
-							<div className="BoxSet-item">
-								<FilterLabel tag={this.state.currentTag} />
-							</div>
-							}
-							{this.state.currentType &&
-							<div className="BoxSet-item">
-								<FilterLabel tag={{type: this.state.currentType, name: this._getResultNameByType(this.state.currentType)}} />
-							</div>
-							}
-							<div className="BoxSet-item">
-								<div className="Box Box--minor c-contrast u-gutterLipLeft u-gutterPadLeft">
-									<div className="Bar">
-										<div className="Bar-item">
-											<strong className="t-body c-aux">{this.state.results.length} results</strong>
-										</div>
-										<div className="Bar-item u-textRight">
-											<ToggleAll results={this.state.results} readyToRemove={selectionCount === this.state.results.length} />
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					}
-					main={
-						this.state.results ?
-						<ResultList currentResult={currentResult} results={this.state.results} selection={this.state.selection} currentIndex={this.state.currentIndex} />
-						: null
-					}
-					detail={
-						currentResult ?
-						<Detail detect={currentResult} />
-						: null
-					}
-				/>
-			);
+			// pages.push(
+			// 	<DetectsPage
+			// 		key="detects"
+			// 		side={
+						
+			// 		}
+			// 		main={
+						
+			// 		}
+			// 		detail={
+						
+			// 		}
+			// 	/>
+			// );
 		// }
 
 		// {this.state.page === 'index' &&
@@ -135,8 +81,6 @@ var App = React.createClass({
 		// 		<HomePage key="home" onCTAClick={this._onCTAClick} />
 		// 	);
 		// }
-
-		// /nav={<MainNav page={this.state.page} onStartClick={this._onCTAClick} items={['Detects', 'Guide', 'News', 'Resources']} />}
 
 		return (
 			<div className="App">
@@ -155,7 +99,14 @@ var App = React.createClass({
 					<div className="Container">
 
 						<ReactCSSTransitionGroup transitionName="pageswitch" component={React.DOM.div}>
-							{pages}
+							{this.props.activeRouteHandler({
+								results: this.state.results,
+								currentResult: currentResult,
+								selectionOnly: this.state.selectionOnly,
+								currentTag: this.state.getCurrentTag,
+								currentType: this.state.getCurrentType,
+								selection: this.state.selection
+							})}
 						</ReactCSSTransitionGroup>
 
 					</div>

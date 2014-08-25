@@ -49,24 +49,6 @@ var ResultList = React.createClass({
 				}.bind(this))}
 			</root>
 		);
-
-		/*
-		return (
-			<div className="results">
-				{this.props.results.map(function(result, i) {
-					var current = this.props.currentResult && this.props.currentResult.cid === result.cid;
-					var ref = i === 0 ? 'firstResult' : null
-					if(result.type === 'tag') {
-						return <TagResult ref={ref} tag={result} current={current} />
-					}
-					else {
-						var added = this.props.selection && this.props.selection[result.cid];
-						return <Result ref={ref} result={result} current={current} added={added} />
-					}
-				}.bind(this))}
-			</div>
-		);
-		*/
 	},
 
 	_onKeyDown: function(e) {

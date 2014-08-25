@@ -15,7 +15,7 @@ module.exports = {
 	},
 	module: {
 		loaders: [
-			{ test: /\.jsx$/, loader: "jsx-loader" },
+			{ test: /\.jsx$/, loader: "jsx-loader?harmony" },
 			{ test: /\.scss$/, loader: "style-loader!sass-loader?outputStyle=expanded" },
 			{ test: /\.css$/, loader: "style!css" },
 			// { test: /\.svg$/, loader: "url-loader?limit=100000&mimetype=image/svg+xml" },
