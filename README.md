@@ -9,9 +9,7 @@ Any archived issues, or unassigned issues remain in the [Trello board](https://t
 ## Getting started
 
 1. Ensure you have all the prerequisites installed
-	+ `npm install -g webpack`
-	+ `npm install -g bower`
-	+ `npm install -g grunt-cli`
+	+ `npm install -g webpack bower grunt-cli docpad`
 
 2. Load the dependencies into your project
 	+ `npm install && bower install`
