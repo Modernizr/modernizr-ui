@@ -17,9 +17,10 @@ var Search = React.createClass({
 
 	render: function() {
 		return (
-			<input ref="input" type="text" value={this.props.searchValue} autoFocus onChange={this._onInputChange} className="SearchBar t-heading t-instruction" placeholder="Type a browser feature" />
+			<input type="text" className="t-heading t-instruction BrowserHeader-input" value={this.props.searchValue} onChange={this._onInputChange} placeholder="Type a browser feature" ref="input" />
 		);
 	},
+
 	_onInputChange: function(event) {
 		ResultActions.search(event.target.value);
 	},

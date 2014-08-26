@@ -133,13 +133,15 @@ $easeInOutExpo: cubic-bezier(1.000, 0.000, 0.000, 1.000);
 
 .CombinationMark {
 	text-align: center;
+	display: block; // For <a>
 	.CombinationMark-logo {
 		display: inline-block;
-		@include rem(width, 4);
+		width: 4em;
 	}
 	.CombinationMark-text {
 		color: #db4886; // TODO :: color
 		padding-left: 0.5em;
+		font-size: 2.2em;
 	}
 }
 

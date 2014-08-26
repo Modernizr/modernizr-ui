@@ -1,11 +1,34 @@
 .MainHeader {
-	.MainHeader-block {
-		// Fixe height for the blocks in the header
-		@include rem(height, 13);
+	height: 120px;
+	.MainHeader-mid {
+		display: table;
+		width: 100%;
+		height: 100%;
+		table-layout: fixed;
+		overflow: hidden;
 	}
-	.MainHeader-logo {
-		// Fixed width for the logo in the main header
-		@include rem(width, 4);
+		.MainHeader-logo {
+			width: 320px;
+			display: table-cell;
+			vertical-align: middle;
+			// padding-left: 4rem;
+		}
+		.MainHeader-body {
+			width: auto;
+			display: table-cell;
+			vertical-align: top;
+		}
+		.MainHeader-row {
+			-webkit-transition: height 0.2s ease;
+			height: 100%;
+		    &+.MainHeader-row {
+		    	height: 0;
+		    }
+		}
+	&.is-browser-open {
+		.MainHeader-row {
+			height: 50% !important;
+		}
 	}
 }
 

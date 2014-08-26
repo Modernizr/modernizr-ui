@@ -7,13 +7,53 @@ var logo = require('url?limit=0&mimetype=image/svg+xml!../../img/logo.svg');
 var ResultActions = require('../actions/ResultActions');
 var cx = require('react/lib/cx');
 var Router = require('react-router');
+var ResultActions = require('../actions/ResultActions');
 var Link = Router.Link;
 
 var MainHeader = React.createClass({
-
 	render: function() {
+
+		var browserOpen = this.props.activeRouteName === 'detects';
+
 		return (
-			<div className="MainHeader Container">
+			<div className={cx({'MainHeader': true, 'is-browser-open': browserOpen})}>
+				<div className="MainHeader-mid">
+					<div className="MainHeader-logo">
+						<Link to="index" className="CombinationMark">
+							<img src={logo} className="CombinationMark-logo" />
+							<strong className="CombinationMark-text">Modernizr</strong>
+						</Link>
+					</div>
+					<div className="MainHeader-body">
+						<div className="MainNav MainHeader-row">
+							<div className="MainNav-item">
+								<Link to="detects" className={cx({'NavItem': true, 'is-current': browserOpen})}>
+									<span className="NavItem-inner">Browse features</span>
+								</Link>
+							</div>
+							<div className="MainNav-item">
+								<a className="NavItem" href="#">
+									<span className="NavItem-inner">Documentation</span>
+								</a>
+							</div>
+							<div className="MainNav-item">
+								<a className="NavItem" href="#">
+									<span className="NavItem-inner">News</span>
+								</a>
+							</div>
+							<div className="MainNav-item">
+								<a className="NavItem" href="#">
+									<span className="NavItem-inner">Resources</span>
+								</a>
+							</div>
+						</div>
+						<div className="BrowserHeader MainHeader-row">
+							{this.props.search}
+						</div>
+					</div>
+				</div>
+
+				{/*
 				<div className="Grid Grid--withGutter">
 					<div className="Grid-cell u-size2of10">
 						<div className="c-contrast">
@@ -111,6 +151,7 @@ var MainHeader = React.createClass({
 						</div>
 					</div>
 				</div>
+				*/}
 			</div>
 		);
 	},

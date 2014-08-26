@@ -55,32 +55,16 @@ var App = React.createClass({
 	render: function() {
 		var selectionCount = _.size(this.state.selection) || 0;
 		var currentResult = this.state.results && !isNaN(this.state.currentIndex) && this.state.results[this.state.currentIndex];
-		// var allAdded = selectionCount === this.state.results.length;
 
-		// var pages = [];
-
-		// if(this.state.page === 'detects') {
-			// pages.push(
-			// 	<DetectsPage
-			// 		key="detects"
-			// 		side={
-						
-			// 		}
-			// 		main={
-						
-			// 		}
-			// 		detail={
-						
-			// 		}
-			// 	/>
-			// );
-		// }
-
-		// {this.state.page === 'index' &&
-		// 	pages.push(
-		// 		<HomePage key="home" onCTAClick={this._onCTAClick} />
-		// 	);
-		// }
+		var activeRoute = this.props.activeRouteHandler({
+			results: this.state.results,
+			currentResult: currentResult,
+			selectionOnly: this.state.selectionOnly,
+			currentTag: this.state.getCurrentTag,
+			currentType: this.state.getCurrentType,
+			selection: this.state.selection,
+			onPageMount: this._handlePageMount
+		});
 
 		return (
 			<div className="App">
@@ -93,20 +77,14 @@ var App = React.createClass({
 						apiCount={this.state.apiCount}
 						selectionOnly={this.state.selectionOnly}
 						onBuildBtnClick={this._onMainHeaderBuildBtnClick}
+						activeRouteName={activeRoute.props.name}
 					/>
 				</div>
 				<div className="App-main">
 					<div className="Container">
 
 						<ReactCSSTransitionGroup transitionName="pageswitch" component={React.DOM.div}>
-							{this.props.activeRouteHandler({
-								results: this.state.results,
-								currentResult: currentResult,
-								selectionOnly: this.state.selectionOnly,
-								currentTag: this.state.getCurrentTag,
-								currentType: this.state.getCurrentType,
-								selection: this.state.selection
-							})}
+							{activeRoute}
 						</ReactCSSTransitionGroup>
 
 					</div>
@@ -204,6 +182,10 @@ var App = React.createClass({
 		this.setState({
 			buildOverlayOpen: false
 		});
+	},
+
+	_handlePageMount: function() {
+
 	}
 });
 
