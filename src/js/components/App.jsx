@@ -68,7 +68,7 @@ var App = React.createClass({
 
 		return (
 			<div className="App">
-				<div className="App-header c-contrast">
+				<div className="App-header c-contrast" style={{position: 'fixed', top: 0, zIndex: 1}}>
 					<MainHeader
 						search={<Search searchValue={this.state.searchValue} />}
 						selectionCount={selectionCount}
@@ -80,7 +80,7 @@ var App = React.createClass({
 						activeRouteName={activeRoute.props.name}
 					/>
 				</div>
-				<div className="App-main">
+				<div className="App-main" style={{marginTop: 120, position: 'relative', zIndex: 0}}>
 					<div className="Container">
 
 						<ReactCSSTransitionGroup transitionName="pageswitch" component={React.DOM.div}>

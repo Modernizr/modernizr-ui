@@ -18,7 +18,7 @@ var DetectsPage = React.createClass({
 				<div className="Grid Grid--withGutter">
 					<div className="Grid-cell u-size7of10">
 						<div className="Grid Grid--withGutter">
-							<div className="Grid-cell u-size4of14">
+							<div className="Grid-cell u-size4of14" style={{width: '19.4% !important', position: 'fixed'}}>
 								<div className="BoxSet">
 									{this.props.selectionOnly &&
 									<div className="BoxSet-item">
@@ -49,14 +49,14 @@ var DetectsPage = React.createClass({
 									</div>
 								</div>
 							</div>
-							<div className="Grid-cell u-size10of14" style={{minHeight: 1}}>
+							<div className="Grid-cell u-size10of14" style={{left: '29%', position: 'relative', minHeight: 1}}>
 								{this.props.results ?
 									<ResultList currentResult={this.props.currentResult} results={this.props.results} selection={this.props.selection} currentIndex={this.props.currentIndex} />
 									: null}
 							</div>
 						</div>
 					</div>
-					<div className="Grid-cell u-size3of10">
+					<div className="Grid-cell u-size3of10" style={{position: 'fixed'}}>
 						{this.props.currentResult ?
 							<Detail detect={this.props.currentResult} />
 							: null}
