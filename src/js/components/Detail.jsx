@@ -16,6 +16,8 @@ var Detail = React.createClass({
 	render: function() {
 		var root = React.DOM['div'];
 		var authors = this.props.detect.authors && this.props.detect.authors.join(', ');
+		var notes = this.props.detect.notes;
+		var doc = this.props.detect.doc;
 		return (
 			<root className="BoxSet">
 				<div className="BoxSet-item">
@@ -23,6 +25,28 @@ var Detail = React.createClass({
 						<div className="t-heading u-textTruncate">{this.props.detect.name}</div>
 					</div>
 				</div>
+				{doc &&
+				<div className="BoxSet-item">
+					<div className="Box c-contrast">
+						<div className="t-label">Description</div>
+						<div className="t-content" dangerouslySetInnerHTML={{__html: doc}} />
+					</div>
+				</div>
+				}
+				{notes.length &&
+				<div className="BoxSet-item">
+					<div className="Box c-contrast">
+						<div className="t-label">More detail</div>
+						<ul className="t-content">
+							{this.props.detect.notes.map(function(result, i) {
+								return (
+										<li><a href={result.href} target="_blank">{result.name}</a></li>
+								);
+							}.bind(this))}
+						</ul>
+					</div>
+				</div>
+				}
 				{authors &&
 				<div className="BoxSet-item">
 					<div className="Box c-contrast">
@@ -30,14 +54,6 @@ var Detail = React.createClass({
 						<div className="t-content">
 							<p>{authors}</p>
 						</div>
-					</div>
-				</div>
-				}
-				{this.props.detect.doc &&
-				<div className="BoxSet-item">
-					<div className="Box c-contrast">
-						<div className="t-label">Description</div>
-						<div className="t-content" dangerouslySetInnerHTML={{__html: this.props.detect.doc}} />
 					</div>
 				</div>
 				}
