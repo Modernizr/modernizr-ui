@@ -30,15 +30,17 @@ var Result = React.createClass({
 	},
 	render: function() {
 		var root = React.DOM['div'];
+
+		// <div className="Ring-inner">
+		// 	<img src={addIcon} alt="Add" className="u-stretch" />
+		// </div>
+		// <div className="Ring-inner">
+		// 	<img src={acceptIcon} alt="Remove"  className="u-stretch" />
+		// </div>
+		
 		return (
 			<root onClick={this._onClick} className={cx({Result: true, Box: true, 'is-selected': this.props.current, 'c-selectable': true, 'is-added': this.props.added, 'u-contain': true})}>
 				<div onClick={this._onToggleBtnClick} className={cx({'Result-icon': true, 'Ring': true, 'is-moved': this.props.added, 't-label': true, 'c-added': this.props.added})}>
-					<div className="Ring-inner">
-						<img src={addIcon} alt="Add" className="u-stretch" />
-					</div>
-					<div className="Ring-inner">
-						<img src={acceptIcon} alt="Remove"  className="u-stretch" />
-					</div>
 				</div>
 				<div className="t-heading u-textTruncate">{this.props.result.name}</div>
 			</root>

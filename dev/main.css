@@ -1149,9 +1149,8 @@ html, body, #app-container, .App {
   padding: 0rem 6rem; }
 
 .Result {
-  -webkit-transition: outline-width 0.2s ease, box-shadow 0.2s ease;
+  -webkit-transition: outline-width 0.2s ease;
   outline: 0 solid #fff;
-  box-shadow: 0 0 0 rgba(0, 0, 0, 0.2);
   cursor: pointer;
   color: #999; }
   .Result:hover {
@@ -1159,8 +1158,7 @@ html, body, #app-container, .App {
   .Result.is-selected {
     position: relative;
     z-index: 1;
-    outline-width: 10px;
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.2); }
+    outline-width: 10px; }
 
 .Result-icon {
   position: absolute;

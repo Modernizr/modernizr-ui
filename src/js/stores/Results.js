@@ -141,9 +141,9 @@ function showSelectionOnly() {
 
 function _getFuseValue(value) {
 	// Modification for better results through Fuse
-	var valueForFuse = value.replace(/\s+/g, '');
-	valueForFuse = valueForFuse.split('').join(' ');
-	return valueForFuse;
+	// var valueForFuse = value.replace(/\s+/g, '');
+	// valueForFuse = valueForFuse.split('').join(' ');
+	return value;
 }
 
 var ResultsStore = merge(EventEmitter.prototype, {
