@@ -31,12 +31,16 @@
 }
 
 .BrowserHeader {
+	display: table;
+	width: 100%;
+	height: 100%;
+	table-layout: fixed;
 	.BrowserHeader-input {
 		display: block;
 		box-sizing: border-box;
 		height: 100%;
 		font-size: 1.8rem;
-		padding: 1rem 1.5rem;
+		padding: 0 1.5rem;
 		background: #272727;
 		color: #fff;
 		width: 100%;
@@ -44,6 +48,12 @@
 		&:focus {
 			outline: 0;
 		}
+	}
+	.BrowserHeader-col {
+		display: table-cell;
+		vertical-align: middle;
+		width: auto;
+		height: 100%;
 	}
 }
 

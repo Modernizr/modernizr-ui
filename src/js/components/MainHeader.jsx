@@ -48,7 +48,14 @@ var MainHeader = React.createClass({
 							</div>
 						</div>
 						<div className="BrowserHeader MainHeader-row">
-							{this.props.search}
+							<div className="BrowserHeader-col">
+								{this.props.search}
+							</div>
+							<div className="BrowserHeader-col" style={{width: 200}}>
+								<div className="c-btn u-fullHeight Btn u-textCenter" style={{lineHeight: '60px'}} onClick={this._onBuildBtnClick}>
+									<strong className="t-action t-label">Build</strong>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
