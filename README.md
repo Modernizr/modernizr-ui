@@ -2,7 +2,7 @@
 
 ## To do
 
-Any active issues go through GitHub Issues. We're not adding everything upfront; instead, focusing by priority.
+Any active issues go through [our GitHub Issues](https://github.com/Modernizr/modernizr-ui/issues). We're not adding everything upfront; instead, focusing by priority.
 
 Any archived issues, or unassigned issues remain in the [Trello board](https://trello.com/b/JNSnhIuf/modernizr-com).
 
