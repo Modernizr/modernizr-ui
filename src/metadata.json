@@ -67,7 +67,7 @@
       "audio",
       "media"
     ],
-    "doc": "<p>Detects the audio element\n*/\ndefine([&#39;Modernizr&#39;, &#39;createElement&#39;], function( Modernizr, createElement ) {\n  // This tests evaluates support of the audio element, as well as\n  // testing what types of content it supports.\n  //\n  // We&#39;re using the Boolean constructor here, so that we can extend the value\n  // e.g.  Modernizr.audio     // true\n  //       Modernizr.audio.ogg // &#39;probably&#39;\n  //\n  // Codec values from : github.com/NielsLeenheer/html5test/blob/9106a8/index.html#L845\n  //                     thx to NielsLeenheer and zcorpan</p>\n<p>  // Note: in some older browsers, &quot;no&quot; was a return value instead of empty string.\n  //   It was live in FF3.5.0 and 3.5.1, but fixed in 3.5.2\n  //   It was also live in Safari 4.0.0 - 4.0.4, but fixed in 4.0.5\n  Modernizr.addTest(&#39;audio&#39;, function() {\n    /* jshint -W053</p>\n",
+    "doc": "<p>Detects the audio element</p>\n",
     "deps": [
       "createElement"
     ],
@@ -656,7 +656,7 @@
         ]
       }
     ],
-    "doc": "<p>Detects support flash, as well as flash blocking plugins\n<em>/\ndefine([&#39;Modernizr&#39;, &#39;createElement&#39;, &#39;docElement&#39;, &#39;addTest&#39;], function( Modernizr, createElement, docElement, addTest ) {\n  Modernizr.addAsyncTest(function() {\n    /</em> jshint -W053</p>\n",
+    "doc": "<p>Detects support flash, as well as flash blocking plugins</p>\n",
     "deps": [
       "createElement",
       "docElement",
@@ -1065,7 +1065,7 @@
   {
     "name": "IndexedDB Blob",
     "property": "indexeddbblob",
-    "doc": "<p>Detects if the browser can save File/Blob objects to IndexedDB\n*/\ndefine([&#39;Modernizr&#39;, &#39;addTest&#39;, &#39;prefixed&#39;, &#39;test/indexeddb&#39;], function( Modernizr, addTest, prefixed ) {\n  // Vendors had inconsistent prefixing with the experimental Indexed DB:\n  // - Webkit&#39;s implementation is accessible through webkitIndexedDB\n  // - Firefox shipped moz_indexedDB before FF4b9, but since then has been mozIndexedDB\n  // For speed, we don&#39;t test the legacy (and beta-only) indexedDB</p>\n<p>  Modernizr.addAsyncTest(function() {\n    /* jshint -W053</p>\n",
+    "doc": "<p>Detects if the browser can save File/Blob objects to IndexedDB</p>\n",
     "deps": [
       "addTest",
       "prefixed",
@@ -2071,7 +2071,7 @@
     "warnings": [
       "positive Unicode support doesn't mean you can use it inside <title>, this seems more related to OS & Language packs"
     ],
-    "doc": "<p>Detects if unicode characters are supported in the current document.\n<em>/\ndefine([&#39;Modernizr&#39;, &#39;createElement&#39;, &#39;testStyles&#39;], function( Modernizr, createElement, testStyles ) {\n  /*</em></p>\n<ul>\n<li>Unicode special character support\n*</li>\n<li>Detection is made by testing missing glyph box rendering against star character</li>\n<li>If widths are the same, this &quot;probably&quot; means the browser didn&#39;t support the star character and rendered a glyph box instead</li>\n<li>Just need to ensure the font characters have different widths</li>\n</ul>\n",
+    "doc": "<p>Detects if unicode characters are supported in the current document.</p>\n",
     "deps": [
       "createElement",
       "testStyles"
@@ -2212,7 +2212,7 @@
         ]
       }
     ],
-    "doc": "<p>Detects support for the video element, as well as testing what types of content it supports.</p>\n<p>Subproperties are provided to describe support for <code>ogg</code>, <code>h264</code> and <code>webm</code> formats, e.g.:</p>\n<pre><code class=\"lang-javascript\">Modernizr.video         // true\nModernizr.video.ogg     // &#39;probably&#39;</code></pre>\n<p>*/\ndefine([&#39;Modernizr&#39;, &#39;createElement&#39;], function( Modernizr, createElement ) {\n  // Codec values from : github.com/NielsLeenheer/html5test/blob/9106a8/index.html#L845\n  //                     thx to NielsLeenheer and zcorpan</p>\n<p>  // Note: in some older browsers, &quot;no&quot; was a return value instead of empty string.\n  //   It was live in FF3.5.0 and 3.5.1, but fixed in 3.5.2\n  //   It was also live in Safari 4.0.0 - 4.0.4, but fixed in 4.0.5</p>\n<p>  Modernizr.addTest(&#39;video&#39;, function() {\n    /* jshint -W053</p>\n",
+    "doc": "<p>Detects support for the video element, as well as testing what types of content it supports.</p>\n<p>Subproperties are provided to describe support for <code>ogg</code>, <code>h264</code> and <code>webm</code> formats, e.g.:</p>\n<pre><code class=\"lang-javascript\">Modernizr.video         // true\nModernizr.video.ogg     // &#39;probably&#39;</code></pre>\n",
     "deps": [
       "createElement"
     ],
@@ -5419,7 +5419,7 @@
     "tags": [
       "es6"
     ],
-    "doc": "<p>Check if browser implements ECMAScript 6 Generators per specification.\n<em>/\ndefine([&#39;Modernizr&#39;], function( Modernizr ) {\n  Modernizr.addTest(&#39;generators&#39;, function() {\n    try {\n      /</em> jshint evil: true</p>\n",
+    "doc": "<p>Check if browser implements ECMAScript 6 Generators per specification.</p>\n",
     "deps": [],
     "path": "./feature-detects/es6/generators.js",
     "amdPath": "test/es6/generators",
@@ -7063,7 +7063,7 @@
     "warnings": [
       "Support in Internet Explorer 8 is limited to images and linked resources like CSS files, not HTML files"
     ],
-    "doc": "<p>Detects support for data URIs. Provides a subproperty to report support for data URIs over 32kb in size:</p>\n<pre><code class=\"lang-javascript\">Modernizr.datauri           // true\nModernizr.datauri.over32kb  // false in IE8</code></pre>\n<p><em>/\ndefine([&#39;Modernizr&#39;, &#39;addTest&#39;], function( Modernizr, addTest ) {\n  // <a href=\"https://github.com/Modernizr/Modernizr/issues/14\">https://github.com/Modernizr/Modernizr/issues/14</a>\n  Modernizr.addAsyncTest(function() {\n    /</em> jshint -W053</p>\n",
+    "doc": "<p>Detects support for data URIs. Provides a subproperty to report support for data URIs over 32kb in size:</p>\n<pre><code class=\"lang-javascript\">Modernizr.datauri           // true\nModernizr.datauri.over32kb  // false in IE8</code></pre>\n",
     "deps": [
       "addTest"
     ],
@@ -7162,7 +7162,7 @@
         "href": "http://www.khronos.org/registry/webgl/extensions/"
       }
     ],
-    "doc": "<p>Detects support for OpenGL extensions in WebGL. It&#39;s <code>true</code> if the <a href=\"https://developer.mozilla.org/en-US/docs/Web/WebGL/Using_Extensions\">WebGL extensions API</a> is supported, then exposes the supported extensions as subproperties, e.g.:</p>\n<pre><code class=\"lang-javascript\">if (Modernizr.webglextensions) {\n  // WebGL extensions API supported\n}\nif (&#39;OES_vertex_array_object&#39; in Modernizr.webglextensions) {\n  // Vertex Array Objects extension supported\n}</code></pre>\n<p>*/\ndefine([&#39;Modernizr&#39;, &#39;createElement&#39;, &#39;test/webgl&#39;], function( Modernizr, createElement ) {\n  // based on code from ilmari heikkinen\n  // code.google.com/p/graphics-detect/source/browse/js/detect.js</p>\n<p>  // Not Async but handles it&#39;s own self\n  Modernizr.addAsyncTest(function() {\n    /* jshint -W053</p>\n",
+    "doc": "<p>Detects support for OpenGL extensions in WebGL. It&#39;s <code>true</code> if the <a href=\"https://developer.mozilla.org/en-US/docs/Web/WebGL/Using_Extensions\">WebGL extensions API</a> is supported, then exposes the supported extensions as subproperties, e.g.:</p>\n<pre><code class=\"lang-javascript\">if (Modernizr.webglextensions) {\n  // WebGL extensions API supported\n}\nif (&#39;OES_vertex_array_object&#39; in Modernizr.webglextensions) {\n  // Vertex Array Objects extension supported\n}</code></pre>\n",
     "deps": [
       "createElement",
       "test/webgl"
