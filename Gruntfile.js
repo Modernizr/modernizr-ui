@@ -46,11 +46,9 @@ module.exports = function(grunt) {
 			}
 		},
 		execute: {
-			// TODO :: pass as a parameter into generate-meta.js 
-			// TODO :: decide about the fork of the code
-			// options: {
-					// outputDir: '../../dist'
-				// },
+			// TODO :: currently this dumps metadata.json into the module's dist
+			//			we need to pass options into generate-meta.js to define
+			// 			our own outputDir
 			modernizr: {
 				src: ['./node_modules/modernizr/lib/generate-meta.js'],
 			}
