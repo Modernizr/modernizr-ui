@@ -33,7 +33,7 @@ var Detail = React.createClass({
 					</div>
 				</div>
 				}
-				{notes.length &&
+				{notes && notes.length &&
 				<div className="BoxSet-item">
 					<div className="Box c-contrast">
 						<div className="t-label">More detail</div>
