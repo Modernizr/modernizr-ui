@@ -1,21 +1,21 @@
 <!doctype html>
 <html lang="en">
 <head>
-	<meta charset="utf-8">
-	<title><%= @document.title %></title>
-	<% if 'production' in @getEnvironments(): %>
-		<%- @getBlock('styles').add([@asset('/build.css')]).toHTML() %>
-	<% else: %>
-		<%- @getBlock('styles').add(['/main.css']).toHTML() %>
-	<% end %>
-	<link href="http://fonts.googleapis.com/css?family=Open+Sans:300,300italic,600" rel="stylesheet">
+  <meta charset="utf-8">
+  <title><%= @document.title %></title>
+  <% if 'production' in @getEnvironments(): %>
+    <%- @getBlock('styles').add([@asset('/build.css')]).toHTML() %>
+  <% else: %>
+    <%- @getBlock('styles').add(['/main.css']).toHTML() %>
+  <% end %>
+  <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,300italic,600" rel="stylesheet">
 </head>
 <body class="c-base">
-	<%- @content %>
-	<% if 'production' in @getEnvironments(): %>
-		<%- @getBlock("scripts").add([@asset('/build.js')]).toHTML() %>
-	<% else: %>
-		<%- @getBlock('scripts').add(['/main.js']).toHTML() %>
-	<% end %>
+  <%- @content %>
+  <% if 'production' in @getEnvironments(): %>
+    <%- @getBlock("scripts").add([@asset('/build.js')]).toHTML() %>
+  <% else: %>
+    <%- @getBlock('scripts').add(['/main.js']).toHTML() %>
+  <% end %>
 </body>
 </html>

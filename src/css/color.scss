@@ -1,67 +1,67 @@
 a {
-	color: inherit;
+  color: inherit;
 }
 
 .c-base {
-	background: #ececec;
-	color: #444;
-	border-color: #ddd;
-	* {
-		border-color: #ddd;
-	}
+  background: #ececec;
+  color: #444;
+  border-color: #ddd;
+  * {
+    border-color: #ddd;
+  }
 }
 
 .c-reverse {
-	background: #32292c;
-	color: #f0f0f0;
+  background: #32292c;
+  color: #f0f0f0;
 }
 
 .c-reverseBorder {
-	border-color: #444 !important;
+  border-color: #444 !important;
 }
 
 .c-reverseContrast {
-	background: #1e1619;
-	color: #fff;
+  background: #1e1619;
+  color: #fff;
 }
 
 .c-contrast {
-	background: #fff;
-	color: #444;
-	border-color: #ddd;
+  background: #fff;
+  color: #444;
+  border-color: #ddd;
 }
 
 .c-selectable {
-	background: rgba(#fff, 0.6);
-	color: rgba(#444, 0.35);
+  background: rgba(#fff, 0.6);
+  color: rgba(#444, 0.35);
 }
 
 .c-filter {
-	background: #f8fafc;
-	color: #4a7fab;
+  background: #f8fafc;
+  color: #4a7fab;
 }
 
 .c-aux {
-	color: #aaa8a9;
+  color: #aaa8a9;
 }
 
 .c-action {
-	color: #e279a2;
-	.Icon {
-		background: #e279a2;
-	}
+  color: #e279a2;
+  .Icon {
+    background: #e279a2;
+  }
 }
 
 .c-btn {
-	background: #db4886;
-	color: #fff;
+  background: #db4886;
+  color: #fff;
 }
 
 .c-menuBar {
-	background: #444;
+  background: #444;
 }
 
 .c-added {
-	background: #85d900;
-	color: #fff;
+  background: #85d900;
+  color: #fff;
 }

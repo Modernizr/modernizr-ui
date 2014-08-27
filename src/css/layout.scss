@@ -1,8 +1,8 @@
 * {
-	box-sizing: border-box;
-	border: 0px solid; // NOTE :: Define borders using 'border-width' in components, and keep border-color in color.scss
+  box-sizing: border-box;
+  border: 0px solid; // NOTE :: Define borders using 'border-width' in components, and keep border-color in color.scss
 }
 
 html, body, #app-container, .App {
-	height: 100%;
+  height: 100%;
 }

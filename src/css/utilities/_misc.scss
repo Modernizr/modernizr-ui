@@ -1,31 +1,31 @@
 .u-mask {
-	overflow: hidden;
+  overflow: hidden;
 }
 
 .u-hit {
-	color: inherit;
-	display: block;
-	text-decoration: none;
+  color: inherit;
+  display: block;
+  text-decoration: none;
 }
 
 .u-hideText {
-	text-indent: 100%;
-	white-space: nowrap;
-	overflow: hidden;
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .u-gutterLipLeft {
-	@include rem(margin-left, -4);
+  @include rem(margin-left, -4);
 }
 
 .u-gutterLipRight {
-	@include rem(margin-right, -4);
+  @include rem(margin-right, -4);
 }
 
 .u-gutterPadLeft {
-	@include rem(padding-left, 4);
+  @include rem(padding-left, 4);
 }
 
 .u-gutterPadRight {
-	@include rem(padding-right, 4);
+  @include rem(padding-right, 4);
 }

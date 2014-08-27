@@ -4,5 +4,5 @@ isPage: true
 ---
 
 <div id="app-container">
-	<%- @react("../js/components/App.jsx") if 'production' in @getEnvironments() %>
+  <%- @react("../js/components/App.jsx") if 'production' in @getEnvironments() %>
 </div>
