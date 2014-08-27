@@ -1,27 +1,27 @@
 .MenuIcon {
-	width: 40px;
-	height: 18px;
+  width: 40px;
+  height: 18px;
 }
 
 .MenuIcon-bar {
-	height: 2px;
-	width: 100%;
-	position: relative;
-	-webkit-transform: translate3d(0, 0, 0);
-	-webkit-transition: -webkit-transform 0.2s ease-out;
-	&+.MenuIcon-bar {
-		margin-top: 6px;
-	}
+  height: 2px;
+  width: 100%;
+  position: relative;
+  -webkit-transform: translate3d(0, 0, 0);
+  -webkit-transition: -webkit-transform 0.2s ease-out;
+  &+.MenuIcon-bar {
+    margin-top: 6px;
+  }
 }
 
 .MainNav.is-active {
-	.MenuIcon-bar {
-		&:first-child {
-			-webkit-transform: translate3d(0, 8px, 0);
-		}
-		&:last-child {
-			-webkit-transform: translate3d(0, -8px, 0);
-		}
-	}
+  .MenuIcon-bar {
+    &:first-child {
+      -webkit-transform: translate3d(0, 8px, 0);
+    }
+    &:last-child {
+      -webkit-transform: translate3d(0, -8px, 0);
+    }
+  }
 }
 

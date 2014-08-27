@@ -4,7 +4,7 @@
  */
 
 .BoxSet {
-	&>.BoxSet-item~.BoxSet-item {
-		margin-top: 1px;
-	}
+  &>.BoxSet-item~.BoxSet-item {
+    margin-top: 1px;
+  }
 }

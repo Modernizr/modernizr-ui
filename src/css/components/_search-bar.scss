@@ -1,12 +1,12 @@
 .SearchBar {
-	background: transparent;
-	@include rem(line-height, 7);
-	@include rem(height, 7);
-	@include rem(padding, 0, 3);
-	width: 100%; // TODO :: is this needed
+  background: transparent;
+  @include rem(line-height, 7);
+  @include rem(height, 7);
+  @include rem(padding, 0, 3);
+  width: 100%; // TODO :: is this needed
 }
 
 input.SearchBar {
-	border: 0; // Remove default input border
-	outline: 0; // Prevent outline on focus
+  border: 0; // Remove default input border
+  outline: 0; // Prevent outline on focus
 }
