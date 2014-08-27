@@ -29,196 +29,196 @@
 $easeInOutExpo: cubic-bezier(1.000, 0.000, 0.000, 1.000);
 
 .OpenSide {
-	.OpenSide-item {
-		-webkit-transition: width 0.6s 0s $easeInOutExpo;
-		.FruitMachine--forOpenSide.is-moved & {
-			-webkit-transition-delay: 0.6s;
-		}
-	}
+  .OpenSide-item {
+    -webkit-transition: width 0.6s 0s $easeInOutExpo;
+    .FruitMachine--forOpenSide.is-moved & {
+      -webkit-transition-delay: 0.6s;
+    }
+  }
 }
 .FruitMachine--forOpenSide {
-	.FruitMachine-transport {
-		-webkit-transition-delay: 0.6s;
-	}
-	&.is-moved {
-		.FruitMachine-transport {
-			-webkit-transition-delay: 0s;
-		}
-	}
+  .FruitMachine-transport {
+    -webkit-transition-delay: 0.6s;
+  }
+  &.is-moved {
+    .FruitMachine-transport {
+      -webkit-transition-delay: 0s;
+    }
+  }
 }
 
 .TypeList {
-	.TypeList-item+.TypeList-item {
-		padding-top: 0.6em;
-	}
-	.TypeList-item>a {
-		display: block;
-		&:hover {
-			opacity: 0.5;
-		}
-	}
-	.TypeList-count {
-		float: right;
-	}
+  .TypeList-item+.TypeList-item {
+    padding-top: 0.6em;
+  }
+  .TypeList-item>a {
+    display: block;
+    &:hover {
+      opacity: 0.5;
+    }
+  }
+  .TypeList-count {
+    float: right;
+  }
 }
 
 
 .Btn {
-	@include rem(line-height, 13);
+  @include rem(line-height, 13);
 }
 
 .App-main {
-	@include rem(padding-top, 4);
+  @include rem(padding-top, 4);
 }
 
 .NoItemsMessage {
-	@include rem(padding, 0, 6);
+  @include rem(padding, 0, 6);
 }
 
 .Result {
-	-webkit-transition: outline-width 0.2s ease;
-	outline: 0 solid #fff;
-	cursor: pointer;
-	color: #999;
-	&:hover {
-		color: #444;
-	}
-	&.is-selected {
-		position: relative;
-		z-index: 1;
-		outline-width: 10px;
-	}
+  -webkit-transition: outline-width 0.2s ease;
+  outline: 0 solid #fff;
+  cursor: pointer;
+  color: #999;
+  &:hover {
+    color: #444;
+  }
+  &.is-selected {
+    position: relative;
+    z-index: 1;
+    outline-width: 10px;
+  }
 }
 
 .Result-icon {
-	position: absolute;
-	right: 2em;
-	top: 0;
-	bottom: 0;
-	width: 3em;
-	height: 3em;
-	line-height: (3em - 0.4em);
-	margin: auto;
-	-webkit-transition: background 0.4s  ease, border-color 0.4s  ease;
-	.Result.is-selected &,
-	&:hover {
-		border-color: #444;
-		.Ring-inner>img {
-			opacity: 1;
-		}
-	}
-	.Result.is-added & {
-		border-color: #85d900;
-		-webkit-transition-delay: 0.2s, 0.2s;
-		.Ring-inner>img {
-			opacity: 1;
-		}
-	}
-	.Ring-inner {
-		line-height: (3em - 0.4em);
-		img {
-			width: 1.5em;
-			height: 1.5em;
-			opacity: 0.5;
-		}
-	}
-	&.is-moved {
-		.Ring-inner {
-			-webkit-transform: translate3d(0, 0 - (3em - 0.4em),0);
-		}
-	}
+  position: absolute;
+  right: 2em;
+  top: 0;
+  bottom: 0;
+  width: 3em;
+  height: 3em;
+  line-height: (3em - 0.4em);
+  margin: auto;
+  -webkit-transition: background 0.4s  ease, border-color 0.4s  ease;
+  .Result.is-selected &,
+  &:hover {
+    border-color: #444;
+    .Ring-inner>img {
+      opacity: 1;
+    }
+  }
+  .Result.is-added & {
+    border-color: #85d900;
+    -webkit-transition-delay: 0.2s, 0.2s;
+    .Ring-inner>img {
+      opacity: 1;
+    }
+  }
+  .Ring-inner {
+    line-height: (3em - 0.4em);
+    img {
+      width: 1.5em;
+      height: 1.5em;
+      opacity: 0.5;
+    }
+  }
+  &.is-moved {
+    .Ring-inner {
+      -webkit-transform: translate3d(0, 0 - (3em - 0.4em),0);
+    }
+  }
 }
 
 .CombinationMark {
-	text-align: center;
-	display: block; // For <a>
-	.CombinationMark-logo {
-		display: inline-block;
-		width: 4em;
-	}
-	.CombinationMark-text {
-		color: #db4886; // TODO :: color
-		padding-left: 0.5em;
-		font-size: 2.2em;
-	}
+  text-align: center;
+  display: block; // For <a>
+  .CombinationMark-logo {
+    display: inline-block;
+    width: 4em;
+  }
+  .CombinationMark-text {
+    color: #db4886; // TODO :: color
+    padding-left: 0.5em;
+    font-size: 2.2em;
+  }
 }
 
 .HomePage {
-	li+li {
-		padding-top: 1.6rem;
-	}
+  li+li {
+    padding-top: 1.6rem;
+  }
 }
 
 .HomePage-hero {
-	@include rem(padding, 5, 0);
+  @include rem(padding, 5, 0);
 }
 
 .HomePage-heading {
-	font-size: 10rem; letter-spacing: -0.03em; line-height: 1.1
+  font-size: 10rem; letter-spacing: -0.03em; line-height: 1.1
 }
 
 .HomePage-content {
-	max-width: 70rem; padding-top: 2em
+  max-width: 70rem; padding-top: 2em
 }
 
 .HomePage-subHeading {
-	line-height: 1.5;
+  line-height: 1.5;
 }
 
 .HomePage-cta {
-	background-color: #db4886; color: #fff; padding: 0.8em 1em;
-	-webkit-transition: opacity 0.3s ease;
-	&:hover {
-		opacity: 0.5;
-	}
+  background-color: #db4886; color: #fff; padding: 0.8em 1em;
+  -webkit-transition: opacity 0.3s ease;
+  &:hover {
+    opacity: 0.5;
+  }
 }
 
 .HomePage-secondaryCta {
-	margin-left: 1em;
-	padding: 0.8em 1em;
-	&>span {
-		border-bottom: 1px solid #ccc;
-	}
+  margin-left: 1em;
+  padding: 0.8em 1em;
+  &>span {
+    border-bottom: 1px solid #ccc;
+  }
 }
 
 
 .pageswitch-enter,
 .pageswitch-leave {
-	position: absolute;
-	top: 17rem; right: 4rem; bottom: 0; left: 4rem;
-	.ResultList {
-		top: 0 !important;
-	}
+  position: absolute;
+  top: 17rem; right: 4rem; bottom: 0; left: 4rem;
+  .ResultList {
+    top: 0 !important;
+  }
 }
 
 .MainNav-icon, .Btn {
-	cursor: pointer;
+  cursor: pointer;
 }
 
 .ResultsList {
-	-webkit-transition: all 0.2s ease;
-	position: absolute;
-	top: 17rem;
-	bottom: 0;
-	width: 51.12%;
-	overflow-y: auto;
-	margin-left: -4rem;
-	margin-right: -4rem;
-	padding-left: 4rem;
-	padding-right: 4rem;
-	margin-top: -4rem;
-	padding-top: 4rem;
+  -webkit-transition: all 0.2s ease;
+  position: absolute;
+  top: 17rem;
+  bottom: 0;
+  width: 51.12%;
+  overflow-y: auto;
+  margin-left: -4rem;
+  margin-right: -4rem;
+  padding-left: 4rem;
+  padding-right: 4rem;
+  margin-top: -4rem;
+  padding-top: 4rem;
 }
 
 .pageswitch-enter {
   opacity: 0.01;
-	-webkit-transform: translate3d(0,100px,0);
+  -webkit-transform: translate3d(0,100px,0);
   transition: opacity 0.6s 0.2s $easeInOutExpo, -webkit-transform 0.6s 0.2s $easeInOutExpo;
 }
 .pageswitch-leave {
-	opacity: 1;
-	-webkit-transform: translate3d(0,0,0);
-	transition: opacity 0.6s $easeInOutExpo, -webkit-transform 0.6s $easeInOutExpo;
+  opacity: 1;
+  -webkit-transform: translate3d(0,0,0);
+  transition: opacity 0.6s $easeInOutExpo, -webkit-transform 0.6s $easeInOutExpo;
 }
 
 .pageswitch-enter.pageswitch-enter-active {
@@ -227,6 +227,6 @@ $easeInOutExpo: cubic-bezier(1.000, 0.000, 0.000, 1.000);
 }
 
 .pageswitch-leave.pageswitch-leave-active {
-	opacity: 0.01;
-	-webkit-transform: translate3d(0,100px,0);
+  opacity: 0.01;
+  -webkit-transform: translate3d(0,100px,0);
 }

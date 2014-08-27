@@ -1,25 +1,25 @@
 .Icon {
-	display: inline-block;
-	vertical-align: text-top;
-	@include rem(width, 1.6);
-	@include rem(height, 1.6);
-	background-size: 100% auto;
+  display: inline-block;
+  vertical-align: text-top;
+  @include rem(width, 1.6);
+  @include rem(height, 1.6);
+  background-size: 100% auto;
 }
 
 .Icon--menu {
-	@include rem(width, 4);
-	@include rem(height, 4);
+  @include rem(width, 4);
+  @include rem(height, 4);
 }
 
 .Icon--build {
-	@include rem(width, 2);
-	@include rem(height, 2);
-	@include rem(line-height, 1.5);
-	@include rem(border-width, 0.3);
-	border-radius: 999px;
-	.IconRing--build-inner {
-		border-radius: 999px;
-		@include rem(width, 0.8);
-		@include rem(height, 0.8);
-	}
+  @include rem(width, 2);
+  @include rem(height, 2);
+  @include rem(line-height, 1.5);
+  @include rem(border-width, 0.3);
+  border-radius: 999px;
+  .IconRing--build-inner {
+    border-radius: 999px;
+    @include rem(width, 0.8);
+    @include rem(height, 0.8);
+  }
 }

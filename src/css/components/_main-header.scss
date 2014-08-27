@@ -1,38 +1,38 @@
 .MainHeader {
-	height: 120px;
-	.MainHeader-mid {
-		display: table;
-		width: 100%;
-		height: 100%;
-		table-layout: fixed;
-		overflow: hidden;
-	}
-		.MainHeader-logo {
-			width: 320px;
-			display: table-cell;
-			vertical-align: middle;
-			// padding-left: 4rem;
-		}
-		.MainHeader-body {
-			width: auto;
-			display: table-cell;
-			vertical-align: top;
-		}
-		.MainHeader-row {
-			-webkit-transition: height 0.2s ease;
-			height: 100%;
-		    &+.MainHeader-row {
-		    	height: 0;
-		    }
-		}
-	&.is-browser-open {
-		.MainHeader-row {
-			height: 50% !important;
-		}
-	}
+  height: 120px;
+  .MainHeader-mid {
+    display: table;
+    width: 100%;
+    height: 100%;
+    table-layout: fixed;
+    overflow: hidden;
+  }
+    .MainHeader-logo {
+      width: 320px;
+      display: table-cell;
+      vertical-align: middle;
+      // padding-left: 4rem;
+    }
+    .MainHeader-body {
+      width: auto;
+      display: table-cell;
+      vertical-align: top;
+    }
+    .MainHeader-row {
+      -webkit-transition: height 0.2s ease;
+      height: 100%;
+        &+.MainHeader-row {
+          height: 0;
+        }
+    }
+  &.is-browser-open {
+    .MainHeader-row {
+      height: 50% !important;
+    }
+  }
 }
 
 .MainHeader-countList {
-	border-left-width: 1px;
-	@include rem(padding, 0, 3);
+  border-left-width: 1px;
+  @include rem(padding, 0, 3);
 }
