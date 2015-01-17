@@ -12,6 +12,7 @@ module.exports = function(grunt) {
         contentBase: './dev'
       },
       start: {
+        watch: true,
         keepAlive: true,
         webpack: {
           devtool: "sourcemap",
@@ -41,6 +42,9 @@ module.exports = function(grunt) {
       docpad: {
         cmd: "docpad generate -e production"
       },
+      docpad_run: {
+        cmd: "docpad run"
+      },
       clear_dist: {
         cmd: "rm -rf ./dist/"
       }
@@ -58,10 +62,18 @@ module.exports = function(grunt) {
         base: 'dist'
       },
       src: ['**']
+    },
+    concurrent: {
+      serve: {
+        tasks: ['webpack-dev-server:start', 'watch:sass', 'exec:docpad_run'],
+        options: {
+            logConcurrentOutput: true
+        }
+      }
     }
   });
 
-  grunt.registerTask("default", ["webpack-dev-server:start"]);
+  grunt.registerTask("default", ["concurrent:serve"]);
   grunt.registerTask("dist", ["exec:clear_dist", "exec:docpad"])
 
 };

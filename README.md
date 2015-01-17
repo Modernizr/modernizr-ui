@@ -15,9 +15,7 @@ Any archived issues, or unassigned issues remain in the [Trello board](https://t
 	+ `npm install && bower install`
 
 3. Start the task runner
-	+ `grunt` for webpack-dev-server
-	+ `grunt watch` for sass
-	+ `docpad run` for html
+	+ `grunt` for webpack-dev-server, sass and html
 
 4. Go to: `http://localhost:8080/webpack-dev-server/`
 
