@@ -18,6 +18,20 @@ html {
 body {
   margin: 0; }
 
+
+/**
+ *  selector property for better UX
+ */
+::selection {
+    background-color: #db4886;
+    color: #fff;
+}
+
+::-moz-selection {
+	background-color: #db4886;
+	color: #fff;
+}
+
 /* HTML5 display definitions
    ========================================================================== */
 /**
